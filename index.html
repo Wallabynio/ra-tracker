@@ -155,7 +155,14 @@ const instructionsB = {cardio: '<h3>Elliptical trainer technique</h3><ul><li>Fee
 
 function switchMenu(option) {
   currentMenu = option;
-  const buttons = document.querySelectorAll('.section:nth-child(1) .menu-toggle .toggle-btn');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const buttons = menuToggle.querySelectorAll('.toggle-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  buttons[option === 'a' ? 0 : 1].classList.add('active');
+  document.getElementById('mealDescription').textContent = option === 'a' ? 'Monday, Wednesday, Friday, Sunday' : 'Tuesday, Thursday, Saturday';
+  updateMeal('breakfast');
+}
+
   buttons.forEach(btn => btn.classList.remove('active'));
   buttons[option === 'a' ? 0 : 1].classList.add('active');
   document.getElementById('mealDescription').textContent = option === 'a' ? 'Monday, Wednesday, Friday, Sunday' : 'Tuesday, Thursday, Saturday';
