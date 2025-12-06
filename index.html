@@ -37,6 +37,7 @@ th,td {padding:14px 10px;text-align:left;border-bottom:1px solid #f1f5f9;font-we
 th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0;padding-bottom:10px;}
 .warning {background:#fef3c7;border-left:6px solid #f59e0b;padding:28px;border-radius:20px;margin:32px 0;font-size:16px;color:#92400e;}
 .warning strong {color:#92400e;}
+.aldi-price {color:#059669;font-weight:600;}
 @media (max-width:480px) {body {padding:16px;}.header {padding:48px 24px 36px;}.header h1 {font-size:32px;}.section {padding:28px 24px;}.section h2 {font-size:24px;}.content {padding:24px;} table {font-size:15px;} th,td {padding:12px 8px;}}
 </style>
 </head>
@@ -61,7 +62,7 @@ th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0
 
 <div class="section">
 <div class="icon shop-icon">🛒</div>
-<h2>Weekly shopping list</h2>
+<h2>Weekly shopping list (Aldi Australia)</h2>
 <div class="tabs shop-tabs">
 <button class="tab-btn shop-tab-btn active" data-list="produce" onclick="updateShopList('produce')">🥬 Produce</button>
 <button class="tab-btn shop-tab-btn" data-list="proteins" onclick="updateShopList('proteins')">🥚 Proteins</button>
@@ -148,7 +149,7 @@ const meals = {
       <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Dressing</td></tr>
       <tr><td>Brown rice (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
       <tr><td>Quinoa (cooked)</td><td>80g (⅖ cup)</td><td>Boiled</td></tr>
-      <tr><td>Canned fish</td><td>125g (1 can)</td><td>Sardines / Mackerel / Herring</td></tr>
+      <tr><td>Canned fish</td><td>125g (1 can)</td><td>Sardines / Mackerel (rotate daily)</td></tr>
       <tr><td>Pumpkin seeds</td><td>25g (2 tbsp)</td><td>Raw sprinkle</td></tr>
     </table>
     <p><strong>~777kcal | 44g protein</strong><br>Omega-3 rich</p>
@@ -159,42 +160,45 @@ const lists = {
   produce: `
     <h3>Fresh produce (buy weekly)</h3>
     <ul>
-      <li>Baby spinach – 200g (2 containers)</li>
-      <li>Carrots – 500g (loose)</li>
-      <li>Celery – 1 bunch (6–8 sticks)</li>
-      <li>Red capsicum – 3 medium</li>
-      <li>Apples – 6 medium</li>
+      <li>Baby spinach – 200g (2 containers) <span class="aldi-price">~$2.50 ea</span></li>
+      <li>Carrots – 500g (loose) <span class="aldi-price">~$2.50–3.00</span></li>
+      <li>Celery – 1 bunch (6–8 sticks) <span class="aldi-price">~$1.50–2.00</span></li>
+      <li>Red capsicum – 3 medium <span class="aldi-price">~$2.25 ea</span></li>
+      <li>Apples – 6 medium <span class="aldi-price">~$2.99/kg</span></li>
     </ul>
+    <p><strong>Subtotal: ~$20–25</strong></p>
   `,
   proteins: `
-    <h3>Proteins and dairy</h3>
+    <h3>Proteins and dairy (Aldi Australia)</h3>
     <ul>
-      <li>Eggs – 1 dozen (12 large)</li>
-      <li>Greek yoghurt – 2 × 500g tubs</li>
-      <li>Whole milk – 2 litres</li>
-      <li>Canned sardines – 3 tins (125g)</li>
-      <li>Canned mackerel – 2 tins (125g)</li>
-      <li>Canned herring – 2 tins (125g)</li>
+      <li>Eggs (12 large) <span class="aldi-price">~$6–7</span></li>
+      <li>Lyttos Greek Yoghurt (2 × 500g) <span class="aldi-price">$2.99 ea = $5.98</span></li>
+      <li>Whole milk (2 litres) <span class="aldi-price">~$3–3.50/L</span></li>
+      <li>Ocean Rise Sardines (3 × 125g) <span class="aldi-price">$1.69 ea = $5.07</span></li>
+      <li>Ocean Rise Mackerel (4 × 125g) <span class="aldi-price">$2.99 ea = $11.96</span></li>
     </ul>
+    <p><strong>Subtotal: ~$32–36</strong><br><em>Note: 4 mackerel instead of 2 mackerel + 2 herring. Rotate sardines/mackerel daily.</em></p>
   `,
   grains: `
-    <h3>Grains and legumes</h3>
+    <h3>Grains and legumes (Aldi Australia)</h3>
     <ul>
-      <li>Brown rice – 1kg bag (bulk)</li>
-      <li>Quinoa – 500g bag</li>
-      <li>Canned 4-bean mix – 3 tins</li>
+      <li>Imperial Grain Brown Rice (1kg) <span class="aldi-price">$3.59</span></li>
+      <li>Just Organic Quinoa (500g) <span class="aldi-price">~$4–5</span></li>
+      <li>New Season 4 Bean Mix (3 × 420g) <span class="aldi-price">$0.95 ea = $2.85</span></li>
     </ul>
+    <p><strong>Subtotal: ~$10–12</strong></p>
   `,
   pantry: `
-    <h3>Pantry and healthy fats</h3>
+    <h3>Pantry and healthy fats (Aldi Australia)</h3>
     <ul>
-      <li>Hummus – 1 tub (500g)</li>
-      <li>Extra virgin olive oil – 500ml</li>
-      <li>Walnuts – 200g raw nuts</li>
-      <li>Chia seeds – 200g bag</li>
-      <li>Pumpkin seeds – 200g bag</li>
-      <li>Coffee – 250g beans or ground</li>
+      <li>Deli Originals Hummus (500g needed – buy 3 × 200g tubs) <span class="aldi-price">$2.99 ea = ~$9</span></li>
+      <li>Oh So Natural Extra Virgin Olive Oil (500ml) <span class="aldi-price">$8.99</span></li>
+      <li>Oh So Natural Walnuts (200g) <span class="aldi-price">$4.89</span></li>
+      <li>Black Chia Seeds (350g – use 200g) <span class="aldi-price">$5.49</span></li>
+      <li>Oh So Natural Pepita Seeds (2 × 125g) <span class="aldi-price">$1.49 ea = $2.98</span></li>
+      <li>House Brand Coffee (250g) <span class="aldi-price">~$5–7</span></li>
     </ul>
+    <p><strong>Subtotal: ~$36–40</strong></p>
   `
 };
 
