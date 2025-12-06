@@ -125,335 +125,40 @@ let currentGym = 'a';
 let currentInstructTab = 'cardio';
 
 const mealsA = {
-  breakfast: {
-    name: 'Warm Quinoa Breakfast Bowl',
-    description: 'Boil quinoa until fluffy. Warm milk with cinnamon. Mix cooked quinoa with warm milk and yoghurt. Top with blueberries, walnuts, honey drizzle.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Quinoa cooked</td><td>180g (¾ cup)</td><td>Boiled</td></tr>
-      <tr><td>Whole milk</td><td>100ml</td><td>Warm</td></tr>
-      <tr><td>Blueberries</td><td>80g (½ cup)</td><td>Fresh</td></tr>
-      <tr><td>Honey</td><td>12g (1 tbsp)</td><td>Drizzle</td></tr>
-      <tr><td>Walnuts</td><td>20g (handful)</td><td>Raw</td></tr>
-      <tr><td>Ground cinnamon</td><td>1g (pinch)</td><td>Sprinkle</td></tr>
-      <tr><td>Greek yoghurt</td><td>120g</td><td>Plain</td></tr>
-    </table>
-    <p><strong>~563kcal | 25.8g protein</strong></p>
-    `
-  },
-  coffee: {
-    name: 'Coffee with Banana & Almonds',
-    description: 'Brew strong coffee. Warm milk separately and pour into coffee. Slice banana, arrange with almonds on side plate, eat while sipping.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Coffee black</td><td>200ml</td><td>Brewed hot</td></tr>
-      <tr><td>Whole milk</td><td>60ml</td><td>Warm in coffee</td></tr>
-      <tr><td>Banana</td><td>130g (1 medium)</td><td>Sliced</td></tr>
-      <tr><td>Almonds</td><td>30g (handful)</td><td>Raw</td></tr>
-    </table>
-    <p><strong>~326kcal | 9.8g protein</strong></p>
-    `
-  },
-  lunch: {
-    name: 'Mediterranean Warm Lentil Salad',
-    description: 'Cook lentils until tender. Roast sweet potato & capsicum at 200°C for 25min. Wilt spinach briefly. Toss warm with olive oil, feta, cherry tomatoes, pomegranate seeds.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Brown lentils cooked</td><td>220g</td><td>Boiled 25min</td></tr>
-      <tr><td>Sweet potato roasted</td><td>160g</td><td>Roasted 200°C</td></tr>
-      <tr><td>Red capsicum</td><td>70g (½ medium)</td><td>Roasted</td></tr>
-      <tr><td>Spinach</td><td>30g (½ cup)</td><td>Wilted</td></tr>
-      <tr><td>Olive oil</td><td>8ml (1.5 tsp)</td><td>Dressing</td></tr>
-      <tr><td>Feta cheese</td><td>50g</td><td>Crumbled</td></tr>
-      <tr><td>Cherry tomatoes</td><td>60g (½ cup)</td><td>Fresh</td></tr>
-      <tr><td>Pomegranate seeds</td><td>40g</td><td>Fresh</td></tr>
-    </table>
-    <p><strong>~661kcal | 32.1g protein</strong></p>
-    `
-  },
-  dinner: {
-    name: 'Herbed Fish with Root Vegetables',
-    description: 'Roast potatoes, carrots, broccoli at 190°C for 30min with 3ml olive oil. Heat canned fish gently, season with lemon juice & fresh parsley. Drizzle remaining oil over vegetables.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Canned fish</td><td>125g (1 can)</td><td>Heated gently</td></tr>
-      <tr><td>Baby potatoes roasted</td><td>200g</td><td>Roasted 190°C 30min</td></tr>
-      <tr><td>Carrot roasted</td><td>90g (1 medium)</td><td>Roasted</td></tr>
-      <tr><td>Broccoli steamed</td><td>100g</td><td>Steamed 10min</td></tr>
-      <tr><td>Olive oil</td><td>7ml (1.5 tsp)</td><td>Drizzle</td></tr>
-      <tr><td>Fresh parsley</td><td>10g</td><td>Chopped</td></tr>
-      <tr><td>Lemon juice</td><td>15ml (1 tbsp)</td><td>Fresh squeeze</td></tr>
-    </table>
-    <p><strong>~555kcal | 39.3g protein</strong></p>
-    `
-  }
+  breakfast: {name: 'Warm Quinoa Breakfast Bowl', description: 'Boil quinoa until fluffy. Warm milk with cinnamon. Mix cooked quinoa with warm milk and yoghurt. Top with blueberries, walnuts, honey drizzle.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Quinoa cooked</td><td>180g (¾ cup)</td><td>Boiled</td></tr><tr><td>Whole milk</td><td>100ml</td><td>Warm</td></tr><tr><td>Blueberries</td><td>80g (½ cup)</td><td>Fresh</td></tr><tr><td>Honey</td><td>12g (1 tbsp)</td><td>Drizzle</td></tr><tr><td>Walnuts</td><td>20g (handful)</td><td>Raw</td></tr><tr><td>Ground cinnamon</td><td>1g (pinch)</td><td>Sprinkle</td></tr><tr><td>Greek yoghurt</td><td>120g</td><td>Plain</td></tr></table><p><strong>~563kcal | 25.8g protein</strong></p>'},
+  coffee: {name: 'Coffee with Banana & Almonds', description: 'Brew strong coffee. Warm milk separately and pour into coffee. Slice banana, arrange with almonds on side plate, eat while sipping.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Coffee black</td><td>200ml</td><td>Brewed hot</td></tr><tr><td>Whole milk</td><td>60ml</td><td>Warm in coffee</td></tr><tr><td>Banana</td><td>130g (1 medium)</td><td>Sliced</td></tr><tr><td>Almonds</td><td>30g (handful)</td><td>Raw</td></tr></table><p><strong>~326kcal | 9.8g protein</strong></p>'},
+  lunch: {name: 'Mediterranean Warm Lentil Salad', description: 'Cook lentils until tender. Roast sweet potato & capsicum at 200°C for 25min. Wilt spinach briefly. Toss warm with olive oil, feta, cherry tomatoes, pomegranate seeds.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Brown lentils cooked</td><td>220g</td><td>Boiled 25min</td></tr><tr><td>Sweet potato roasted</td><td>160g</td><td>Roasted 200°C</td></tr><tr><td>Red capsicum</td><td>70g (½ medium)</td><td>Roasted</td></tr><tr><td>Spinach</td><td>30g (½ cup)</td><td>Wilted</td></tr><tr><td>Olive oil</td><td>8ml (1.5 tsp)</td><td>Dressing</td></tr><tr><td>Feta cheese</td><td>50g</td><td>Crumbled</td></tr><tr><td>Cherry tomatoes</td><td>60g (½ cup)</td><td>Fresh</td></tr><tr><td>Pomegranate seeds</td><td>40g</td><td>Fresh</td></tr></table><p><strong>~661kcal | 32.1g protein</strong></p>'},
+  dinner: {name: 'Herbed Fish with Root Vegetables', description: 'Roast potatoes, carrots, broccoli at 190°C for 30min with 3ml olive oil. Heat canned fish gently, season with lemon juice & fresh parsley. Drizzle remaining oil over vegetables.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Canned fish</td><td>125g (1 can)</td><td>Heated gently</td></tr><tr><td>Baby potatoes roasted</td><td>200g</td><td>Roasted 190°C 30min</td></tr><tr><td>Carrot roasted</td><td>90g (1 medium)</td><td>Roasted</td></tr><tr><td>Broccoli steamed</td><td>100g</td><td>Steamed 10min</td></tr><tr><td>Olive oil</td><td>7ml (1.5 tsp)</td><td>Drizzle</td></tr><tr><td>Fresh parsley</td><td>10g</td><td>Chopped</td></tr><tr><td>Lemon juice</td><td>15ml (1 tbsp)</td><td>Fresh squeeze</td></tr></table><p><strong>~555kcal | 39.3g protein</strong></p>'}
 };
 
 const mealsB = {
-  breakfast: {
-    name: 'Savory Egg & Spinach Scramble',
-    description: 'Toast bread. Heat olive oil, sauté garlic, add spinach until wilted. Scramble eggs with turmeric, combine with spinach. Serve with bread & dollop of yoghurt.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Eggs</td><td>140g (2 large)</td><td>Scrambled</td></tr>
-      <tr><td>Baby spinach</td><td>80g (1½ cup)</td><td>Wilted</td></tr>
-      <tr><td>Whole grain bread</td><td>60g (1 slice)</td><td>Toasted</td></tr>
-      <tr><td>Olive oil</td><td>6ml (1 tsp)</td><td>For cooking</td></tr>
-      <tr><td>Garlic</td><td>5g (1 clove)</td><td>Sautéed</td></tr>
-      <tr><td>Turmeric</td><td>1g (pinch)</td><td>Mixed in</td></tr>
-      <tr><td>Greek yoghurt</td><td>100g</td><td>Plain</td></tr>
-    </table>
-    <p><strong>~517kcal | 36.5g protein</strong></p>
-    `
-  },
-  coffee: {
-    name: 'Green Matcha Latte',
-    description: 'Whisk matcha powder with small amount of hot water to dissolve. Heat milk, pour over matcha paste. Stir in honey. Eat pumpkin seeds on the side.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Matcha powder</td><td>2g</td><td>Whisked with hot water</td></tr>
-      <tr><td>Whole milk</td><td>240ml</td><td>Hot</td></tr>
-      <tr><td>Honey</td><td>10g (1 tsp)</td><td>Stirred in</td></tr>
-      <tr><td>Pumpkin seeds</td><td>25g (2 tbsp)</td><td>Raw sprinkle</td></tr>
-    </table>
-    <p><strong>~323kcal | 10.0g protein</strong></p>
-    `
-  },
-  lunch: {
-    name: 'Thai-Inspired Coconut & Vegetable Curry',
-    description: 'Cook rice. Simmer chickpeas with coconut milk, ginger, zucchini, capsicum for 15min. Add Thai basil & lime juice at end. Serve over rice.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Chickpeas cooked</td><td>200g</td><td>Canned</td></tr>
-      <tr><td>Coconut milk light</td><td>120ml</td><td>Simmered</td></tr>
-      <tr><td>Brown rice cooked</td><td>220g</td><td>Boiled 20min</td></tr>
-      <tr><td>Red capsicum</td><td>80g (½ medium)</td><td>Diced</td></tr>
-      <tr><td>Zucchini</td><td>100g (1 small)</td><td>Diced</td></tr>
-      <tr><td>Thai basil</td><td>5g</td><td>Fresh at end</td></tr>
-      <tr><td>Lime juice</td><td>10ml</td><td>Fresh squeeze</td></tr>
-      <tr><td>Ginger fresh</td><td>10g</td><td>Grated</td></tr>
-    </table>
-    <p><strong>~746kcal | 26.8g protein</strong></p>
-    `
-  },
-  dinner: {
-    name: 'Moroccan Spiced Fish with Quinoa Pilaf',
-    description: 'Cook quinoa with cumin & coriander spices. Roast eggplant & chickpeas at 200°C with 3ml oil for 20min. Warm fish, season with spices & pomegranate seeds.',
-    content: `
-    <table>
-      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-      <tr><td>Canned fish</td><td>125g (1 can)</td><td>Heated gently</td></tr>
-      <tr><td>Quinoa cooked</td><td>160g</td><td>Boiled with spices</td></tr>
-      <tr><td>Eggplant roasted</td><td>100g</td><td>Roasted 200°C 20min</td></tr>
-      <tr><td>Chickpeas</td><td>60g (½ can)</td><td>Roasted</td></tr>
-      <tr><td>Olive oil</td><td>6ml (1 tsp)</td><td>For roasting</td></tr>
-      <tr><td>Cumin</td><td>2g (½ tsp)</td><td>Mixed in quinoa</td></tr>
-      <tr><td>Coriander</td><td>2g (½ tsp)</td><td>Mixed in quinoa</td></tr>
-      <tr><td>Pomegranate seeds</td><td>30g</td><td>Fresh garnish</td></tr>
-    </table>
-    <p><strong>~643kcal | 40.1g protein</strong></p>
-    `
-  }
+  breakfast: {name: 'Savory Egg & Spinach Scramble', description: 'Toast bread. Heat olive oil, sauté garlic, add spinach until wilted. Scramble eggs with turmeric, combine with spinach. Serve with bread & dollop of yoghurt.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Eggs</td><td>140g (2 large)</td><td>Scrambled</td></tr><tr><td>Baby spinach</td><td>80g (1½ cup)</td><td>Wilted</td></tr><tr><td>Whole grain bread</td><td>60g (1 slice)</td><td>Toasted</td></tr><tr><td>Olive oil</td><td>6ml (1 tsp)</td><td>For cooking</td></tr><tr><td>Garlic</td><td>5g (1 clove)</td><td>Sautéed</td></tr><tr><td>Turmeric</td><td>1g (pinch)</td><td>Mixed in</td></tr><tr><td>Greek yoghurt</td><td>100g</td><td>Plain</td></tr></table><p><strong>~517kcal | 36.5g protein</strong></p>'},
+  coffee: {name: 'Green Matcha Latte', description: 'Whisk matcha powder with small amount of hot water to dissolve. Heat milk, pour over matcha paste. Stir in honey. Eat pumpkin seeds on the side.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Matcha powder</td><td>2g</td><td>Whisked with hot water</td></tr><tr><td>Whole milk</td><td>240ml</td><td>Hot</td></tr><tr><td>Honey</td><td>10g (1 tsp)</td><td>Stirred in</td></tr><tr><td>Pumpkin seeds</td><td>25g (2 tbsp)</td><td>Raw sprinkle</td></tr></table><p><strong>~323kcal | 10.0g protein</strong></p>'},
+  lunch: {name: 'Thai-Inspired Coconut & Vegetable Curry', description: 'Cook rice. Simmer chickpeas with coconut milk, ginger, zucchini, capsicum for 15min. Add Thai basil & lime juice at end. Serve over rice.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Chickpeas cooked</td><td>200g</td><td>Canned</td></tr><tr><td>Coconut milk light</td><td>120ml</td><td>Simmered</td></tr><tr><td>Brown rice cooked</td><td>220g</td><td>Boiled 20min</td></tr><tr><td>Red capsicum</td><td>80g (½ medium)</td><td>Diced</td></tr><tr><td>Zucchini</td><td>100g (1 small)</td><td>Diced</td></tr><tr><td>Thai basil</td><td>5g</td><td>Fresh at end</td></tr><tr><td>Lime juice</td><td>10ml</td><td>Fresh squeeze</td></tr><tr><td>Ginger fresh</td><td>10g</td><td>Grated</td></tr></table><p><strong>~746kcal | 26.8g protein</strong></p>'},
+  dinner: {name: 'Moroccan Spiced Fish with Quinoa Pilaf', description: 'Cook quinoa with cumin & coriander spices. Roast eggplant & chickpeas at 200°C with 3ml oil for 20min. Warm fish, season with spices & pomegranate seeds.', content: '<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Canned fish</td><td>125g (1 can)</td><td>Heated gently</td></tr><tr><td>Quinoa cooked</td><td>160g</td><td>Boiled with spices</td></tr><tr><td>Eggplant roasted</td><td>100g</td><td>Roasted 200°C 20min</td></tr><tr><td>Chickpeas</td><td>60g (½ can)</td><td>Roasted</td></tr><tr><td>Olive oil</td><td>6ml (1 tsp)</td><td>For roasting</td></tr><tr><td>Cumin</td><td>2g (½ tsp)</td><td>Mixed in quinoa</td></tr><tr><td>Coriander</td><td>2g (½ tsp)</td><td>Mixed in quinoa</td></tr><tr><td>Pomegranate seeds</td><td>30g</td><td>Fresh garnish</td></tr></table><p><strong>~643kcal | 40.1g protein</strong></p>'}
 };
 
 const shoppingLists = {
-  produce: `
-    <h3>Fresh produce (buy weekly)</h3>
-    <ul>
-      <li>Blueberries – 320g <span class="li-price">$4.50</span></li>
-      <li>Banana – 520g (5 medium) <span class="li-price">$2.99/kg</span></li>
-      <li>Sweet potato – 640g <span class="li-price">$3.50</span></li>
-      <li>Red capsicum – 520g (4 medium) <span class="li-price">$2.25 ea</span></li>
-      <li>Spinach & Baby spinach – 360g total <span class="li-price">$5.00</span></li>
-      <li>Cherry tomatoes – 240g <span class="li-price">$4.00</span></li>
-      <li>Carrot – 360g <span class="li-price">$2.50</span></li>
-      <li>Broccoli – 400g <span class="li-price">$3.00</span></li>
-      <li>Baby potatoes – 800g <span class="li-price">$4.50</span></li>
-      <li>Zucchini – 300g <span class="li-price">$2.50</span></li>
-      <li>Eggplant – 300g <span class="li-price">$3.00</span></li>
-    </ul>
-    <div class="total-box">Subtotal: ~$38–45</div>
-  `,
-  proteins: `
-    <h3>Proteins and dairy</h3>
-    <ul>
-      <li>Eggs (7 large) <span class="li-price">~$6–7</span></li>
-      <li>Lyttos Greek Yoghurt (1050g, 2–3 × 500g tubs) <span class="li-price">$2.99 ea</span></li>
-      <li>Whole milk (1540ml, ~1.5 litres) <span class="li-price">~$4–4.50</span></li>
-      <li>Feta cheese – 200g <span class="li-price">$6.00</span></li>
-      <li>Ocean Rise Sardines (3 × 125g) <span class="li-price">$1.69 ea</span></li>
-      <li>Ocean Rise Mackerel (4 × 125g) <span class="li-price">$2.99 ea</span></li>
-    </ul>
-    <div class="total-box">Subtotal: ~$36–42</div>
-  `,
-  grains: `
-    <h3>Grains and legumes</h3>
-    <ul>
-      <li>Quinoa (raw, ~206g, yields 720g cooked) <span class="li-price">$4–5</span></li>
-      <li>Brown lentils (raw, ~352g, yields 880g cooked) <span class="li-price">$3.50</span></li>
-      <li>Brown rice (raw, ~200g, yields 660g cooked) <span class="li-price">$3.59</span></li>
-      <li>Chickpeas (canned, 2 × 420g) <span class="li-price">$0.95 ea</span></li>
-      <li>Chickpeas (dried, ~180g for roasting) <span class="li-price">$2.00</span></li>
-    </ul>
-    <div class="total-box">Subtotal: ~$15–18</div>
-  `,
-  pantry: `
-    <h3>Pantry and healthy fats</h3>
-    <ul>
-      <li>Honey – 78g <span class="li-price">$6.00</span></li>
-      <li>Walnuts – 80g <span class="li-price">$3.50</span></li>
-      <li>Almonds – 120g <span class="li-price">$5.50</span></li>
-      <li>Oh So Natural Extra Virgin Olive Oil (500ml) <span class="li-price">$8.99</span></li>
-      <li>Pumpkin seeds – 75g <span class="li-price">$2.50</span></li>
-      <li>Pomegranate seeds – 250g <span class="li-price">$8.00</span></li>
-      <li>House Brand Coffee (250g) <span class="li-price">$5–7</span></li>
-      <li>Whole grain bread – 180g <span class="li-price">$3.50</span></li>
-      <li>Fresh parsley – 40g <span class="li-price">$1.50</span></li>
-      <li>Fresh garlic – 15g (1 bulb) <span class="li-price">$0.50</span></li>
-      <li>Fresh ginger – 30g <span class="li-price">$1.50</span></li>
-      <li>Turmeric – 3g <span class="li-price">$4.00 (jar)</span></li>
-      <li>Cumin – 6g <span class="li-price">$3.50 (jar)</span></li>
-      <li>Coriander – 6g <span class="li-price">$3.50 (jar)</span></li>
-      <li>Ground cinnamon – 4g <span class="li-price">$3.00 (jar)</span></li>
-      <li>Matcha powder – 6g <span class="li-price">$8.00</span></li>
-      <li>Thai basil – 15g <span class="li-price">$2.50</span></li>
-      <li>Coconut milk (light, 360ml) <span class="li-price">$3.00</span></li>
-    </ul>
-    <div class="total-box">Subtotal: ~$83–95<br><strong>Total weekly shop: ~$172–200</strong></div>
-  `
+  produce: '<h3>Fresh produce (buy weekly)</h3><ul><li>Blueberries – 320g <span class="li-price">$4.50</span></li><li>Banana – 520g (5 medium) <span class="li-price">$2.99/kg</span></li><li>Sweet potato – 640g <span class="li-price">$3.50</span></li><li>Red capsicum – 520g (4 medium) <span class="li-price">$2.25 ea</span></li><li>Spinach & Baby spinach – 360g total <span class="li-price">$5.00</span></li><li>Cherry tomatoes – 240g <span class="li-price">$4.00</span></li><li>Carrot – 360g <span class="li-price">$2.50</span></li><li>Broccoli – 400g <span class="li-price">$3.00</span></li><li>Baby potatoes – 800g <span class="li-price">$4.50</span></li><li>Zucchini – 300g <span class="li-price">$2.50</span></li><li>Eggplant – 300g <span class="li-price">$3.00</span></li></ul><div class="total-box">Subtotal: ~$38–45</div>',
+  proteins: '<h3>Proteins and dairy</h3><ul><li>Eggs (7 large) <span class="li-price">~$6–7</span></li><li>Lyttos Greek Yoghurt (1050g, 2–3 × 500g tubs) <span class="li-price">$2.99 ea</span></li><li>Whole milk (1540ml, ~1.5 litres) <span class="li-price">~$4–4.50</span></li><li>Feta cheese – 200g <span class="li-price">$6.00</span></li><li>Ocean Rise Sardines (3 × 125g) <span class="li-price">$1.69 ea</span></li><li>Ocean Rise Mackerel (4 × 125g) <span class="li-price">$2.99 ea</span></li></ul><div class="total-box">Subtotal: ~$36–42</div>',
+  grains: '<h3>Grains and legumes</h3><ul><li>Quinoa (raw, ~206g, yields 720g cooked) <span class="li-price">$4–5</span></li><li>Brown lentils (raw, ~352g, yields 880g cooked) <span class="li-price">$3.50</span></li><li>Brown rice (raw, ~200g, yields 660g cooked) <span class="li-price">$3.59</span></li><li>Chickpeas (canned, 2 × 420g) <span class="li-price">$0.95 ea</span></li><li>Chickpeas (dried, ~180g for roasting) <span class="li-price">$2.00</span></li></ul><div class="total-box">Subtotal: ~$15–18</div>',
+  pantry: '<h3>Pantry and healthy fats</h3><ul><li>Honey – 78g <span class="li-price">$6.00</span></li><li>Walnuts – 80g <span class="li-price">$3.50</span></li><li>Almonds – 120g <span class="li-price">$5.50</span></li><li>Oh So Natural Extra Virgin Olive Oil (500ml) <span class="li-price">$8.99</span></li><li>Pumpkin seeds – 75g <span class="li-price">$2.50</span></li><li>Pomegranate seeds – 250g <span class="li-price">$8.00</span></li><li>House Brand Coffee (250g) <span class="li-price">$5–7</span></li><li>Whole grain bread – 180g <span class="li-price">$3.50</span></li><li>Fresh parsley – 40g <span class="li-price">$1.50</span></li><li>Fresh garlic – 15g (1 bulb) <span class="li-price">$0.50</span></li><li>Fresh ginger – 30g <span class="li-price">$1.50</span></li><li>Turmeric – 3g <span class="li-price">$4.00 (jar)</span></li><li>Cumin – 6g <span class="li-price">$3.50 (jar)</span></li><li>Coriander – 6g <span class="li-price">$3.50 (jar)</span></li><li>Ground cinnamon – 4g <span class="li-price">$3.00 (jar)</span></li><li>Matcha powder – 6g <span class="li-price">$8.00</span></li><li>Thai basil – 15g <span class="li-price">$2.50</span></li><li>Coconut milk (light, 360ml) <span class="li-price">$3.00</span></li></ul><div class="total-box">Subtotal: ~$83–95<br><strong>Total weekly shop: ~$172–200</strong></div>'
 };
 
-const routinesA = {
-  cardio: `
-    <table>
-      <tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr>
-      <tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr>
-    </table>
-    <p><strong>Low impact endurance</strong></p>
-  `,
-  strength: `
-    <table>
-      <tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr>
-      <tr><td>Seated chest press</td><td>2 × 10</td><td>20–30kg</td></tr>
-      <tr><td>Seated lat pulldown</td><td>2 × 10</td><td>20–30kg</td></tr>
-      <tr><td>Seated shoulder press</td><td>2 × 8</td><td>10–15kg</td></tr>
-      <tr><td>Abdominal crunch machine</td><td>2 × 12</td><td>30–40kg</td></tr>
-    </table>
-    <p><strong>Upper body focus + core</strong></p>
-  `,
-  flexibility: `
-    <table>
-      <tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr>
-      <tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr>
-      <tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr>
-      <tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr>
-    </table>
-    <p><strong>Gentle morning routine</strong></p>
-  `
-};
+const routinesA = {cardio: '<table><tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr><tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr></table><p><strong>Low impact endurance</strong></p>', strength: '<table><tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr><tr><td>Seated chest press</td><td>2 × 10</td><td>20–30kg</td></tr><tr><td>Seated lat pulldown</td><td>2 × 10</td><td>20–30kg</td></tr><tr><td>Seated shoulder press</td><td>2 × 8</td><td>10–15kg</td></tr><tr><td>Abdominal crunch machine</td><td>2 × 12</td><td>30–40kg</td></tr></table><p><strong>Upper body focus + core</strong></p>', flexibility: '<table><tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr><tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr><tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr><tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr></table><p><strong>Gentle morning routine</strong></p>'};
 
-const routinesB = {
-  cardio: `
-    <table>
-      <tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr>
-      <tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr>
-    </table>
-    <p><strong>Low impact endurance</strong></p>
-  `,
-  strength: `
-    <table>
-      <tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr>
-      <tr><td>Seated leg press</td><td>2 × 10</td><td>40–60kg</td></tr>
-      <tr><td>Leg curl machine</td><td>2 × 10</td><td>30–40kg</td></tr>
-      <tr><td>Leg extension machine</td><td>2 × 10</td><td>25–35kg</td></tr>
-      <tr><td>Abdominal crunch machine</td><td>2 × 12</td><td>30–40kg</td></tr>
-    </table>
-    <p><strong>Lower body focus + core</strong></p>
-  `,
-  flexibility: `
-    <table>
-      <tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr>
-      <tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr>
-      <tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr>
-      <tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr>
-    </table>
-    <p><strong>Gentle morning routine</strong></p>
-  `
-};
+const routinesB = {cardio: '<table><tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr><tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr></table><p><strong>Low impact endurance</strong></p>', strength: '<table><tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr><tr><td>Seated leg press</td><td>2 × 10</td><td>40–60kg</td></tr><tr><td>Leg curl machine</td><td>2 × 10</td><td>30–40kg</td></tr><tr><td>Leg extension machine</td><td>2 × 10</td><td>25–35kg</td></tr><tr><td>Abdominal crunch machine</td><td>2 × 12</td><td>30–40kg</td></tr></table><p><strong>Lower body focus + core</strong></p>', flexibility: '<table><tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr><tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr><tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr><tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr></table><p><strong>Gentle morning routine</strong></p>'};
 
-const instructionsA = {
-  cardio: `<h3>Elliptical trainer technique</h3>
-    <ul>
-      <li>Feet flat on pedals, light core brace</li>
-      <li>Smooth circular motion, level 5–8</li>
-      <li>Hold handles lightly, stand tall</li>
-      <li>Normal breathing (can talk easily)</li>
-      <li>Stop if knees feel unstable</li>
-    </ul>`,
-  strength: `<h3>Upper body strength technique (Chest, Lats, Shoulders + Core)</h3>
-    <ul>
-      <li><strong>Chest press:</strong> Sit upright, push handles forward smoothly. 3 seconds out, 3 seconds back.</li>
-      <li><strong>Lat pulldown:</strong> Grip overhead width, pull down to chest level. 3 seconds down, 3 seconds up.</li>
-      <li><strong>Shoulder press:</strong> Start with handles at shoulder height, press overhead. Control the descent.</li>
-      <li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li>
-      <li>Light grip throughout, no joint lockout. Exhale on effort, inhale on return.</li>
-      <li>Stop at joint grind/pinch sensation.</li>
-    </ul>`,
-  flexibility: `<h3>Flexibility technique</h3>
-    <ul>
-      <li>Hamstring: Lean from hips, 30s/side</li>
-      <li>Shoulders: 10 forward, 10 back circles</li>
-      <li>Heel-toe: 20 steps like tightrope</li>
-      <li>Deep belly breaths, no bouncing</li>
-      <li>Mild tension only (3/10 max)</li>
-    </ul>`
-};
+const instructionsA = {cardio: '<h3>Elliptical trainer technique</h3><ul><li>Feet flat on pedals, light core brace</li><li>Smooth circular motion, level 5–8</li><li>Hold handles lightly, stand tall</li><li>Normal breathing (can talk easily)</li><li>Stop if knees feel unstable</li></ul>', strength: '<h3>Upper body strength technique (Chest, Lats, Shoulders + Core)</h3><ul><li><strong>Chest press:</strong> Sit upright, push handles forward smoothly. 3 seconds out, 3 seconds back.</li><li><strong>Lat pulldown:</strong> Grip overhead width, pull down to chest level. 3 seconds down, 3 seconds up.</li><li><strong>Shoulder press:</strong> Start with handles at shoulder height, press overhead. Control the descent.</li><li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li><li>Light grip throughout, no joint lockout. Exhale on effort, inhale on return.</li><li>Stop at joint grind/pinch sensation.</li></ul>', flexibility: '<h3>Flexibility technique</h3><ul><li>Hamstring: Lean from hips, 30s/side</li><li>Shoulders: 10 forward, 10 back circles</li><li>Heel-toe: 20 steps like tightrope</li><li>Deep belly breaths, no bouncing</li><li>Mild tension only (3/10 max)</li></ul>'};
 
-const instructionsB = {
-  cardio: `<h3>Elliptical trainer technique</h3>
-    <ul>
-      <li>Feet flat on pedals, light core brace</li>
-      <li>Smooth circular motion, level 5–8</li>
-      <li>Hold handles lightly, stand tall</li>
-      <li>Normal breathing (can talk easily)</li>
-      <li>Stop if knees feel unstable</li>
-    </ul>`,
-  strength: `<h3>Lower body strength technique (Quads, Hamstrings, Glutes + Core)</h3>
-    <ul>
-      <li><strong>Leg press:</strong> Start with knees at 90°, push through heels. Do not lock knees at top.</li>
-      <li><strong>Leg curl:</strong> Lie or sit back, curl legs under smoothly. 3 seconds curl, 3 seconds release.</li>
-      <li><strong>Leg extension:</strong> Sit with back against pad, extend legs up. Move deliberately, no momentum.</li>
-      <li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li>
-      <li>Comfortable range only, no hyperextension. Breathe continuously.</li>
-      <li>Stop at discomfort or instability immediately.</li>
-    </ul>`,
-  flexibility: `<h3>Flexibility technique</h3>
-    <ul>
-      <li>Hamstring: Lean from hips, 30s/side</li>
-      <li>Shoulders: 10 forward, 10 back circles</li>
-      <li>Heel-toe: 20 steps like tightrope</li>
-      <li>Deep belly breaths, no bouncing</li>
-      <li>Mild tension only (3/10 max)</li>
-    </ul>`
-};
+const instructionsB = {cardio: '<h3>Elliptical trainer technique</h3><ul><li>Feet flat on pedals, light core brace</li><li>Smooth circular motion, level 5–8</li><li>Hold handles lightly, stand tall</li><li>Normal breathing (can talk easily)</li><li>Stop if knees feel unstable</li></ul>', strength: '<h3>Lower body strength technique (Quads, Hamstrings, Glutes + Core)</h3><ul><li><strong>Leg press:</strong> Start with knees at 90°, push through heels. Do not lock knees at top.</li><li><strong>Leg curl:</strong> Lie or sit back, curl legs under smoothly. 3 seconds curl, 3 seconds release.</li><li><strong>Leg extension:</strong> Sit with back against pad, extend legs up. Move deliberately, no momentum.</li><li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li><li>Comfortable range only, no hyperextension. Breathe continuously.</li><li>Stop at discomfort or instability immediately.</li></ul>', flexibility: '<h3>Flexibility technique</h3><ul><li>Hamstring: Lean from hips, 30s/side</li><li>Shoulders: 10 forward, 10 back circles</li><li>Heel-toe: 20 steps like tightrope</li><li>Deep belly breaths, no bouncing</li><li>Mild tension only (3/10 max)</li></ul>'};
 
 function switchMenu(option) {
   currentMenu = option;
-  document.querySelectorAll('.section:nth-child(1) .menu-toggle .toggle-btn').forEach(btn => btn.classList.remove('active'));
-  if (option === 'a') {
-    document.querySelectorAll('.section:nth-child(1) .menu-toggle .toggle-btn')[0].classList.add('active');
-    document.getElementById('mealDescription').textContent = 'Monday, Wednesday, Friday, Sunday';
-  } else {
-    document.querySelectorAll('.section:nth-child(1) .menu-toggle .toggle-btn')[1].classList.add('active');
-    document.getElementById('mealDescription').textContent = 'Tuesday, Thursday, Saturday';
-  }
+  const buttons = document.querySelectorAll('.section:nth-child(1) .menu-toggle .toggle-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  buttons[option === 'a' ? 0 : 1].classList.add('active');
+  document.getElementById('mealDescription').textContent = option === 'a' ? 'Monday, Wednesday, Friday, Sunday' : 'Tuesday, Thursday, Saturday';
   updateMeal('breakfast');
 }
 
@@ -461,29 +166,17 @@ function switchGym(option) {
   currentGym = option;
   const buttons = document.querySelectorAll('.section:nth-child(4) .gym-toggle .toggle-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
-  if (option === 'a') {
-    buttons[0].classList.add('active');
-    document.getElementById('gymDescription').textContent = 'Monday, Wednesday, Friday';
-  } else {
-    buttons[1].classList.add('active');
-    document.getElementById('gymDescription').textContent = 'Tuesday, Thursday, Saturday';
-  }
+  buttons[option === 'a' ? 0 : 1].classList.add('active');
+  document.getElementById('gymDescription').textContent = option === 'a' ? 'Monday, Wednesday, Friday' : 'Tuesday, Thursday, Saturday';
   updateGym('cardio');
-  updateInstructions(currentInstructTab);
+  updateInstructions('cardio');
 }
 
 function updateMeal(meal) {
   document.querySelectorAll('.meal-tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`[data-meal="${meal}"]`).classList.add('active');
-  
-  const meals = currentMenu === 'a' ? mealsA : mealsB;
-  const mealData = meals[meal];
-  
-  document.getElementById('mealContent').innerHTML = `
-    <h3>${mealData.name}</h3>
-    <div class="meal-description">${mealData.description}</div>
-    ${mealData.content}
-  `;
+  const mealData = (currentMenu === 'a' ? mealsA : mealsB)[meal];
+  document.getElementById('mealContent').innerHTML = `<h3>${mealData.name}</h3><div class="meal-description">${mealData.description}</div>${mealData.content}`;
 }
 
 function updateShopList(category) {
@@ -495,16 +188,13 @@ function updateShopList(category) {
 function updateGym(routine) {
   document.querySelectorAll('.gym-tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`[data-routine="${routine}"]`).classList.add('active');
-  
   const routines = currentGym === 'a' ? routinesA : routinesB;
   document.getElementById('gymContent').innerHTML = routines[routine];
-  
   updateInstructions(routine);
 }
 
 function updateInstructions(routine) {
   currentInstructTab = routine;
-  
   const instructions = currentGym === 'a' ? instructionsA : instructionsB;
   document.getElementById('instructDescription').innerHTML = instructions[routine];
 }
@@ -512,7 +202,6 @@ function updateInstructions(routine) {
 switchMenu('a');
 updateShopList('produce');
 switchGym('a');
-updateInstructions('cardio');
 </script>
 </body>
 </html>
