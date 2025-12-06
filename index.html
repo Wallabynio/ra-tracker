@@ -29,7 +29,6 @@ body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',SFProDisplay
 .content {background:white;padding:32px;border-radius:28px;margin-top:28px;min-height:320px;box-shadow:0 8px 24px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.05);overflow-x:auto;}
 .content h3 {font-size:22px;font-weight:600;color:#1d1d1f;margin:0 0 20px 0;letter-spacing:-0.01em;}
 .content p {font-size:16px;color:#1f2937;margin:16px 0;line-height:1.5;}
-.content-subtitle {font-size:14px;color:#6b7280;margin-top:8px;font-style:italic;}
 ul {margin:0;padding-left:24px;list-style:none;font-size:16px;color:#1f2937;line-height:1.6;}
 li {margin:12px 0;padding-left:28px;position:relative;}
 li:before {content:'✓';position:absolute;left:0;color:#10b981;font-weight:600;font-size:18px;}
@@ -39,7 +38,7 @@ th,td {padding:14px 10px;text-align:left;border-bottom:1px solid #f1f5f9;font-we
 th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0;padding-bottom:10px;}
 .warning {background:#fef3c7;border-left:6px solid #f59e0b;padding:28px;border-radius:20px;margin:32px 0;font-size:16px;color:#92400e;}
 .warning strong {color:#92400e;}
-.total-box {background:#f0fdf4;border:1px solid #dcfce7;padding:16px;border-radius:12px;margin-top:16px;font-weight:600;color:#166534;}
+.total-box {background:#f0fdf4;border:1px solid #dcfce7;padding:16px;border-radius:12px;margin-top:16px;font-weight:600;color:#166534;font-size:15px;}
 @media (max-width:480px) {body {padding:16px;}.header {padding:48px 24px 36px;}.header h1 {font-size:32px;}.section {padding:28px 24px;}.section h2 {font-size:24px;}.content {padding:24px;} table {font-size:15px;} th,td {padding:12px 8px;}}
 </style>
 </head>
@@ -122,9 +121,9 @@ const meals = {
       <tr><td>Coffee (black)</td><td>200ml</td><td>Brewed hot</td></tr>
       <tr><td>Whole milk</td><td>50ml</td><td>Warm in coffee</td></tr>
       <tr><td>Walnuts</td><td>28g (handful)</td><td>Roasted, eat separately</td></tr>
-      <tr><td>Chia seeds</td><td>15g (1 tbsp)</td><td>Soaked in milk, pudding</td></tr>
+      <tr><td>Chia seeds</td><td>15g (1 tbsp)</td><td>Soaked in 100ml milk, pudding</td></tr>
     </table>
-    <p><strong>~287kcal | 6g protein</strong></p>
+    <p><strong>~287kcal | 6g protein</strong><br><em>Chia pudding: Soak 15g chia seeds in 100ml whole milk night before, eat with coffee</em></p>
   `,
   lunch: `
     <table>
@@ -162,45 +161,45 @@ const lists = {
   produce: `
     <h3>Fresh produce (buy weekly)</h3>
     <ul>
-      <li>Baby spinach – 200g (2 containers)<span class="li-price">$2.50 ea</span></li>
-      <li>Carrots – 500g (loose)<span class="li-price">$2.50–3.00</span></li>
-      <li>Celery – 1 bunch<span class="li-price">$1.50–2.00</span></li>
-      <li>Red capsicum – 3 medium<span class="li-price">$2.25 ea</span></li>
-      <li>Apples – 6 medium<span class="li-price">$2.99/kg</span></li>
+      <li>Baby spinach – 700g (multiple containers)<span class="li-price">$2.50 ea</span></li>
+      <li>Carrots – 770g (loose)<span class="li-price">~$2.50–3.00</span></li>
+      <li>Celery – 630g (1–2 bunches)<span class="li-price">$1.50–2.00 ea</span></li>
+      <li>Red capsicum – 770g (3 medium)<span class="li-price">$2.25 ea</span></li>
+      <li>Apples – 1050g (7 medium)<span class="li-price">$2.99/kg</span></li>
     </ul>
-    <div class="total-box">Subtotal: ~$20–25</div>
+    <div class="total-box">Subtotal: ~$22–28</div>
   `,
   proteins: `
     <h3>Proteins and dairy</h3>
     <ul>
-      <li>Eggs (12 large)<span class="li-price">$6–7</span></li>
-      <li>Lyttos Greek Yoghurt (2 × 500g)<span class="li-price">$2.99 ea</span></li>
-      <li>Whole milk (2 litres)<span class="li-price">$3–3.50/L</span></li>
+      <li>Eggs (7 large)<span class="li-price">~$6–7 per dozen</span></li>
+      <li>Lyttos Greek Yoghurt (1050g, 2–3 × 500g tubs)<span class="li-price">$2.99 ea</span></li>
+      <li>Whole milk (1050ml, 1 litre)<span class="li-price">~$3–3.50</span></li>
       <li>Ocean Rise Sardines (3 × 125g)<span class="li-price">$1.69 ea</span></li>
       <li>Ocean Rise Mackerel (4 × 125g)<span class="li-price">$2.99 ea</span></li>
     </ul>
-    <div class="total-box">Subtotal: ~$32–36</div>
+    <div class="total-box">Subtotal: ~$32–37</div>
   `,
   grains: `
     <h3>Grains and legumes</h3>
     <ul>
-      <li>Imperial Grain Brown Rice (1kg)<span class="li-price">$3.59</span></li>
-      <li>Just Organic Quinoa (500g)<span class="li-price">$4–5</span></li>
-      <li>New Season 4 Bean Mix (3 × 420g)<span class="li-price">$0.95 ea</span></li>
+      <li>Brown rice (raw, ~1kg bag – yields ~2590g cooked)<span class="li-price">$3.59</span></li>
+      <li>Quinoa (raw, ~500g bag – yields ~1610g cooked)<span class="li-price">$4–5</span></li>
+      <li>New Season 4 Bean Mix (3 × 420g cans)<span class="li-price">$0.95 ea</span></li>
     </ul>
     <div class="total-box">Subtotal: ~$10–12</div>
   `,
   pantry: `
     <h3>Pantry and healthy fats</h3>
     <ul>
-      <li>Deli Originals Hummus (3 × 200g)<span class="li-price">$2.99 ea</span></li>
-      <li>Oh So Natural Extra Virgin Olive Oil (500ml)<span class="li-price">$8.99</span></li>
-      <li>Oh So Natural Walnuts (200g)<span class="li-price">$4.89</span></li>
-      <li>Black Chia Seeds (350g)<span class="li-price">$5.49</span></li>
-      <li>Oh So Natural Pepita Seeds (2 × 125g)<span class="li-price">$1.49 ea</span></li>
-      <li>House Brand Coffee (250g)<span class="li-price">$5–7</span></li>
+      <li>Deli Originals Hummus (245g, buy 2–3 × 200g tubs)<span class="li-price">$2.99 ea</span></li>
+      <li>Oh So Natural Extra Virgin Olive Oil (500ml bottle for 70ml use)<span class="li-price">$8.99</span></li>
+      <li>Oh So Natural Walnuts (200g – 2 × 100g or 1 × 200g)<span class="li-price">$4.89</span></li>
+      <li>Black Chia Seeds (350g bag – use 105g of 200g week)<span class="li-price">$5.49</span></li>
+      <li>Oh So Natural Pepita Seeds (175g needed, buy 2 × 125g)<span class="li-price">$1.49 ea</span></li>
+      <li>House Brand Coffee (250g for 200ml/day brewing)<span class="li-price">$5–7</span></li>
     </ul>
-    <div class="total-box">Subtotal: ~$36–40<br>Total weekly shop: ~$98–113</div>
+    <div class="total-box">Subtotal: ~$36–41<br><strong>Total weekly shop: ~$100–118</strong></div>
   `
 };
 
