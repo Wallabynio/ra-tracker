@@ -10,8 +10,8 @@ body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',SFProDisplay
 .app {max-width:600px;margin:0 auto;background:hsla(0,0%,100%,0.98);backdrop-filter:blur(24px);border-radius:36px;box-shadow:0 32px 64px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);overflow:hidden;}
 .header {background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);position:relative;overflow:hidden;padding:60px 32px 48px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);}
 .header::before {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%,rgba(59,130,246,0.15) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(16,185,129,0.15) 0%,transparent 50%);opacity:0.6;}
-.header h1 {font-size:36px;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,#ffffff 0%,#f8fafc 50%,#e2e8f0 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 40px rgba(255,255,255,0.3);margin:0 0 8px 0;line-height:1.15;}
-.header-subtitle {font-size:17px;font-weight:400;color:rgba(255,255,255,0.9);margin:0;letter-spacing:-0.01em;}
+.header h1 {font-size:36px;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,#ffffff 0%,#f8fafc 50%,#e2e8f0 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 40px rgba(255,255,255,0.3);margin:0 0 8px 0;line-height:1.15;position:relative;z-index:2;}
+.header-subtitle {font-size:17px;font-weight:400;color:rgba(255,255,255,0.9);margin:0;letter-spacing:-0.01em;position:relative;z-index:2;}
 .section {padding:40px 32px;border-bottom:1px solid rgba(0,0,0,0.04);}
 .section h2 {font-size:28px;font-weight:600;color:#1d1d1f;margin:0 0 24px 0;letter-spacing:-0.01em;}
 .icon {width:88px;height:88px;margin:0 auto 28px;position:relative;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:400;background:hsla(0,0%,97%,0.9);box-shadow:0 12px 32px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);}
@@ -26,18 +26,18 @@ body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',SFProDisplay
 .gym-tab-btn.active {background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff !important;}
 .shop-tab-btn.active {background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff !important;}
 .instruct-tab-btn.active {background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff !important;}
-.content {background:white;padding:32px;border-radius:28px;margin-top:28px;min-height:320px;box-shadow:0 8px 24px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.05);}
+.content {background:white;padding:32px;border-radius:28px;margin-top:28px;min-height:320px;box-shadow:0 8px 24px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.05);overflow-x:auto;}
 .content h3 {font-size:22px;font-weight:600;color:#1d1d1f;margin:0 0 20px 0;letter-spacing:-0.01em;}
-.content p {font-size:17px;color:#1f2937;margin:16px 0;line-height:1.5;}
-ul {margin:0;padding-left:24px;list-style:none;font-size:17px;color:#1f2937;line-height:1.6;}
+.content p {font-size:16px;color:#1f2937;margin:16px 0;line-height:1.5;}
+ul {margin:0;padding-left:24px;list-style:none;font-size:16px;color:#1f2937;line-height:1.6;}
 li {margin:12px 0;padding-left:28px;position:relative;}
 li:before {content:'✓';position:absolute;left:0;color:#10b981;font-weight:600;font-size:18px;}
-table {width:100%;border-collapse:collapse;font-size:17px;margin-top:12px;}
-th,td {padding:16px 12px;text-align:left;border-bottom:1px solid #f1f5f9;font-weight:400;color:#1f2937;}
-th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0;padding-bottom:12px;}
-.warning {background:#fef3c7;border-left:6px solid #f59e0b;padding:28px;border-radius:20px;margin:32px 0;font-size:17px;color:#92400e;}
+table {width:100%;border-collapse:collapse;font-size:16px;margin-top:12px;table-layout:fixed;}
+th,td {padding:14px 10px;text-align:left;border-bottom:1px solid #f1f5f9;font-weight:400;color:#1f2937;word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;}
+th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0;padding-bottom:10px;}
+.warning {background:#fef3c7;border-left:6px solid #f59e0b;padding:28px;border-radius:20px;margin:32px 0;font-size:16px;color:#92400e;}
 .warning strong {color:#92400e;}
-@media (max-width:480px) {body {padding:16px;}.header {padding:48px 24px 36px;}.header h1 {font-size:32px;}.section {padding:28px 24px;}.section h2 {font-size:24px;}}
+@media (max-width:480px) {body {padding:16px;}.header {padding:48px 24px 36px;}.header h1 {font-size:32px;}.section {padding:28px 24px;}.section h2 {font-size:24px;}.content {padding:24px;} table {font-size:15px;} th,td {padding:12px 8px;}}
 </style>
 </head>
 <body>
@@ -95,7 +95,7 @@ th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0
 
 <div class="warning">
 <strong>⚠️ RA safety</strong><br>
-Stop if sharp pain >2/10. Consult doctor or physiotherapist. 5-6 days per week. Progress slowly.
+Stop if sharp pain >2/10. Consult doctor or physiotherapist. 5–6 days per week. Progress slowly.
 </div>
 </div>
 
@@ -111,17 +111,17 @@ const meals = {
       <tr><td>Quinoa (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
       <tr><td>Greek yoghurt</td><td>150g</td><td>Plain</td></tr>
     </table>
-    <p><strong>~450kcal | 25g protein</strong><br>RA anti-inflammatory</p>
+    <p><strong>~365kcal | 25g protein</strong><br>RA anti-inflammatory</p>
   `,
   coffee: `
     <table>
       <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
       <tr><td>Coffee (black)</td><td>200ml</td><td>Brewed hot</td></tr>
       <tr><td>Whole milk</td><td>50ml</td><td>Warm in coffee</td></tr>
-      <tr><td>Walnuts</td><td>20g (small handful)</td><td>Roasted, eat separately</td></tr>
-      <tr><td>Chia seeds</td><td>15g (1 tbsp)</td><td>Soaked in 100ml milk, eat as pudding</td></tr>
+      <tr><td>Walnuts</td><td>28g (handful)</td><td>Roasted, eat separately</td></tr>
+      <tr><td>Chia seeds</td><td>15g (1 tbsp)</td><td>Soaked in milk, pudding</td></tr>
     </table>
-    <p><strong>~300kcal | 11g protein</strong><br>Coffee ritual</p>
+    <p><strong>~287kcal | 6g protein</strong><br>Coffee ritual</p>
   `,
   lunch: `
     <table>
@@ -132,11 +132,11 @@ const meals = {
       <tr><td>Red capsicum</td><td>60g (½ medium)</td><td>Raw sliced</td></tr>
       <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Salad dressing</td></tr>
       <tr><td>4-beans (canned)</td><td>100g (½ cup)</td><td>Drained, rinsed, warmed</td></tr>
-      <tr><td>Brown rice</td><td>200g cooked</td><td>Boiled 20min</td></tr>
+      <tr><td>Brown rice</td><td>220g cooked</td><td>Boiled 20min</td></tr>
       <tr><td>Egg</td><td>100g (1 large)</td><td>Boiled 10min, peeled</td></tr>
       <tr><td>Apple</td><td>150g (1 medium)</td><td>Fresh, sliced</td></tr>
     </table>
-    <p><strong>~600kcal | 27g protein</strong><br>Complete nutrition</p>
+    <p><strong>~671kcal | 27g protein</strong><br>Complete nutrition</p>
   `,
   dinner: `
     <table>
@@ -148,10 +148,10 @@ const meals = {
       <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Dressing</td></tr>
       <tr><td>Brown rice (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
       <tr><td>Quinoa (cooked)</td><td>80g (⅖ cup)</td><td>Boiled</td></tr>
-      <tr><td>Canned fish</td><td>100g drained</td><td>Sardines/Mackerel/Herring</td></tr>
-      <tr><td>Pumpkin seeds</td><td>15g (1 tbsp)</td><td>Raw sprinkle</td></tr>
+      <tr><td>Canned fish</td><td>125g (1 can)</td><td>Sardines / Mackerel / Herring</td></tr>
+      <tr><td>Pumpkin seeds</td><td>25g (2 tbsp)</td><td>Raw sprinkle</td></tr>
     </table>
-    <p><strong>~550kcal | 33g protein</strong><br>Omega-3 rich</p>
+    <p><strong>~777kcal | 44g protein</strong><br>Omega-3 rich</p>
   `
 };
 
@@ -172,15 +172,15 @@ const lists = {
       <li>Eggs – 1 dozen (12 large)</li>
       <li>Greek yoghurt – 2 × 500g tubs</li>
       <li>Whole milk – 2 litres</li>
-      <li>Canned sardines – 3 tins</li>
-      <li>Canned mackerel – 2 tins</li>
-      <li>Canned herring – 2 tins</li>
+      <li>Canned sardines – 3 tins (125g)</li>
+      <li>Canned mackerel – 2 tins (125g)</li>
+      <li>Canned herring – 2 tins (125g)</li>
     </ul>
   `,
   grains: `
     <h3>Grains and legumes</h3>
     <ul>
-      <li>Brown rice – 1kg bag</li>
+      <li>Brown rice – 1kg bag (bulk)</li>
       <li>Quinoa – 500g bag</li>
       <li>Canned 4-bean mix – 3 tins</li>
     </ul>
@@ -190,10 +190,10 @@ const lists = {
     <ul>
       <li>Hummus – 1 tub (500g)</li>
       <li>Extra virgin olive oil – 500ml</li>
-      <li>Walnuts – 200g</li>
-      <li>Chia seeds – 200g</li>
-      <li>Pumpkin seeds – 200g</li>
-      <li>Coffee – 250g</li>
+      <li>Walnuts – 200g raw nuts</li>
+      <li>Chia seeds – 200g bag</li>
+      <li>Pumpkin seeds – 200g bag</li>
+      <li>Coffee – 250g beans or ground</li>
     </ul>
   `
 };
@@ -218,8 +218,8 @@ const routines = {
   flexibility: `
     <table>
       <tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr>
-      <tr><td>Seated hamstring stretch</td><td>2 × 30s/side</td><td>Mobility</td></tr>
-      <tr><td>Shoulder rolls + circles</td><td>2 × 10/dir</td><td>Stiffness relief</td></tr>
+      <tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr>
+      <tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr>
       <tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr>
     </table>
     <p><strong>Gentle morning routine</strong></p>
@@ -283,7 +283,7 @@ function updateInstructions(routine) {
   document.getElementById('instructContent').innerHTML = instructions[routine];
 }
 
-// Initialize - ALL BUTTONS WORK PERFECTLY
+// Initialize
 updateMeal('breakfast');
 updateShopList('produce');
 updateGym('cardio');
