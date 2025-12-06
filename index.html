@@ -39,6 +39,7 @@ body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',SFProDisplay
 .content p {font-size:16px;color:#1f2937;margin:16px 0;line-height:1.5;}
 .meal-description {font-size:15px;color:#6b7280;font-style:italic;margin:12px 0 16px 0;padding:12px;background:#f9fafb;border-left:3px solid #10b981;border-radius:4px;}
 .exercise-description {font-size:15px;color:#1e40af;font-style:italic;margin:12px 0 16px 0;padding:12px;background:#eff6ff;border-left:3px solid #3b82f6;border-radius:4px;}
+.instruct-section .content {margin-top:0;padding-top:0;}
 ul {margin:0;padding-left:24px;list-style:none;font-size:16px;color:#1f2937;line-height:1.6;}
 li {margin:12px 0;padding-left:28px;position:relative;}
 li:before {content:'✓';position:absolute;left:0;color:#10b981;font-weight:600;font-size:18px;}
@@ -98,7 +99,7 @@ th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0
 <button class="toggle-btn active" onclick="switchGym('a')">Upper Body</button>
 <button class="toggle-btn" onclick="switchGym('b')">Lower Body</button>
 </div>
-<div id="gymDescription" class="toggle-description gym-description">Chest, lats, shoulders & core</div>
+<div id="gymDescription" class="toggle-description gym-description">Monday, Wednesday, Friday</div>
 </div>
 <div class="tabs gym-tabs">
 <button class="tab-btn gym-tab-btn active" data-routine="cardio" onclick="updateGym('cardio')">🚴 Cardio</button>
@@ -108,16 +109,10 @@ th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0
 <div id="gymContent" class="content"></div>
 </div>
 
-<div class="section">
+<div class="section instruct-section">
 <div class="icon instruct-icon">📖</div>
 <h2>Exercise instructions</h2>
-<div class="menu-toggle-container">
-<div class="menu-toggle gym-toggle">
-<button class="toggle-btn active" onclick="switchInstructions('a')">Upper Body</button>
-<button class="toggle-btn" onclick="switchInstructions('b')">Lower Body</button>
-</div>
-<div id="instructDescription" class="toggle-description gym-description">Chest, lats, shoulders & core</div>
-</div>
+<div id="instructDescription" class="exercise-description"></div>
 <div class="tabs instruct-tabs">
 <button class="tab-btn instruct-tab-btn active" data-instruct="cardio" onclick="updateInstructions('cardio')">🚴 Cardio</button>
 <button class="tab-btn instruct-tab-btn" data-instruct="strength" onclick="updateInstructions('strength')">💪 Strength</button>
@@ -135,7 +130,7 @@ Stop if sharp pain >2/10. Consult doctor or physiotherapist. 5–6 days per week
 <script>
 let currentMenu = 'a';
 let currentGym = 'a';
-let currentInstructions = 'a';
+let currentInstructTab = 'cardio';
 
 const mealsA = {
   breakfast: {
@@ -402,18 +397,15 @@ const routinesB = {
 };
 
 const instructionsA = {
-  cardio: `
-    <h3>Elliptical trainer technique</h3>
+  cardio: `<h3>Elliptical trainer technique</h3>
     <ul>
       <li>Feet flat on pedals, light core brace</li>
       <li>Smooth circular motion, level 5–8</li>
       <li>Hold handles lightly, stand tall</li>
       <li>Normal breathing (can talk easily)</li>
       <li>Stop if knees feel unstable</li>
-    </ul>
-  `,
-  strength: `
-    <h3>Upper body strength technique (Chest, Lats, Shoulders + Core)</h3>
+    </ul>`,
+  strength: `<h3>Upper body strength technique (Chest, Lats, Shoulders + Core)</h3>
     <ul>
       <li><strong>Chest press:</strong> Sit upright, push handles forward smoothly. 3 seconds out, 3 seconds back.</li>
       <li><strong>Lat pulldown:</strong> Grip overhead width, pull down to chest level. 3 seconds down, 3 seconds up.</li>
@@ -421,33 +413,27 @@ const instructionsA = {
       <li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li>
       <li>Light grip throughout, no joint lockout. Exhale on effort, inhale on return.</li>
       <li>Stop at joint grind/pinch sensation.</li>
-    </ul>
-  `,
-  flexibility: `
-    <h3>Flexibility technique</h3>
+    </ul>`,
+  flexibility: `<h3>Flexibility technique</h3>
     <ul>
       <li>Hamstring: Lean from hips, 30s/side</li>
       <li>Shoulders: 10 forward, 10 back circles</li>
       <li>Heel-toe: 20 steps like tightrope</li>
       <li>Deep belly breaths, no bouncing</li>
       <li>Mild tension only (3/10 max)</li>
-    </ul>
-  `
+    </ul>`
 };
 
 const instructionsB = {
-  cardio: `
-    <h3>Elliptical trainer technique</h3>
+  cardio: `<h3>Elliptical trainer technique</h3>
     <ul>
       <li>Feet flat on pedals, light core brace</li>
       <li>Smooth circular motion, level 5–8</li>
       <li>Hold handles lightly, stand tall</li>
       <li>Normal breathing (can talk easily)</li>
       <li>Stop if knees feel unstable</li>
-    </ul>
-  `,
-  strength: `
-    <h3>Lower body strength technique (Quads, Hamstrings, Glutes + Core)</h3>
+    </ul>`,
+  strength: `<h3>Lower body strength technique (Quads, Hamstrings, Glutes + Core)</h3>
     <ul>
       <li><strong>Leg press:</strong> Start with knees at 90°, push through heels. Do not lock knees at top.</li>
       <li><strong>Leg curl:</strong> Lie or sit back, curl legs under smoothly. 3 seconds curl, 3 seconds release.</li>
@@ -455,18 +441,15 @@ const instructionsB = {
       <li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li>
       <li>Comfortable range only, no hyperextension. Breathe continuously.</li>
       <li>Stop at discomfort or instability immediately.</li>
-    </ul>
-  `,
-  flexibility: `
-    <h3>Flexibility technique</h3>
+    </ul>`,
+  flexibility: `<h3>Flexibility technique</h3>
     <ul>
       <li>Hamstring: Lean from hips, 30s/side</li>
       <li>Shoulders: 10 forward, 10 back circles</li>
       <li>Heel-toe: 20 steps like tightrope</li>
       <li>Deep belly breaths, no bouncing</li>
       <li>Mild tension only (3/10 max)</li>
-    </ul>
-  `
+    </ul>`
 };
 
 function switchMenu(option) {
@@ -488,26 +471,13 @@ function switchGym(option) {
   buttons.forEach(btn => btn.classList.remove('active'));
   if (option === 'a') {
     buttons[0].classList.add('active');
-    document.getElementById('gymDescription').textContent = 'Chest, lats, shoulders & core';
+    document.getElementById('gymDescription').textContent = 'Monday, Wednesday, Friday';
   } else {
     buttons[1].classList.add('active');
-    document.getElementById('gymDescription').textContent = 'Quads, hamstrings, glutes & core';
+    document.getElementById('gymDescription').textContent = 'Tuesday, Thursday, Saturday';
   }
   updateGym('cardio');
-}
-
-function switchInstructions(option) {
-  currentInstructions = option;
-  const buttons = document.querySelectorAll('.section:nth-child(5) .gym-toggle .toggle-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  if (option === 'a') {
-    buttons[0].classList.add('active');
-    document.getElementById('instructDescription').textContent = 'Chest, lats, shoulders & core';
-  } else {
-    buttons[1].classList.add('active');
-    document.getElementById('instructDescription').textContent = 'Quads, hamstrings, glutes & core';
-  }
-  updateInstructions('cardio');
+  updateInstructions(currentInstructTab);
 }
 
 function updateMeal(meal) {
@@ -539,18 +509,20 @@ function updateGym(routine) {
 }
 
 function updateInstructions(routine) {
+  currentInstructTab = routine;
   document.querySelectorAll('.instruct-tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`[data-instruct="${routine}"]`).classList.add('active');
   
-  const instructions = currentInstructions === 'a' ? instructionsA : instructionsB;
-  document.getElementById('instructContent').innerHTML = instructions[routine];
+  const instructions = currentGym === 'a' ? instructionsA : instructionsB;
+  document.getElementById('instructDescription').innerHTML = `<div class="exercise-description">${instructions[routine]}</div>`;
+  document.getElementById('instructContent').innerHTML = '';
 }
 
 // Initialize
 switchMenu('a');
 updateShopList('produce');
 switchGym('a');
-switchInstructions('a');
+updateInstructions('cardio');
 </script>
 </body>
 </html>
