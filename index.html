@@ -14,14 +14,16 @@ body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;b
 .icon {width:80px;height:80px;margin:0 auto 25px;position:relative;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;backdrop-filter:blur(25px);box-shadow:0 16px 40px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(255,255,255,0.2);}
 .icon::before {content:'';position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;background:inherit;border-radius:28px;filter:blur(8px);opacity:0.7;z-index:-1;}
 .meal-icon {background:linear-gradient(135deg,hsla(140,50%,55%,0.9),hsla(140,45%,50%,0.9));color:#fff;}
-.gym-icon {background:linear-gradient(135deg,hsla(210,60%,60%,0.9),hsla(210,55%,55%,0.9));color:#fff;}
 .shop-icon {background:linear-gradient(135deg,hsla(35,70%,65%,0.9),hsla(35,65%,60%,0.9));color:#fff;}
+.gym-icon {background:linear-gradient(135deg,hsla(210,60%,60%,0.9),hsla(210,55%,55%,0.9));color:#fff;}
+.instruct-icon {background:linear-gradient(135deg,hsla(280,50%,60%,0.9),hsla(280,45%,55%,0.9));color:#fff;}
 .tabs {display:flex;gap:10px;margin:15px 0;flex-wrap:wrap;}
 .tab-btn {padding:12px 18px;border:none;border-radius:16px;font-size:15px;font-weight:600;background:hsla(0,0%,98%,0.4);backdrop-filter:blur(12px);color:#1d1d1f;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
 .tab-btn:hover {background:hsla(0,0%,98%,0.6);box-shadow:0 6px 16px rgba(0,0,0,0.12);}
 .tab-btn.active {background:linear-gradient(135deg,hsla(140,50%,55%,0.95),hsla(140,45%,50%,0.95));color:white;box-shadow:0 8px 24px rgba(0,0,0,0.25);}
 .gym-tab-btn.active {background:linear-gradient(135deg,hsla(210,60%,60%,0.95),hsla(210,55%,55%,0.95));color:white;}
 .shop-tab-btn.active {background:linear-gradient(135deg,hsla(35,70%,65%,0.95),hsla(35,65%,60%,0.95));color:white;}
+.instruct-tab-btn.active {background:linear-gradient(135deg,hsla(280,50%,60%,0.95),hsla(280,45%,55%,0.95));color:white;}
 .content {background:hsla(0,0%,100%,0.7);backdrop-filter:blur(20px);padding:30px;border-radius:24px;margin-top:25px;min-height:300px;box-shadow:0 12px 32px rgba(0,0,0,0.12),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.3);}
 ul {margin:0;padding-left:20px;list-style:none;font-size:15px;line-height:1.8;}
 li {margin:8px 0;padding-left:25px;position:relative;}
@@ -52,6 +54,18 @@ th {background:linear-gradient(135deg,hsla(210,60%,25%,0.95),hsla(210,60%,20%,0.
 </div>
 
 <div class="section">
+<div class="icon shop-icon">🛒</div>
+<h2>Weekly shopping list</h2>
+<div class="tabs shop-tabs">
+<button class="tab-btn shop-tab-btn active" data-list="produce" onclick="updateShopList('produce')">🥬 Produce</button>
+<button class="tab-btn shop-tab-btn" data-list="proteins" onclick="updateShopList('proteins')">🥚 Proteins</button>
+<button class="tab-btn shop-tab-btn" data-list="grains" onclick="updateShopList('grains')">🌾 Grains</button>
+<button class="tab-btn shop-tab-btn" data-list="pantry" onclick="updateShopList('pantry')">🏺 Pantry</button>
+</div>
+<div id="shopContent" class="content"></div>
+</div>
+
+<div class="section">
 <div class="icon gym-icon">🏋️</div>
 <h2>Gym routine</h2>
 <div class="tabs gym-tabs">
@@ -63,15 +77,14 @@ th {background:linear-gradient(135deg,hsla(210,60%,25%,0.95),hsla(210,60%,20%,0.
 </div>
 
 <div class="section">
-<div class="icon shop-icon">🛒</div>
-<h2>Weekly shopping list</h2>
-<div class="tabs shop-tabs">
-<button class="tab-btn shop-tab-btn active" data-list="produce" onclick="updateShopList('produce')">🥬 Produce</button>
-<button class="tab-btn shop-tab-btn" data-list="proteins" onclick="updateShopList('proteins')">🥚 Proteins</button>
-<button class="tab-btn shop-tab-btn" data-list="grains" onclick="updateShopList('grains')">🌾 Grains</button>
-<button class="tab-btn shop-tab-btn" data-list="pantry" onclick="updateShopList('pantry')">🏺 Pantry</button>
+<div class="icon instruct-icon">📖</div>
+<h2>Exercise instructions</h2>
+<div class="tabs instruct-tabs">
+<button class="tab-btn instruct-tab-btn active" data-instruct="cardio" onclick="updateInstructions('cardio')">🚴 Cardio</button>
+<button class="tab-btn instruct-tab-btn" data-instruct="strength" onclick="updateInstructions('strength')">💪 Strength</button>
+<button class="tab-btn instruct-tab-btn" data-instruct="flexibility" onclick="updateInstructions('flexibility')">🧘 Flexibility</button>
 </div>
-<div id="shopContent" class="content"></div>
+<div id="instructContent" class="content"></div>
 </div>
 
 <div class="warning">
@@ -133,13 +146,12 @@ function updateMeal(meal) {
         <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Dressing</td></tr>
         <tr><td>Brown rice (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
         <tr><td>Quinoa (cooked)</td><td>80g (⅖ cup)</td><td>Boiled</td></tr>
-        <tr><td>Canned fish</td><td>100g drained</td><td>Sardines / Mackerel / Herring (rotate daily)</td></tr>
+        <tr><td>Canned fish</td><td>100g drained</td><td>Sardines / Mackerel / Herring (rotate)</td></tr>
         <tr><td>Pumpkin seeds</td><td>15g (1 tbsp)</td><td>Raw sprinkle</td></tr>
       </table>
       <p><strong>Total: ~550kcal | 33g protein | Omega-3 rich</strong></p>
     `
   };
-  
   content.innerHTML = meals[meal];
 }
 
@@ -175,7 +187,6 @@ function updateGym(routine) {
       <p><strong>Flexibility: Reduces morning stiffness, improves range of motion.</strong></p>
     `
   };
-  
   content.innerHTML = routines[routine];
 }
 
@@ -226,14 +237,55 @@ function updateShopList(category) {
       </ul>
     `
   };
-  
   content.innerHTML = lists[category];
+}
+
+function updateInstructions(routine) {
+  const content = document.getElementById('instructContent');
+  document.querySelectorAll('.instruct-tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`[data-instruct="${routine}"]`).classList.add('active');
+  
+  const instructions = {
+    cardio: `
+      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Elliptical trainer</h3>
+      <ul>
+        <li><strong>Setup:</strong> Adjust stride length to comfortable height. Feet flat on pedals.</li>
+        <li><strong>Posture:</strong> Stand tall, light core brace, relaxed shoulders. Hold handles lightly.</li>
+        <li><strong>Movement:</strong> Smooth circular motion. Push/pull handles naturally with leg motion.</li>
+        <li><strong>Breathing:</strong> Normal conversation pace (can talk easily). Level 5–8 resistance.</li>
+        <li><strong>RA tip:</strong> No joint impact. Stop if knees/hips feel unstable.</li>
+      </ul>
+    `,
+    strength: `
+      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Strength exercises (all machines)</h3>
+      <ul>
+        <li><strong>Seat adjustment:</strong> Knees/elbows slightly bent at start position.</li>
+        <li><strong>Grip:</strong> Light thumb-over-fingers grip. No white knuckles.</li>
+        <li><strong>Tempo:</strong> 3 seconds out, 3 seconds back. Smooth constant tension.</li>
+        <li><strong>Breathing:</strong> Exhale on effort (push/pull), inhale on return.</li>
+        <li><strong>Range:</strong> Comfortable stretch only. No joint lockout.</li>
+        <li><strong>RA tip:</strong> Stop at first hint of joint grind or pinch.</li>
+      </ul>
+    `,
+    flexibility: `
+      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Flexibility exercises</h3>
+      <ul>
+        <li><strong>Seated hamstring stretch:</strong> Sit tall, one leg extended, other foot to inner thigh. Lean forward from hips (not back). Hold 30s/side.</li>
+        <li><strong>Shoulder rolls + circles:</strong> Seated or standing. 10 forward, 10 backward. Large smooth circles. Relax neck.</li>
+        <li><strong>Heel-toe walk:</strong> Walk 20 steps heel-toe (like tightrope). Arms out for balance. Slow controlled steps.</li>
+        <li><strong>Breathing:</strong> Deep belly breaths. Never hold breath during stretch.</li>
+        <li><strong>RA tip:</strong> Stretch to mild tension only (3/10). No bouncing or forcing.</li>
+      </ul>
+    `
+  };
+  content.innerHTML = instructions[routine];
 }
 
 // Initialize with default view
 updateMeal('breakfast');
-updateGym('cardio');
 updateShopList('produce');
+updateGym('cardio');
+updateInstructions('cardio');
 </script>
 </body>
 </html>
