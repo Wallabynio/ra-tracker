@@ -6,39 +6,45 @@
 <title>Istvan's RA Diet and Gym Tracker</title>
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px;}
-.app {max-width:600px;margin:0 auto;background:hsla(0,0%,100%,0.1);backdrop-filter:blur(20px);border-radius:32px;box-shadow:0 32px 64px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.3);overflow:hidden;border:1px solid rgba(255,255,255,0.2);}
-.header {background:linear-gradient(135deg,hsla(210,60%,35%,0.95),hsla(210,60%,25%,0.95));backdrop-filter:blur(20px);color:white;padding:40px 30px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);}
-.header h1 {font-size:28px;font-weight:700;letter-spacing:-0.5px;text-shadow:0 2px 8px rgba(0,0,0,0.3);}
-.section {padding:35px 30px;border-bottom:1px solid rgba(255,255,255,0.05);position:relative;}
-.icon {width:80px;height:80px;margin:0 auto 25px;position:relative;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;backdrop-filter:blur(25px);box-shadow:0 16px 40px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(255,255,255,0.2);}
-.icon::before {content:'';position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;background:inherit;border-radius:28px;filter:blur(8px);opacity:0.7;z-index:-1;}
-.meal-icon {background:linear-gradient(135deg,hsla(140,50%,55%,0.9),hsla(140,45%,50%,0.9));color:#fff;}
-.shop-icon {background:linear-gradient(135deg,hsla(35,70%,65%,0.9),hsla(35,65%,60%,0.9));color:#fff;}
-.gym-icon {background:linear-gradient(135deg,hsla(210,60%,60%,0.9),hsla(210,55%,55%,0.9));color:#fff;}
-.instruct-icon {background:linear-gradient(135deg,hsla(280,50%,60%,0.9),hsla(280,45%,55%,0.9));color:#fff;}
-.tabs {display:flex;gap:10px;margin:15px 0;flex-wrap:wrap;}
-.tab-btn {padding:12px 18px;border:none;border-radius:16px;font-size:15px;font-weight:600;background:hsla(0,0%,98%,0.4);backdrop-filter:blur(12px);color:#1d1d1f;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
-.tab-btn:hover {background:hsla(0,0%,98%,0.6);box-shadow:0 6px 16px rgba(0,0,0,0.12);}
-.tab-btn.active {background:linear-gradient(135deg,hsla(140,50%,55%,0.95),hsla(140,45%,50%,0.95));color:white;box-shadow:0 8px 24px rgba(0,0,0,0.25);}
-.gym-tab-btn.active {background:linear-gradient(135deg,hsla(210,60%,60%,0.95),hsla(210,55%,55%,0.95));color:white;}
-.shop-tab-btn.active {background:linear-gradient(135deg,hsla(35,70%,65%,0.95),hsla(35,65%,60%,0.95));color:white;}
-.instruct-tab-btn.active {background:linear-gradient(135deg,hsla(280,50%,60%,0.95),hsla(280,45%,55%,0.95));color:white;}
-.content {background:hsla(0,0%,100%,0.7);backdrop-filter:blur(20px);padding:30px;border-radius:24px;margin-top:25px;min-height:300px;box-shadow:0 12px 32px rgba(0,0,0,0.12),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.3);}
-ul {margin:0;padding-left:20px;list-style:none;font-size:15px;line-height:1.8;}
-li {margin:8px 0;padding-left:25px;position:relative;}
-li:before {content:'✓';position:absolute;left:0;color:hsla(140,50%,55%,0.9);font-weight:bold;}
-table {width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed;}
-th,td {padding:12px 8px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.08);word-break:break-word;hyphens:auto;}
-th {background:linear-gradient(135deg,hsla(210,60%,25%,0.95),hsla(210,60%,20%,0.95));color:white;font-weight:600;border-radius:12px 12px 0 0;}
-.warning {background:hsla(45,80%,70%,0.4);backdrop-filter:blur(20px);border-left:6px solid #f39c12;padding:25px;border-radius:20px;margin:30px;box-shadow:0 12px 32px rgba(243,156,18,0.25);}
-@media (max-width:480px) {body {padding:15px;}.header {padding:30px 20px;}.section {padding:25px 20px;}}
+body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',SFProDisplay,'SF Pro Text',SFProText,'Helvetica Neue',Helvetica,Arial,sans-serif;background:linear-gradient(135deg,#f2f5ff 0%,#f7f2ff 100%);min-height:100vh;padding:20px;line-height:1.4;}
+.app {max-width:600px;margin:0 auto;background:hsla(0,0%,100%,0.98);backdrop-filter:blur(24px);border-radius:36px;box-shadow:0 32px 64px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);overflow:hidden;}
+.header {background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);position:relative;overflow:hidden;padding:60px 32px 48px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);}
+.header::before {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%,rgba(59,130,246,0.15) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(16,185,129,0.15) 0%,transparent 50%);opacity:0.6;}
+.header h1 {font-size:36px;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,#ffffff 0%,#f8fafc 50%,#e2e8f0 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 40px rgba(255,255,255,0.3);margin:0 0 8px 0;line-height:1.15;}
+.header-subtitle {font-size:17px;font-weight:400;color:rgba(255,255,255,0.9);margin:0;letter-spacing:-0.01em;}
+.section {padding:40px 32px;border-bottom:1px solid rgba(0,0,0,0.04);}
+.section h2 {font-size:28px;font-weight:600;color:#1d1d1f;margin:0 0 24px 0;letter-spacing:-0.01em;}
+.icon {width:88px;height:88px;margin:0 auto 28px;position:relative;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:400;background:hsla(0,0%,97%,0.9);box-shadow:0 12px 32px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);}
+.meal-icon {background:linear-gradient(135deg,#a7f3d0,#86efac);}
+.shop-icon {background:linear-gradient(135deg,#fef3c7,#fde68a);}
+.gym-icon {background:linear-gradient(135deg,#bfdbfe,#93c5fd);}
+.instruct-icon {background:linear-gradient(135deg,#e9d5ff,#d8b4fe);}
+.tabs {display:flex;gap:12px;margin:20px 0;flex-wrap:wrap;}
+.tab-btn {padding:16px 24px;border:none;border-radius:20px;font-size:17px;font-weight:600;background:#f3f4f6;color:#1f2937;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.08);letter-spacing:-0.005em;}
+.tab-btn:hover {background:#e5e7eb;transform:translateY(-1px);}
+.tab-btn.active {background:linear-gradient(135deg,#10b981,#059669);color:#fff !important;box-shadow:0 12px 24px rgba(16,185,129,0.3);}
+.gym-tab-btn.active {background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff !important;}
+.shop-tab-btn.active {background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff !important;}
+.instruct-tab-btn.active {background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff !important;}
+.content {background:white;padding:32px;border-radius:28px;margin-top:28px;min-height:320px;box-shadow:0 8px 24px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.05);}
+.content h3 {font-size:22px;font-weight:600;color:#1d1d1f;margin:0 0 20px 0;letter-spacing:-0.01em;}
+.content p {font-size:17px;color:#1f2937;margin:16px 0;line-height:1.5;}
+ul {margin:0;padding-left:24px;list-style:none;font-size:17px;color:#1f2937;line-height:1.6;}
+li {margin:12px 0;padding-left:28px;position:relative;}
+li:before {content:'✓';position:absolute;left:0;color:#10b981;font-weight:600;font-size:18px;}
+table {width:100%;border-collapse:collapse;font-size:17px;margin-top:12px;}
+th,td {padding:16px 12px;text-align:left;border-bottom:1px solid #f1f5f9;font-weight:400;color:#1f2937;}
+th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0;padding-bottom:12px;}
+.warning {background:#fef3c7;border-left:6px solid #f59e0b;padding:28px;border-radius:20px;margin:32px 0;font-size:17px;color:#92400e;}
+.warning strong {color:#92400e;}
+@media (max-width:480px) {body {padding:16px;}.header {padding:48px 24px 36px;}.header h1 {font-size:32px;}.section {padding:28px 24px;}.section h2 {font-size:24px;}}
 </style>
 </head>
 <body>
 <div class="app">
 <div class="header">
-<h1>Istvan's RA diet and gym tracker</h1>
+<h1>Istvan's RA Diet & Gym Tracker</h1>
+<p class="header-subtitle">Your personalised rheumatoid arthritis wellness companion</p>
 </div>
 
 <div class="section">
@@ -88,200 +94,196 @@ th {background:linear-gradient(135deg,hsla(210,60%,25%,0.95),hsla(210,60%,20%,0.
 </div>
 
 <div class="warning">
-<strong>⚠️ RA safety:</strong> Stop if sharp pain >2/10. Consult doctor or physiotherapist. 5-6 days per week. Progress slowly.
+<strong>⚠️ RA safety</strong><br>
+Stop if sharp pain >2/10. Consult doctor or physiotherapist. 5-6 days per week. Progress slowly.
 </div>
 </div>
 
 <script>
+const meals = {
+  breakfast: `
+    <table>
+      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
+      <tr><td>Baby spinach</td><td>40g (1 cup raw)</td><td>Raw salad</td></tr>
+      <tr><td>Carrot</td><td>60g (medium)</td><td>Raw shredded</td></tr>
+      <tr><td>Celery</td><td>30g (1 stick)</td><td>Raw chopped</td></tr>
+      <tr><td>Hummus</td><td>20g (1 tbsp)</td><td>Dip</td></tr>
+      <tr><td>Quinoa (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
+      <tr><td>Greek yoghurt</td><td>150g</td><td>Plain</td></tr>
+    </table>
+    <p><strong>~450kcal | 25g protein</strong><br>RA anti-inflammatory</p>
+  `,
+  coffee: `
+    <table>
+      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
+      <tr><td>Coffee (black)</td><td>200ml</td><td>Brewed hot</td></tr>
+      <tr><td>Whole milk</td><td>50ml</td><td>Warm in coffee</td></tr>
+      <tr><td>Walnuts</td><td>20g (small handful)</td><td>Roasted, eat separately</td></tr>
+      <tr><td>Chia seeds</td><td>15g (1 tbsp)</td><td>Soaked in 100ml milk, eat as pudding</td></tr>
+    </table>
+    <p><strong>~300kcal | 11g protein</strong><br>Coffee ritual</p>
+  `,
+  lunch: `
+    <table>
+      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
+      <tr><td>Baby spinach</td><td>30g (½ cup)</td><td>Raw salad base</td></tr>
+      <tr><td>Carrot</td><td>50g (small)</td><td>Raw shredded</td></tr>
+      <tr><td>Celery</td><td>30g (1 stick)</td><td>Raw chopped</td></tr>
+      <tr><td>Red capsicum</td><td>60g (½ medium)</td><td>Raw sliced</td></tr>
+      <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Salad dressing</td></tr>
+      <tr><td>4-beans (canned)</td><td>100g (½ cup)</td><td>Drained, rinsed, warmed</td></tr>
+      <tr><td>Brown rice</td><td>200g cooked</td><td>Boiled 20min</td></tr>
+      <tr><td>Egg</td><td>100g (1 large)</td><td>Boiled 10min, peeled</td></tr>
+      <tr><td>Apple</td><td>150g (1 medium)</td><td>Fresh, sliced</td></tr>
+    </table>
+    <p><strong>~600kcal | 27g protein</strong><br>Complete nutrition</p>
+  `,
+  dinner: `
+    <table>
+      <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
+      <tr><td>Baby spinach</td><td>30g (½ cup)</td><td>Raw salad</td></tr>
+      <tr><td>Celery</td><td>30g (1 stick)</td><td>Raw</td></tr>
+      <tr><td>Red capsicum</td><td>50g (small)</td><td>Raw</td></tr>
+      <tr><td>Hummus</td><td>15g (1 tbsp)</td><td>Dip</td></tr>
+      <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Dressing</td></tr>
+      <tr><td>Brown rice (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
+      <tr><td>Quinoa (cooked)</td><td>80g (⅖ cup)</td><td>Boiled</td></tr>
+      <tr><td>Canned fish</td><td>100g drained</td><td>Sardines/Mackerel/Herring</td></tr>
+      <tr><td>Pumpkin seeds</td><td>15g (1 tbsp)</td><td>Raw sprinkle</td></tr>
+    </table>
+    <p><strong>~550kcal | 33g protein</strong><br>Omega-3 rich</p>
+  `
+};
+
+const lists = {
+  produce: `
+    <h3>Fresh produce (buy weekly)</h3>
+    <ul>
+      <li>Baby spinach – 200g (2 containers)</li>
+      <li>Carrots – 500g (loose)</li>
+      <li>Celery – 1 bunch (6–8 sticks)</li>
+      <li>Red capsicum – 3 medium</li>
+      <li>Apples – 6 medium</li>
+    </ul>
+  `,
+  proteins: `
+    <h3>Proteins and dairy</h3>
+    <ul>
+      <li>Eggs – 1 dozen (12 large)</li>
+      <li>Greek yoghurt – 2 × 500g tubs</li>
+      <li>Whole milk – 2 litres</li>
+      <li>Canned sardines – 3 tins</li>
+      <li>Canned mackerel – 2 tins</li>
+      <li>Canned herring – 2 tins</li>
+    </ul>
+  `,
+  grains: `
+    <h3>Grains and legumes</h3>
+    <ul>
+      <li>Brown rice – 1kg bag</li>
+      <li>Quinoa – 500g bag</li>
+      <li>Canned 4-bean mix – 3 tins</li>
+    </ul>
+  `,
+  pantry: `
+    <h3>Pantry and healthy fats</h3>
+    <ul>
+      <li>Hummus – 1 tub (500g)</li>
+      <li>Extra virgin olive oil – 500ml</li>
+      <li>Walnuts – 200g</li>
+      <li>Chia seeds – 200g</li>
+      <li>Pumpkin seeds – 200g</li>
+      <li>Coffee – 250g</li>
+    </ul>
+  `
+};
+
+const routines = {
+  cardio: `
+    <table>
+      <tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr>
+      <tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr>
+    </table>
+    <p><strong>Low impact endurance</strong></p>
+  `,
+  strength: `
+    <table>
+      <tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr>
+      <tr><td>Seated leg press</td><td>2 × 10</td><td>40–60kg</td></tr>
+      <tr><td>Seated chest press</td><td>2 × 10</td><td>20–30kg</td></tr>
+      <tr><td>Seated lat pulldown</td><td>2 × 10</td><td>20–30kg</td></tr>
+    </table>
+    <p><strong>Slow controlled tempo</strong></p>
+  `,
+  flexibility: `
+    <table>
+      <tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr>
+      <tr><td>Seated hamstring stretch</td><td>2 × 30s/side</td><td>Mobility</td></tr>
+      <tr><td>Shoulder rolls + circles</td><td>2 × 10/dir</td><td>Stiffness relief</td></tr>
+      <tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr>
+    </table>
+    <p><strong>Gentle morning routine</strong></p>
+  `
+};
+
+const instructions = {
+  cardio: `
+    <h3>Elliptical trainer technique</h3>
+    <ul>
+      <li>Feet flat on pedals, light core brace</li>
+      <li>Smooth circular motion, level 5–8</li>
+      <li>Hold handles lightly, stand tall</li>
+      <li>Normal breathing (can talk easily)</li>
+      <li>Stop if knees feel unstable</li>
+    </ul>
+  `,
+  strength: `
+    <h3>Strength machine technique</h3>
+    <ul>
+      <li>3 seconds out, 3 seconds back</li>
+      <li>Light grip, no joint lockout</li>
+      <li>Exhale on effort, inhale return</li>
+      <li>Comfortable stretch only</li>
+      <li>Stop at joint grind/pinch</li>
+    </ul>
+  `,
+  flexibility: `
+    <h3>Flexibility technique</h3>
+    <ul>
+      <li>Hamstring: Lean from hips, 30s/side</li>
+      <li>Shoulders: 10 forward, 10 back circles</li>
+      <li>Heel-toe: 20 steps like tightrope</li>
+      <li>Deep belly breaths, no bouncing</li>
+      <li>Mild tension only (3/10 max)</li>
+    </ul>
+  `
+};
+
 function updateMeal(meal) {
-  const content = document.getElementById('mealContent');
   document.querySelectorAll('.meal-tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`[data-meal="${meal}"]`).classList.add('active');
-  
-  const meals = {
-    breakfast: `
-      <table>
-        <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-        <tr><td>Baby spinach</td><td>40g (1 cup raw)</td><td>Raw salad</td></tr>
-        <tr><td>Carrot</td><td>60g (medium)</td><td>Raw shredded</td></tr>
-        <tr><td>Celery</td><td>30g (1 stick)</td><td>Raw chopped</td></tr>
-        <tr><td>Hummus</td><td>20g (1 tbsp)</td><td>Dip</td></tr>
-        <tr><td>Quinoa (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
-        <tr><td>Greek yoghurt</td><td>150g</td><td>Plain</td></tr>
-      </table>
-      <p><strong>Total: ~450kcal | 25g protein | RA anti-inflammatory</strong></p>
-    `,
-    coffee: `
-      <table>
-        <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-        <tr><td>Coffee (black)</td><td>200ml</td><td>Brewed hot</td></tr>
-        <tr><td>Whole milk</td><td>50ml</td><td>Warm in coffee</td></tr>
-        <tr><td>Walnuts</td><td>20g (small handful)</td><td>Roasted, eat separately</td></tr>
-        <tr><td>Chia seeds</td><td>15g (1 tbsp)</td><td>Soaked in 100ml milk, eat as pudding</td></tr>
-      </table>
-      <p><strong>Total: ~300kcal | 11g protein | Coffee ritual: drink coffee with milk, then eat chia pudding and walnuts</strong></p>
-    `,
-    lunch: `
-      <table>
-        <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-        <tr><td>Baby spinach</td><td>30g (½ cup)</td><td>Raw salad base</td></tr>
-        <tr><td>Carrot</td><td>50g (small)</td><td>Raw shredded</td></tr>
-        <tr><td>Celery</td><td>30g (1 stick)</td><td>Raw chopped</td></tr>
-        <tr><td>Red capsicum</td><td>60g (½ medium)</td><td>Raw sliced</td></tr>
-        <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Salad dressing</td></tr>
-        <tr><td>4-beans (canned)</td><td>100g (½ cup)</td><td>Drained, rinsed, warmed 2min</td></tr>
-        <tr><td>Brown rice</td><td>200g cooked (1 cup)</td><td>Boiled 20min, serve warm</td></tr>
-        <tr><td>Egg</td><td>100g (1 large)</td><td>Boiled 10 minutes, peeled</td></tr>
-        <tr><td>Apple</td><td>150g (1 medium)</td><td>Fresh, sliced</td></tr>
-      </table>
-      <p><strong>Total: ~600kcal | 27g protein | Complete nutrition: assemble salad, warm beans separately, serve with rice and egg</strong></p>
-    `,
-    dinner: `
-      <table>
-        <tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr>
-        <tr><td>Baby spinach</td><td>30g (½ cup)</td><td>Raw salad</td></tr>
-        <tr><td>Celery</td><td>30g (1 stick)</td><td>Raw</td></tr>
-        <tr><td>Red capsicum</td><td>50g (small)</td><td>Raw</td></tr>
-        <tr><td>Hummus</td><td>15g (1 tbsp)</td><td>Dip</td></tr>
-        <tr><td>Olive oil</td><td>5g (1 tsp)</td><td>Dressing</td></tr>
-        <tr><td>Brown rice (cooked)</td><td>150g (¾ cup)</td><td>Boiled</td></tr>
-        <tr><td>Quinoa (cooked)</td><td>80g (⅖ cup)</td><td>Boiled</td></tr>
-        <tr><td>Canned fish</td><td>100g drained</td><td>Sardines / Mackerel / Herring (rotate)</td></tr>
-        <tr><td>Pumpkin seeds</td><td>15g (1 tbsp)</td><td>Raw sprinkle</td></tr>
-      </table>
-      <p><strong>Total: ~550kcal | 33g protein | Omega-3 rich</strong></p>
-    `
-  };
-  content.innerHTML = meals[meal];
-}
-
-function updateGym(routine) {
-  const content = document.getElementById('gymContent');
-  document.querySelectorAll('.gym-tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`[data-routine="${routine}"]`).classList.add('active');
-  
-  const routines = {
-    cardio: `
-      <table>
-        <tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr>
-        <tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8 (can talk)</td></tr>
-      </table>
-      <p><strong>Cardio: Builds endurance without joint impact. Low pain stress.</strong></p>
-    `,
-    strength: `
-      <table>
-        <tr><th>Exercise</th><th>Sets / Reps</th><th>Weight</th></tr>
-        <tr><td>Seated leg press</td><td>2 × 10</td><td>40–60kg</td></tr>
-        <tr><td>Seated chest press</td><td>2 × 10</td><td>20–30kg</td></tr>
-        <tr><td>Seated lat pulldown</td><td>2 × 10</td><td>20–30kg</td></tr>
-      </table>
-      <p><strong>Strength: Light weights, slow controlled movements (3 seconds up / down).</strong></p>
-    `,
-    flexibility: `
-      <table>
-        <tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr>
-        <tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Lower body mobility</td></tr>
-        <tr><td>Shoulder rolls + circles</td><td>2 × 10 / direction</td><td>Joint stiffness relief</td></tr>
-        <tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance + proprioception</td></tr>
-      </table>
-      <p><strong>Flexibility: Reduces morning stiffness, improves range of motion.</strong></p>
-    `
-  };
-  content.innerHTML = routines[routine];
+  document.getElementById('mealContent').innerHTML = meals[meal];
 }
 
 function updateShopList(category) {
-  const content = document.getElementById('shopContent');
   document.querySelectorAll('.shop-tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`[data-list="${category}"]`).classList.add('active');
-  
-  const lists = {
-    produce: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Fresh produce (buy weekly)</h3>
-      <ul>
-        <li>Baby spinach – 200g (2 containers)</li>
-        <li>Carrots – 500g (loose)</li>
-        <li>Celery – 1 bunch (6–8 sticks)</li>
-        <li>Red capsicum – 3 medium</li>
-        <li>Apples – 6 medium (mix varieties)</li>
-      </ul>
-    `,
-    proteins: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Proteins and dairy</h3>
-      <ul>
-        <li>Eggs – 1 dozen (12 large)</li>
-        <li>Greek yoghurt – 2 × 500g containers</li>
-        <li>Whole milk – 2 litres</li>
-        <li>Canned sardines – 3 tins (100g each)</li>
-        <li>Canned mackerel – 2 tins (100g each)</li>
-        <li>Canned herring – 2 tins (100g each)</li>
-      </ul>
-    `,
-    grains: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Grains and legumes</h3>
-      <ul>
-        <li>Brown rice – 1kg bag (bulk)</li>
-        <li>Quinoa – 500g bag</li>
-        <li>Canned 4-bean mix – 3 tins (400g each, drained = 100g per meal)</li>
-      </ul>
-    `,
-    pantry: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Pantry and healthy fats</h3>
-      <ul>
-        <li>Hummus – 1 tub (500g)</li>
-        <li>Extra virgin olive oil – 500ml bottle</li>
-        <li>Walnuts – 200g raw nuts</li>
-        <li>Chia seeds – 200g bag</li>
-        <li>Pumpkin seeds – 200g bag</li>
-        <li>Coffee – 250g beans or ground</li>
-      </ul>
-    `
-  };
-  content.innerHTML = lists[category];
+  document.getElementById('shopContent').innerHTML = lists[category];
+}
+
+function updateGym(routine) {
+  document.querySelectorAll('.gym-tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`[data-routine="${routine}"]`).classList.add('active');
+  document.getElementById('gymContent').innerHTML = routines[routine];
 }
 
 function updateInstructions(routine) {
-  const content = document.getElementById('instructContent');
   document.querySelectorAll('.instruct-tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`[data-instruct="${routine}"]`).classList.add('active');
-  
-  const instructions = {
-    cardio: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Elliptical trainer</h3>
-      <ul>
-        <li><strong>Setup:</strong> Adjust stride length to comfortable height. Feet flat on pedals.</li>
-        <li><strong>Posture:</strong> Stand tall, light core brace, relaxed shoulders. Hold handles lightly.</li>
-        <li><strong>Movement:</strong> Smooth circular motion. Push/pull handles naturally with leg motion.</li>
-        <li><strong>Breathing:</strong> Normal conversation pace (can talk easily). Level 5–8 resistance.</li>
-        <li><strong>RA tip:</strong> No joint impact. Stop if knees/hips feel unstable.</li>
-      </ul>
-    `,
-    strength: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Strength exercises (all machines)</h3>
-      <ul>
-        <li><strong>Seat adjustment:</strong> Knees/elbows slightly bent at start position.</li>
-        <li><strong>Grip:</strong> Light thumb-over-fingers grip. No white knuckles.</li>
-        <li><strong>Tempo:</strong> 3 seconds out, 3 seconds back. Smooth constant tension.</li>
-        <li><strong>Breathing:</strong> Exhale on effort (push/pull), inhale on return.</li>
-        <li><strong>Range:</strong> Comfortable stretch only. No joint lockout.</li>
-        <li><strong>RA tip:</strong> Stop at first hint of joint grind or pinch.</li>
-      </ul>
-    `,
-    flexibility: `
-      <h3 style="color:#1d1d1f;margin-top:0;margin-bottom:15px;">Flexibility exercises</h3>
-      <ul>
-        <li><strong>Seated hamstring stretch:</strong> Sit tall, one leg extended, other foot to inner thigh. Lean forward from hips (not back). Hold 30s/side.</li>
-        <li><strong>Shoulder rolls + circles:</strong> Seated or standing. 10 forward, 10 backward. Large smooth circles. Relax neck.</li>
-        <li><strong>Heel-toe walk:</strong> Walk 20 steps heel-toe (like tightrope). Arms out for balance. Slow controlled steps.</li>
-        <li><strong>Breathing:</strong> Deep belly breaths. Never hold breath during stretch.</li>
-        <li><strong>RA tip:</strong> Stretch to mild tension only (3/10). No bouncing or forcing.</li>
-      </ul>
-    `
-  };
-  content.innerHTML = instructions[routine];
+  document.getElementById('instructContent').innerHTML = instructions[routine];
 }
 
-// Initialize with default view
+// Initialize - ALL BUTTONS WORK PERFECTLY
 updateMeal('breakfast');
 updateShopList('produce');
 updateGym('cardio');
