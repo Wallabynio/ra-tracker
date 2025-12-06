@@ -33,13 +33,11 @@ body {font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',SFProDisplay
 .tab-btn.active {background:linear-gradient(135deg,#10b981,#059669);color:#fff !important;box-shadow:0 12px 24px rgba(16,185,129,0.3);}
 .gym-tab-btn.active {background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff !important;}
 .shop-tab-btn.active {background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff !important;}
-.instruct-tab-btn.active {background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff !important;}
 .content {background:white;padding:32px;border-radius:28px;margin-top:28px;min-height:320px;box-shadow:0 8px 24px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.05);overflow-x:auto;}
 .content h3 {font-size:22px;font-weight:600;color:#1d1d1f;margin:0 0 20px 0;letter-spacing:-0.01em;}
 .content p {font-size:16px;color:#1f2937;margin:16px 0;line-height:1.5;}
 .meal-description {font-size:15px;color:#6b7280;font-style:italic;margin:12px 0 16px 0;padding:12px;background:#f9fafb;border-left:3px solid #10b981;border-radius:4px;}
-.exercise-description {font-size:15px;color:#1e40af;font-style:italic;margin:12px 0 16px 0;padding:12px;background:#eff6ff;border-left:3px solid #3b82f6;border-radius:4px;}
-.instruct-section .content {margin-top:0;padding-top:0;}
+.exercise-description {font-size:15px;color:#6b2980;font-style:italic;margin:0 0 24px 0;padding:16px;background:#f3e8f7;border-left:3px solid #8b5cf6;border-radius:8px;}
 ul {margin:0;padding-left:24px;list-style:none;font-size:16px;color:#1f2937;line-height:1.6;}
 li {margin:12px 0;padding-left:28px;position:relative;}
 li:before {content:'✓';position:absolute;left:0;color:#10b981;font-weight:600;font-size:18px;}
@@ -109,16 +107,10 @@ th {font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0
 <div id="gymContent" class="content"></div>
 </div>
 
-<div class="section instruct-section">
+<div class="section">
 <div class="icon instruct-icon">📖</div>
 <h2>Exercise instructions</h2>
 <div id="instructDescription" class="exercise-description"></div>
-<div class="tabs instruct-tabs">
-<button class="tab-btn instruct-tab-btn active" data-instruct="cardio" onclick="updateInstructions('cardio')">🚴 Cardio</button>
-<button class="tab-btn instruct-tab-btn" data-instruct="strength" onclick="updateInstructions('strength')">💪 Strength</button>
-<button class="tab-btn instruct-tab-btn" data-instruct="flexibility" onclick="updateInstructions('flexibility')">🧘 Flexibility</button>
-</div>
-<div id="instructContent" class="content"></div>
 </div>
 
 <div class="warning">
@@ -506,19 +498,17 @@ function updateGym(routine) {
   
   const routines = currentGym === 'a' ? routinesA : routinesB;
   document.getElementById('gymContent').innerHTML = routines[routine];
+  
+  updateInstructions(routine);
 }
 
 function updateInstructions(routine) {
   currentInstructTab = routine;
-  document.querySelectorAll('.instruct-tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`[data-instruct="${routine}"]`).classList.add('active');
   
   const instructions = currentGym === 'a' ? instructionsA : instructionsB;
-  document.getElementById('instructDescription').innerHTML = `<div class="exercise-description">${instructions[routine]}</div>`;
-  document.getElementById('instructContent').innerHTML = '';
+  document.getElementById('instructDescription').innerHTML = instructions[routine];
 }
 
-// Initialize
 switchMenu('a');
 updateShopList('produce');
 switchGym('a');
