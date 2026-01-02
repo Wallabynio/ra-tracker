@@ -2,35 +2,763 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Istvan's RA Diet and Gym Tracker</title>
-<style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:linear-gradient(135deg,#f2f5ff 0%,#f7f2ff 100%);min-height:100vh;padding:20px;line-height:1.4;}.app{max-width:600px;margin:0 auto;background:hsla(0,0%,100%,0.98);backdrop-filter:blur(24px);border-radius:36px;box-shadow:0 32px 64px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);overflow:hidden;}.header{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);position:relative;overflow:hidden;padding:60px 32px 48px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);}.header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%,rgba(59,130,246,0.15) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(16,185,129,0.15) 0%,transparent 50%);opacity:0.6;}.header h1{font-size:36px;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,#ffffff 0%,#f8fafc 50%,#e2e8f0 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 40px rgba(255,255,255,0.3);margin:0 0 8px 0;line-height:1.15;position:relative;z-index:2;}.header-subtitle{font-size:17px;font-weight:400;color:rgba(255,255,255,0.9);margin:0;letter-spacing:-0.01em;position:relative;z-index:2;}.section{padding:40px 32px;border-bottom:1px solid rgba(0,0,0,0.04);}.section h2{font-size:28px;font-weight:600;color:#1d1d1f;margin:0 0 24px 0;letter-spacing:-0.01em;text-align:center;}.menu-toggle-container{text-align:center;margin-bottom:20px;}.menu-toggle{display:inline-flex;gap:8px;background:#f3f4f6;padding:6px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:12px;}.menu-toggle.gym-toggle{background:#f0f4f8;}.toggle-btn{padding:10px 18px;border:none;border-radius:12px;font-size:15px;font-weight:600;background:transparent;color:#6b7280;cursor:pointer;transition:all 0.3s ease;letter-spacing:-0.005em;}.toggle-btn.active{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 4px 12px rgba(16,185,129,0.3);}.gym-toggle .toggle-btn.active{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;box-shadow:0 4px 12px rgba(59,130,246,0.3);}.toggle-description{font-size:14px;color:#6b7280;font-style:italic;margin-top:8px;padding:8px;background:#f9fafb;border-radius:8px;}.toggle-description.gym-description{color:#1e40af;background:#eff6ff;border-left:3px solid #3b82f6;}.icon{width:88px;height:88px;margin:0 auto 28px;position:relative;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:400;background:hsla(0,0%,97%,0.9);box-shadow:0 12px 32px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);}.meal-icon{background:linear-gradient(135deg,#a7f3d0,#86efac);}.shop-icon{background:linear-gradient(135deg,#fef3c7,#fde68a);}.gym-icon{background:linear-gradient(135deg,#bfdbfe,#93c5fd);}.instruct-icon{background:linear-gradient(135deg,#e9d5ff,#d8b4fe);}.tabs{display:flex;gap:12px;margin:20px auto;flex-wrap:wrap;justify-content:center;max-width:100%;}.tab-btn{padding:16px 24px;border:none;border-radius:20px;font-size:17px;font-weight:600;background:#f3f4f6;color:#1f2937;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.08);letter-spacing:-0.005em;}.tab-btn:hover{background:#e5e7eb;transform:translateY(-1px);}.tab-btn.active{background:linear-gradient(135deg,#10b981,#059669);color:#fff !important;box-shadow:0 12px 24px rgba(16,185,129,0.3);}.gym-tab-btn.active{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff !important;}.shop-tab-btn.active{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff !important;}.content{background:white;padding:32px;border-radius:28px;margin-top:28px;min-height:320px;box-shadow:0 8px 24px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.05);overflow-x:auto;}.content h3{font-size:22px;font-weight:600;color:#1d1d1f;margin:0 0 20px 0;letter-spacing:-0.01em;}.content p{font-size:16px;color:#1f2937;margin:16px 0;line-height:1.5;}.meal-description{font-size:15px;color:#6b7280;font-style:italic;margin:12px 0 16px 0;padding:12px;background:#f9fafb;border-left:3px solid #10b981;border-radius:4px;}.exercise-description{font-size:15px;color:#6b2980;font-style:italic;margin:0 0 24px 0;padding:16px;background:#f3e8f7;border-left:3px solid #8b5cf6;border-radius:8px;}ul{margin:0;padding-left:24px;list-style:none;font-size:16px;color:#1f2937;line-height:1.6;}li{margin:12px 0;padding-left:28px;position:relative;}li:before{content:'✓';position:absolute;left:0;color:#10b981;font-weight:600;font-size:18px;}.li-price{color:#059669;font-weight:600;display:block;font-size:14px;margin-top:2px;}table{width:100%;border-collapse:collapse;font-size:16px;margin-top:12px;table-layout:fixed;}th,td{padding:14px 10px;text-align:left;border-bottom:1px solid #f1f5f9;font-weight:400;color:#1f2937;word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;}th{font-weight:600;background:#f8fafc;color:#374151;border-radius:12px 12px 0 0;padding-bottom:10px;}.warning{background:#fef3c7;border-left:6px solid #f59e0b;padding:28px;border-radius:20px;margin:32px 0;font-size:16px;color:#92400e;}.warning strong{color:#92400e;}.total-box{background:#f0fdf4;border:1px solid #dcfce7;padding:16px;border-radius:12px;margin-top:16px;font-weight:600;color:#166534;font-size:15px;}@media(max-width:480px){body{padding:16px;}.header{padding:48px 24px 36px;}.header h1{font-size:32px;}.section{padding:28px 24px;}.section h2{font-size:24px;text-align:center;}.tabs{margin:20px auto;justify-content:center;}.content{padding:24px;}table{font-size:15px;}th,td{padding:12px 8px;}}</style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --safe-top:max(16px,env(safe-area-inset-top));
+  --safe-bottom:max(16px,env(safe-area-inset-bottom));
+  --safe-left:max(16px,env(safe-area-inset-left));
+  --safe-right:max(16px,env(safe-area-inset-right));
+  --accent-green:#10b981;
+  --accent-blue:#3b82f6;
+  --accent-orange:#f59e0b;
+  --accent-purple:#a78bfa;
+  --text-primary:#1d1d1f;
+  --text-secondary:#6b7280;
+  --bg-light:#f8f9fa;
+  --bg-surface:#ffffff;
+  --border-light:#e5e7eb;
+}
+html,body{width:100%;height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;
+  background:#f8f9fa;
+  color:var(--text-primary);
+  line-height:1.5;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+@media(prefers-color-scheme:dark){
+  body{
+    background:#1a1a1a;
+    --bg-light:#2a2a2a;
+    --bg-surface:#1f1f1f;
+    --text-primary:#f5f5f5;
+    --text-secondary:#a0a0a0;
+    --border-light:#333333;
+  }
+  body{color:#f5f5f5;}
+}
+.app-container{display:flex;height:100vh;flex-direction:column;}
+.header{
+  background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);
+  color:white;
+  padding:24px var(--safe-left) 0;
+  text-align:center;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.header::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(59,130,246,0.15) 0%,transparent 50%),
+    radial-gradient(circle at 70% 80%,rgba(16,185,129,0.15) 0%,transparent 50%);
+  opacity:0.6;
+  z-index:0;
+}
+.header h1{
+  font-size:clamp(24px,6vw,36px);
+  font-weight:700;
+  margin:0 0 8px;
+  position:relative;
+  z-index:1;
+  letter-spacing:-0.02em;
+}
+.header p{
+  font-size:clamp(13px,3vw,15px);
+  opacity:0.9;
+  margin:0 0 24px;
+  position:relative;
+  z-index:1;
+}
+.main-content{display:flex;flex:1;overflow:hidden;gap:0;}
+.sidebar{
+  width:100%;
+  background:var(--bg-light);
+  border-right:1px solid var(--border-light);
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  z-index:10;
+}
+.nav-buttons{
+  display:flex;
+  flex-direction:row;
+  gap:8px;
+  padding:16px;
+  overflow-x:auto;
+  background:var(--bg-surface);
+  border-bottom:1px solid var(--border-light);
+  flex-shrink:0;
+}
+.nav-btn{
+  padding:10px 16px;
+  border:none;
+  border-radius:12px;
+  background:var(--bg-light);
+  color:var(--text-primary);
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s;
+  white-space:nowrap;
+  flex-shrink:0;
+  border:1px solid transparent;
+}
+.nav-btn:hover{background:var(--border-light);}
+.nav-btn.active{
+  background:var(--accent-green);
+  color:white;
+  box-shadow:0 4px 12px rgba(16,185,129,0.3);
+}
+.nav-btn.active.shop{
+  background:var(--accent-orange);
+  box-shadow:0 4px 12px rgba(245,158,11,0.3);
+}
+.nav-btn.active.gym{
+  background:var(--accent-blue);
+  box-shadow:0 4px 12px rgba(59,130,246,0.3);
+}
+.nav-btn.active.tracker{
+  background:var(--accent-purple);
+  box-shadow:0 4px 12px rgba(167,139,250,0.3);
+}
+.category-header{
+  padding:28px 16px 20px;
+  text-align:center;
+  background:var(--bg-light);
+}
+.category-icon{
+  width:88px;
+  height:88px;
+  margin:0 auto 20px;
+  border-radius:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  box-shadow:0 12px 32px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);
+}
+.category-icon.meals{
+  background:linear-gradient(135deg,#a7f3d0,#86efac);
+}
+.category-icon.shop{
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+}
+.category-icon.gym{
+  background:linear-gradient(135deg,#bfdbfe,#93c5fd);
+}
+.category-icon.tracker{
+  background:linear-gradient(135deg,#e9d5ff,#d8b4fe);
+}
+.category-title{
+  font-size:28px;
+  font-weight:600;
+  margin:0;
+  color:var(--text-primary);
+  letter-spacing:-0.01em;
+}
+.section-list{
+  padding:12px 20px;
+  background:var(--bg-light);
+  border-bottom:1px solid var(--border-light);
+}
+.section-item{
+  padding:14px 16px;
+  margin-bottom:10px;
+  background:var(--bg-surface);
+  border-radius:12px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  border:1px solid var(--border-light);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.section-item:hover{
+  background:var(--bg-light);
+  border-color:var(--accent-green);
+}
+.section-item.active{
+  background:var(--accent-green);
+  color:white;
+  border-color:var(--accent-green);
+  box-shadow:0 2px 8px rgba(16,185,129,0.2);
+}
+.section-item.active.shop{
+  background:var(--accent-orange);
+  border-color:var(--accent-orange);
+  box-shadow:0 2px 8px rgba(245,158,11,0.2);
+}
+.section-item.active.gym{
+  background:var(--accent-blue);
+  border-color:var(--accent-blue);
+  box-shadow:0 2px 8px rgba(59,130,246,0.2);
+}
+.section-item.active.tracker{
+  background:var(--accent-purple);
+  border-color:var(--accent-purple);
+  box-shadow:0 2px 8px rgba(167,139,250,0.2);
+}
+.section-item-icon{font-size:24px;flex-shrink:0;}
+.section-item-text{flex:1;}
+.section-item h3{
+  font-size:15px;
+  margin:0;
+  font-weight:600;
+  color:inherit;
+}
+.content-area{
+  flex:1;
+  overflow-y:auto;
+  background:var(--bg-light);
+  display:flex;
+  flex-direction:column;
+}
+.category-header{
+  padding:28px 20px 12px;
+  text-align:center;
+  background:var(--bg-surface);
+  border-bottom:1px solid var(--border-light);
+}
+.content-panel{
+  background:var(--bg-surface);
+  padding:24px 20px;
+  flex:1;
+  display:none;
+}
+.content-panel.active{display:block;}
+.content-panel h2{
+  font-size:clamp(22px,5vw,28px);
+  font-weight:600;
+  margin:0 0 20px;
+  color:var(--text-primary);
+}
+.content-panel h3{
+  font-size:clamp(18px,4vw,22px);
+  font-weight:600;
+  margin:20px 0 16px;
+  color:var(--text-primary);
+}
+.content-panel p{
+  font-size:15px;
+  color:var(--text-primary);
+  margin:12px 0;
+  line-height:1.6;
+}
+ul{list-style:none;padding:0;margin:12px 0;}
+li{
+  padding:12px 0 12px 28px;
+  position:relative;
+  font-size:15px;
+  color:var(--text-primary);
+}
+li:before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:var(--accent-green);
+  font-weight:600;
+  font-size:16px;
+}
+.shop li:before{color:var(--accent-orange);}
+.gym li:before{color:var(--accent-blue);}
+.tracker li:before{color:var(--accent-purple);}
+.li-price{
+  color:#059669;
+  font-weight:600;
+  font-size:13px;
+  margin-top:2px;
+}
+.shop .li-price{color:#b45309;}
+.gym .li-price{color:#1e40af;}
+.tracker .li-price{color:#6d28d9;}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+  margin:12px 0;
+}
+th,td{
+  padding:12px;
+  text-align:left;
+  border-bottom:1px solid var(--border-light);
+  color:var(--text-primary);
+}
+th{
+  background:var(--bg-light);
+  font-weight:600;
+}
+.stat-box{
+  background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);
+  border:1px solid #dcfce7;
+  padding:16px;
+  border-radius:12px;
+  margin:16px 0;
+  font-weight:600;
+  color:#166534;
+}
+.shop .stat-box{
+  background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);
+  border-color:#fde68a;
+  color:#92400e;
+}
+.gym .stat-box{
+  background:linear-gradient(135deg,#f0f4f8 0%,#dbeafe 100%);
+  border-color:#dbeafe;
+  color:#1e40af;
+}
+.tracker .stat-box{
+  background:linear-gradient(135deg,#f3e8ff 0%,#e9d5ff 100%);
+  border-color:#e9d5ff;
+  color:#6d28d9;
+}
+.stat-box.orange{
+  background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);
+  border-color:#fde68a;
+  color:#92400e;
+}
+.warning{
+  background:#fef3c7;
+  border-left:4px solid #f59e0b;
+  padding:16px;
+  border-radius:8px;
+  margin:16px 0;
+  font-size:14px;
+  color:#92400e;
+}
+.warning strong{color:#92400e;}
+.slider-group{
+  background:var(--bg-light);
+  padding:16px;
+  border-radius:12px;
+  margin:16px 0;
+}
+.slider-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+  font-weight:600;
+  font-size:14px;
+}
+.slider-value{
+  background:var(--accent-green);
+  color:white;
+  padding:4px 12px;
+  border-radius:20px;
+  font-weight:700;
+  font-size:16px;
+  min-width:36px;
+  text-align:center;
+}
+.slider-group.pain .slider-value{background:var(--accent-blue);}
+.slider-group.fatigue .slider-value{background:var(--accent-orange);}
+.tracker .slider-group .slider-value{background:var(--accent-purple);}
+.tracker .slider-group.pain .slider-value{background:var(--accent-purple);}
+.tracker .slider-group.fatigue .slider-value{background:var(--accent-purple);}
+input[type="range"]{
+  width:100%;
+  height:6px;
+  border-radius:3px;
+  cursor:pointer;
+  accent-color:var(--accent-green);
+}
+.slider-group.pain input{accent-color:var(--accent-blue);}
+.slider-group.fatigue input{accent-color:var(--accent-orange);}
+.tracker .slider-group input{accent-color:var(--accent-purple);}
+@media(min-width:1024px){
+  .main-content{gap:24px;}
+  .sidebar{
+    width:280px;
+    flex-shrink:0;
+    padding:20px;
+    border-right:1px solid var(--border-light);
+  }
+  .nav-buttons{
+    flex-direction:column;
+    padding:0;
+    background:transparent;
+    border:none;
+    gap:12px;
+  }
+  .nav-btn{
+    width:100%;
+    padding:12px 16px;
+    text-align:left;
+  }
+  .section-list{padding:0;}
+  .content-area{padding:20px;}
+  .content-panel{
+    border-radius:16px;
+    padding:32px;
+  }
+}
+@media(max-width:600px){
+  .header{padding:20px 16px 0;}
+  .header h1{font-size:24px;}
+  .header p{font-size:13px;}
+  .main-content{flex-direction:column;}
+  .sidebar{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid var(--border-light);
+  }
+  .nav-buttons{
+    overflow-x:auto;
+    padding:12px;
+  }
+  .nav-btn{
+    padding:10px 14px;
+    font-size:12px;
+  }
+  .content-area{padding:12px;}
+  .content-panel{
+    padding:16px;
+    border-radius:12px;
+  }
+  .content-panel h2{
+    font-size:20px;
+    margin-bottom:16px;
+  }
+}
+@media(prefers-color-scheme:dark){
+  .nav-btn.active{
+    box-shadow:0 4px 12px rgba(16,185,129,0.4);
+  }
+  .nav-btn.active.gym{
+    box-shadow:0 4px 12px rgba(59,130,246,0.4);
+  }
+  .nav-btn.active.shop{
+    box-shadow:0 4px 12px rgba(245,158,11,0.4);
+  }
+  .nav-btn.active.tracker{
+    box-shadow:0 4px 12px rgba(167,139,250,0.4);
+  }
+}
+</style>
 </head>
 <body>
-<div class="app">
-<div class="header"><h1>Istvan's diet and gym tracker</h1><p class="header-subtitle">Personalised rheumatoid arthritis wellness companion</p></div>
-<div class="section" id="mealSection"><div class="icon meal-icon">🍽️</div><h2>Meal plan</h2><div class="menu-toggle-container"><div class="menu-toggle" id="mealToggle"><button class="toggle-btn active" onclick="switchMenu('a')">Comfort & Warming</button><button class="toggle-btn" onclick="switchMenu('b')">Asian & Middle Eastern</button></div><div id="mealDescription" class="toggle-description">Monday, Wednesday, Friday, Sunday</div></div><div class="tabs meal-tabs"><button class="tab-btn meal-tab-btn active" data-meal="breakfast" onclick="updateMeal('breakfast')">🍳 Breakfast</button><button class="tab-btn meal-tab-btn" data-meal="coffee" onclick="updateMeal('coffee')">☕ Coffee</button><button class="tab-btn meal-tab-btn" data-meal="lunch" onclick="updateMeal('lunch')">🥗 Lunch</button><button class="tab-btn meal-tab-btn" data-meal="dinner" onclick="updateMeal('dinner')">🐟 Dinner</button></div><div id="mealContent" class="content"></div></div>
-<div class="section"><div class="icon shop-icon">🛒</div><h2>Weekly shopping list</h2><div class="tabs shop-tabs"><button class="tab-btn shop-tab-btn active" data-list="produce" onclick="updateShopList('produce')">🥬 Produce</button><button class="tab-btn shop-tab-btn" data-list="proteins" onclick="updateShopList('proteins')">🥚 Proteins</button><button class="tab-btn shop-tab-btn" data-list="grains" onclick="updateShopList('grains')">🌾 Grains</button><button class="tab-btn shop-tab-btn" data-list="pantry" onclick="updateShopList('pantry')">🏺 Pantry</button></div><div id="shopContent" class="content"></div></div>
-<div class="section" id="gymSection"><div class="icon gym-icon">🏋️</div><h2>Gym routine</h2><div class="menu-toggle-container"><div class="menu-toggle gym-toggle" id="gymToggle"><button class="toggle-btn active" onclick="switchGym('a')">Upper Body</button><button class="toggle-btn" onclick="switchGym('b')">Lower Body</button></div><div id="gymDescription" class="toggle-description gym-description">Monday, Wednesday, Friday</div></div><div class="tabs gym-tabs"><button class="tab-btn gym-tab-btn active" data-routine="cardio" onclick="updateGym('cardio')">🚴 Cardio</button><button class="tab-btn gym-tab-btn" data-routine="strength" onclick="updateGym('strength')">💪 Strength</button><button class="tab-btn gym-tab-btn" data-routine="flexibility" onclick="updateGym('flexibility')">🧘 Flexibility</button></div><div id="gymContent" class="content"></div></div>
-<div class="section"><div class="icon instruct-icon">📖</div><h2>Exercise instructions</h2><div id="instructDescription" class="exercise-description"></div></div>
-<div class="warning"><strong>⚠️ RA safety</strong><br>Stop if sharp pain >2/10. Consult doctor or physiotherapist. 5–6 days per week. Progress slowly.</div>
+<div class="app-container">
+  <div class="header">
+    <h1>Istvan's wellness tracker</h1>
+    <p>Personalised RA nutrition & fitness companion</p>
+  </div>
+  <div class="main-content">
+    <div class="sidebar">
+      <div class="nav-buttons">
+        <button class="nav-btn active" onclick="switchNav('meals')">Meals</button>
+        <button class="nav-btn shop" onclick="switchNav('shop')">Shopping</button>
+        <button class="nav-btn gym" onclick="switchNav('gym')">Gym</button>
+        <button class="nav-btn tracker" onclick="switchNav('tracker')">Tracker</button>
+      </div>
+    </div>
+    <div class="content-area">
+      <div class="category-header" id="categoryHeader"></div>
+      <div class="section-list" id="sectionList"></div>
+      <div id="contentArea"></div>
+    </div>
+  </div>
 </div>
 <script>
-let currentMenu='a',currentGym='a',currentInstructTab='cardio';
-const mealsA={breakfast:{name:'Warm Quinoa Breakfast Bowl',description:'Boil quinoa until fluffy. Warm milk with cinnamon. Mix cooked quinoa with warm milk and yoghurt. Top with blueberries, walnuts, honey drizzle.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Quinoa cooked</td><td>180g (¾ cup)</td><td>Boiled</td></tr><tr><td>Whole milk</td><td>100ml</td><td>Warm</td></tr><tr><td>Blueberries</td><td>80g (½ cup)</td><td>Fresh</td></tr><tr><td>Honey</td><td>12g (1 tbsp)</td><td>Drizzle</td></tr><tr><td>Walnuts</td><td>20g (handful)</td><td>Raw</td></tr><tr><td>Ground cinnamon</td><td>1g (pinch)</td><td>Sprinkle</td></tr><tr><td>Greek yoghurt</td><td>120g</td><td>Plain</td></tr></table><p><strong>~563kcal | 25.8g protein</strong></p>'},coffee:{name:'Coffee with Banana & Almonds',description:'Brew strong coffee. Warm milk separately and pour into coffee. Slice banana, arrange with almonds on side plate, eat while sipping.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Coffee black</td><td>200ml</td><td>Brewed hot</td></tr><tr><td>Whole milk</td><td>60ml</td><td>Warm in coffee</td></tr><tr><td>Banana</td><td>130g (1 medium)</td><td>Sliced</td></tr><tr><td>Almonds</td><td>30g (handful)</td><td>Raw</td></tr></table><p><strong>~326kcal | 9.8g protein</strong></p>'},lunch:{name:'Mediterranean Warm Lentil Salad',description:'Cook lentils until tender. Roast sweet potato & capsicum at 200°C for 25min. Wilt spinach briefly. Toss warm with olive oil, feta, cherry tomatoes, pomegranate seeds.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Brown lentils cooked</td><td>220g</td><td>Boiled 25min</td></tr><tr><td>Sweet potato roasted</td><td>160g</td><td>Roasted 200°C</td></tr><tr><td>Red capsicum</td><td>70g (½ medium)</td><td>Roasted</td></tr><tr><td>Spinach</td><td>30g (½ cup)</td><td>Wilted</td></tr><tr><td>Olive oil</td><td>8ml (1.5 tsp)</td><td>Dressing</td></tr><tr><td>Feta cheese</td><td>50g</td><td>Crumbled</td></tr><tr><td>Cherry tomatoes</td><td>60g (½ cup)</td><td>Fresh</td></tr><tr><td>Pomegranate seeds</td><td>40g</td><td>Fresh</td></tr></table><p><strong>~661kcal | 32.1g protein</strong></p>'},dinner:{name:'Herbed Fish with Root Vegetables',description:'Roast potatoes, carrots, broccoli at 190°C for 30min with 3ml olive oil. Heat canned fish gently, season with lemon juice & fresh parsley. Drizzle remaining oil over vegetables.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Canned fish</td><td>125g (1 can)</td><td>Heated gently</td></tr><tr><td>Baby potatoes roasted</td><td>200g</td><td>Roasted 190°C 30min</td></tr><tr><td>Carrot roasted</td><td>90g (1 medium)</td><td>Roasted</td></tr><tr><td>Broccoli steamed</td><td>100g</td><td>Steamed 10min</td></tr><tr><td>Olive oil</td><td>7ml (1.5 tsp)</td><td>Drizzle</td></tr><tr><td>Fresh parsley</td><td>10g</td><td>Chopped</td></tr><tr><td>Lemon juice</td><td>15ml (1 tbsp)</td><td>Fresh squeeze</td></tr></table><p><strong>~555kcal | 39.3g protein</strong></p>'}};
-const mealsB={breakfast:{name:'Savory Egg & Spinach Scramble',description:'Toast bread. Heat olive oil, sauté garlic, add spinach until wilted. Scramble eggs with turmeric, combine with spinach. Serve with bread & dollop of yoghurt.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Eggs</td><td>140g (2 large)</td><td>Scrambled</td></tr><tr><td>Baby spinach</td><td>80g (1½ cup)</td><td>Wilted</td></tr><tr><td>Whole grain bread</td><td>60g (1 slice)</td><td>Toasted</td></tr><tr><td>Olive oil</td><td>6ml (1 tsp)</td><td>For cooking</td></tr><tr><td>Garlic</td><td>5g (1 clove)</td><td>Sautéed</td></tr><tr><td>Turmeric</td><td>1g (pinch)</td><td>Mixed in</td></tr><tr><td>Greek yoghurt</td><td>100g</td><td>Plain</td></tr></table><p><strong>~517kcal | 36.5g protein</strong></p>'},coffee:{name:'Green Matcha Latte',description:'Whisk matcha powder with small amount of hot water to dissolve. Heat milk, pour over matcha paste. Stir in honey. Eat pumpkin seeds on the side.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Matcha powder</td><td>2g</td><td>Whisked with hot water</td></tr><tr><td>Whole milk</td><td>240ml</td><td>Hot</td></tr><tr><td>Honey</td><td>10g (1 tsp)</td><td>Stirred in</td></tr><tr><td>Pumpkin seeds</td><td>25g (2 tbsp)</td><td>Raw sprinkle</td></tr></table><p><strong>~323kcal | 10.0g protein</strong></p>'},lunch:{name:'Thai-Inspired Coconut & Vegetable Curry',description:'Cook rice. Simmer chickpeas with coconut milk, ginger, zucchini, capsicum for 15min. Add Thai basil & lime juice at end. Serve over rice.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Chickpeas cooked</td><td>200g</td><td>Canned</td></tr><tr><td>Coconut milk light</td><td>120ml</td><td>Simmered</td></tr><tr><td>Brown rice cooked</td><td>220g</td><td>Boiled 20min</td></tr><tr><td>Red capsicum</td><td>80g (½ medium)</td><td>Diced</td></tr><tr><td>Zucchini</td><td>100g (1 small)</td><td>Diced</td></tr><tr><td>Thai basil</td><td>5g</td><td>Fresh at end</td></tr><tr><td>Lime juice</td><td>10ml</td><td>Fresh squeeze</td></tr><tr><td>Ginger fresh</td><td>10g</td><td>Grated</td></tr></table><p><strong>~746kcal | 26.8g protein</strong></p>'},dinner:{name:'Moroccan Spiced Fish with Quinoa Pilaf',description:'Cook quinoa with cumin & coriander spices. Roast eggplant & chickpeas at 200°C with 3ml oil for 20min. Warm fish, season with spices & pomegranate seeds.',content:'<table><tr><th>Ingredient</th><th>Amount</th><th>Prep</th></tr><tr><td>Canned fish</td><td>125g (1 can)</td><td>Heated gently</td></tr><tr><td>Quinoa cooked</td><td>160g</td><td>Boiled with spices</td></tr><tr><td>Eggplant roasted</td><td>100g</td><td>Roasted 200°C 20min</td></tr><tr><td>Chickpeas</td><td>60g (½ can)</td><td>Roasted</td></tr><tr><td>Olive oil</td><td>6ml (1 tsp)</td><td>For roasting</td></tr><tr><td>Cumin</td><td>2g (½ tsp)</td><td>Mixed in quinoa</td></tr><tr><td>Coriander</td><td>2g (½ tsp)</td><td>Mixed in quinoa</td></tr><tr><td>Pomegranate seeds</td><td>30g</td><td>Fresh garnish</td></tr></table><p><strong>~643kcal | 40.1g protein</strong></p>'}};
-const shoppingLists={produce:'<h3>Fresh produce (buy weekly)</h3><ul><li>Blueberries – 320g <span class="li-price">$4.50</span></li><li>Banana – 520g (5 medium) <span class="li-price">$2.99/kg</span></li><li>Sweet potato – 640g <span class="li-price">$3.50</span></li><li>Red capsicum – 520g (4 medium) <span class="li-price">$2.25 ea</span></li><li>Spinach & Baby spinach – 360g total <span class="li-price">$5.00</span></li><li>Cherry tomatoes – 240g <span class="li-price">$4.00</span></li><li>Carrot – 360g <span class="li-price">$2.50</span></li><li>Broccoli – 400g <span class="li-price">$3.00</span></li><li>Baby potatoes – 800g <span class="li-price">$4.50</span></li><li>Zucchini – 300g <span class="li-price">$2.50</span></li><li>Eggplant – 300g <span class="li-price">$3.00</span></li></ul><div class="total-box">Subtotal: ~$38–45</div>',proteins:'<h3>Proteins and dairy</h3><ul><li>Eggs (7 large) <span class="li-price">~$6–7</span></li><li>Lyttos Greek Yoghurt (1050g, 2–3 × 500g tubs) <span class="li-price">$2.99 ea</span></li><li>Whole milk (1540ml, ~1.5 litres) <span class="li-price">~$4–4.50</span></li><li>Feta cheese – 200g <span class="li-price">$6.00</span></li><li>Ocean Rise Sardines (3 × 125g) <span class="li-price">$1.69 ea</span></li><li>Ocean Rise Mackerel (4 × 125g) <span class="li-price">$2.99 ea</span></li></ul><div class="total-box">Subtotal: ~$36–42</div>',grains:'<h3>Grains and legumes</h3><ul><li>Quinoa (raw, ~206g, yields 720g cooked) <span class="li-price">$4–5</span></li><li>Brown lentils (raw, ~352g, yields 880g cooked) <span class="li-price">$3.50</span></li><li>Brown rice (raw, ~200g, yields 660g cooked) <span class="li-price">$3.59</span></li><li>Chickpeas (canned, 2 × 420g) <span class="li-price">$0.95 ea</span></li><li>Chickpeas (dried, ~180g for roasting) <span class="li-price">$2.00</span></li></ul><div class="total-box">Subtotal: ~$15–18</div>',pantry:'<h3>Pantry and healthy fats</h3><ul><li>Honey – 78g <span class="li-price">$6.00</span></li><li>Walnuts – 80g <span class="li-price">$3.50</span></li><li>Almonds – 120g <span class="li-price">$5.50</span></li><li>Oh So Natural Extra Virgin Olive Oil (500ml) <span class="li-price">$8.99</span></li><li>Pumpkin seeds – 75g <span class="li-price">$2.50</span></li><li>Pomegranate seeds – 250g <span class="li-price">$8.00</span></li><li>House Brand Coffee (250g) <span class="li-price">$5–7</span></li><li>Whole grain bread – 180g <span class="li-price">$3.50</span></li><li>Fresh parsley – 40g <span class="li-price">$1.50</span></li><li>Fresh garlic – 15g (1 bulb) <span class="li-price">$0.50</span></li><li>Fresh ginger – 30g <span class="li-price">$1.50</span></li><li>Turmeric – 3g <span class="li-price">$4.00 (jar)</span></li><li>Cumin – 6g <span class="li-price">$3.50 (jar)</span></li><li>Coriander – 6g <span class="li-price">$3.50 (jar)</span></li><li>Ground cinnamon – 4g <span class="li-price">$3.00 (jar)</span></li><li>Matcha powder – 6g <span class="li-price">$8.00</span></li><li>Thai basil – 15g <span class="li-price">$2.50</span></li><li>Coconut milk (light, 360ml) <span class="li-price">$3.00</span></li></ul><div class="total-box">Subtotal: ~$83–95<br><strong>Total weekly shop: ~$172–200</strong></div>'};
-const routinesA={cardio:'<table><tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr><tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr></table><p><strong>Low impact endurance</strong></p>',strength:'<table><tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr><tr><td>Seated chest press</td><td>2 × 10</td><td>20–30kg</td></tr><tr><td>Seated lat pulldown</td><td>2 × 10</td><td>20–30kg</td></tr><tr><td>Seated shoulder press</td><td>2 × 8</td><td>10–15kg</td></tr><tr><td>Abdominal crunch machine</td><td>2 × 12</td><td>30–40kg</td></tr></table><p><strong>Upper body focus + core</strong></p>',flexibility:'<table><tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr><tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr><tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr><tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr></table><p><strong>Gentle morning routine</strong></p>'};
-const routinesB={cardio:'<table><tr><th>Exercise</th><th>Duration</th><th>Intensity</th></tr><tr><td>Elliptical trainer</td><td>15 minutes</td><td>Level 5–8</td></tr></table><p><strong>Low impact endurance</strong></p>',strength:'<table><tr><th>Exercise</th><th>Sets/Reps</th><th>Weight</th></tr><tr><td>Seated leg press</td><td>2 × 10</td><td>40–60kg</td></tr><tr><td>Leg curl machine</td><td>2 × 10</td><td>30–40kg</td></tr><tr><td>Leg extension machine</td><td>2 × 10</td><td>25–35kg</td></tr><tr><td>Abdominal crunch machine</td><td>2 × 12</td><td>30–40kg</td></tr></table><p><strong>Lower body focus + core</strong></p>',flexibility:'<table><tr><th>Exercise</th><th>Duration</th><th>Benefits</th></tr><tr><td>Seated hamstring stretch</td><td>2 × 30s / side</td><td>Mobility</td></tr><tr><td>Shoulder rolls + circles</td><td>2 × 10 / dir</td><td>Stiffness relief</td></tr><tr><td>Heel-toe walk</td><td>2 × 20 steps</td><td>Balance</td></tr></table><p><strong>Gentle morning routine</strong></p>'};
-const instructionsA={cardio:'<h3>Elliptical trainer technique</h3><ul><li>Feet flat on pedals, light core brace</li><li>Smooth circular motion, level 5–8</li><li>Hold handles lightly, stand tall</li><li>Normal breathing (can talk easily)</li><li>Stop if knees feel unstable</li></ul>',strength:'<h3>Upper body strength technique (Chest, Lats, Shoulders + Core)</h3><ul><li><strong>Chest press:</strong> Sit upright, push handles forward smoothly. 3 seconds out, 3 seconds back.</li><li><strong>Lat pulldown:</strong> Grip overhead width, pull down to chest level. 3 seconds down, 3 seconds up.</li><li><strong>Shoulder press:</strong> Start with handles at shoulder height, press overhead. Control the descent.</li><li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li><li>Light grip throughout, no joint lockout. Exhale on effort, inhale on return.</li><li>Stop at joint grind/pinch sensation.</li></ul>',flexibility:'<h3>Flexibility technique</h3><ul><li>Hamstring: Lean from hips, 30s/side</li><li>Shoulders: 10 forward, 10 back circles</li><li>Heel-toe: 20 steps like tightrope</li><li>Deep belly breaths, no bouncing</li><li>Mild tension only (3/10 max)</li></ul>'};
-const instructionsB={cardio:'<h3>Elliptical trainer technique</h3><ul><li>Feet flat on pedals, light core brace</li><li>Smooth circular motion, level 5–8</li><li>Hold handles lightly, stand tall</li><li>Normal breathing (can talk easily)</li><li>Stop if knees feel unstable</li></ul>',strength:'<h3>Lower body strength technique (Quads, Hamstrings, Glutes + Core)</h3><ul><li><strong>Leg press:</strong> Start with knees at 90°, push through heels. Do not lock knees at top.</li><li><strong>Leg curl:</strong> Lie or sit back, curl legs under smoothly. 3 seconds curl, 3 seconds release.</li><li><strong>Leg extension:</strong> Sit with back against pad, extend legs up. Move deliberately, no momentum.</li><li><strong>Abdominal crunch:</strong> Lean forward slowly from waist, engage core. No jerking motions.</li><li>Comfortable range only, no hyperextension. Breathe continuously.</li><li>Stop at discomfort or instability immediately.</li></ul>',flexibility:'<h3>Flexibility technique</h3><ul><li>Hamstring: Lean from hips, 30s/side</li><li>Shoulders: 10 forward, 10 back circles</li><li>Heel-toe: 20 steps like tightrope</li><li>Deep belly breaths, no bouncing</li><li>Mild tension only (3/10 max)</li></ul>'};
-function switchMenu(o){currentMenu=o;const e=document.getElementById('mealToggle').querySelectorAll('.toggle-btn');e.forEach((t,n)=>{o==='a'?n===0?t.classList.add('active'):t.classList.remove('active'):n===1?t.classList.add('active'):t.classList.remove('active')}),document.getElementById('mealDescription').textContent='a'===o?'Monday, Wednesday, Friday, Sunday':'Tuesday, Thursday, Saturday',updateMeal('breakfast')}
-function switchGym(o){currentGym=o;const e=document.getElementById('gymToggle').querySelectorAll('.toggle-btn');e.forEach((t,n)=>{o==='a'?n===0?t.classList.add('active'):t.classList.remove('active'):n===1?t.classList.add('active'):t.classList.remove('active')}),document.getElementById('gymDescription').textContent='a'===o?'Monday, Wednesday, Friday':'Tuesday, Thursday, Saturday',updateGym('cardio'),updateInstructions('cardio')}
-function updateMeal(o){document.querySelectorAll('.meal-tab-btn').forEach(e=>{e.getAttribute('data-meal')===o?e.classList.add('active'):e.classList.remove('active')});const e='a'===currentMenu?mealsA:mealsB;document.getElementById('mealContent').innerHTML=`<h3>${e[o].name}</h3><div class="meal-description">${e[o].description}</div>${e[o].content}`}
-function updateShopList(o){document.querySelectorAll('.shop-tab-btn').forEach(e=>{e.getAttribute('data-list')===o?e.classList.add('active'):e.classList.remove('active')}),document.getElementById('shopContent').innerHTML=shoppingLists[o]}
-function updateGym(o){document.querySelectorAll('.gym-tab-btn').forEach(e=>{e.getAttribute('data-routine')===o?e.classList.add('active'):e.classList.remove('active')});const e='a'===currentGym?routinesA:routinesB;document.getElementById('gymContent').innerHTML=e[o],updateInstructions(o)}
-function updateInstructions(o){currentInstructTab=o;const e='a'===currentGym?instructionsA:instructionsB;document.getElementById('instructDescription').innerHTML=e[o]}
-document.addEventListener('DOMContentLoaded',function(){switchMenu('a'),updateShopList('produce'),switchGym('a')});
+const sections={
+  meals:{
+    title:'Daily meal plan',
+    icon:'🍽️',
+    items:[
+      {
+        name:'Breakfast',
+        icon:'🍳',
+        id:'breakfast',
+        content:`<h3>Breakfast (~650 kcal)</h3>
+<p><strong>Warm chia &amp; oat bowl:</strong> 10g chia seeds + 10g rolled oats heated in 100ml light milk. Mix with 100g Greek yoghurt, 100g warmed frozen mixed berries, ½ tsp turmeric powder.</p>
+<p><strong>Egg &amp; avocado:</strong> 2 large hard-boiled eggs mashed with 1 medium–large avocado. Season with ¼ tsp ground black pepper.</p>
+<p><strong>Coffee:</strong> 1 cup with 150ml light milk (no sugar).</p>
+<div class="stat-box"><strong>~650 kcal | ~42g protein | High omega-3, anti-inflammatory</strong></div>`
+      },
+      {
+        name:'Lunch',
+        icon:'☕',
+        id:'lunch',
+        content:`<h3>Lunch (~800 kcal)</h3>
+<p><strong>Grains &amp; protein:</strong> 60g dry brown rice + 5g chia seeds boiled in 150ml water (35–40 min). ~150g grilled chicken breast.</p>
+<p><strong>Salad:</strong> 50g kale, 75g cucumber, 50g tomato, 20g red onion. Drizzle with ½–1 tbsp olive oil + fresh lemon juice.</p>
+<p><strong>Coffee:</strong> 1 cup with 150ml light milk (no sugar).</p>
+<div class="stat-box"><strong>~800 kcal | ~40g protein | Whole grains, lean protein, cruciferous greens</strong></div>`
+      },
+      {
+        name:'Dinner',
+        icon:'🐟',
+        id:'dinner',
+        content:`<h3>Dinner (~655 kcal)</h3>
+<p><strong>Vegetables (alternate daily):</strong> ½ bunch asparagus OR ½ bunch broccolini (choose one each day).</p>
+<p><strong>Protein:</strong> 125g baked frozen salmon fillet.</p>
+<p><strong>Carbs:</strong> 150g frozen sweet potato chips, baked.</p>
+<p><strong>Dessert:</strong> 1 medium apple after dinner.</p>
+<div class="stat-box"><strong>~655 kcal | ~35g protein | Omega-3 rich, colourful veg, extra fibre</strong></div>`
+      },
+      {
+        name:'Daily summary',
+        icon:'✓',
+        id:'summary',
+        content:`<h3>Daily nutrition summary</h3>
+<div class="stat-box" style="background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);border-color:#a5d6a7;">
+<strong>✓ Total: ~2045 kcal | ~117g protein</strong>
+<p style="margin:8px 0 0;font-size:14px;">Rich in omega-3, fibre, vitamins, minerals, anti-inflammatory compounds. Optimised for 0.5 kg/week weight loss.</p>
+</div>
+<p><strong>Key principles:</strong></p>
+<ul>
+<li>Same meals every day for consistency</li>
+<li>Anti-inflammatory foods (turmeric, omega-3, colourful veg)</li>
+<li>Balanced macros for RA management</li>
+<li>High-quality protein to preserve muscle</li>
+<li>No processed foods or added sugar</li>
+</ul>`
+      }
+    ]
+  },
+  shop:{
+    title:'Weekly shopping list',
+    icon:'🛒',
+    items:[
+      {
+        name:'Fresh produce',
+        icon:'🥬',
+        id:'produce',
+        content:`<h3>Fresh produce</h3>
+<ul>
+<li>Kale – 400g (~$7.00/kg)<span class="li-price">$2.80</span></li>
+<li>Cucumber – 550g (4 medium × $0.70)<span class="li-price">$2.80</span></li>
+<li>Tomato – 400g (3 medium × $0.70)<span class="li-price">$2.10</span></li>
+<li>Red onion – 150g (1 small × $0.60)<span class="li-price">$0.60</span></li>
+<li>Asparagus – 150g (1 bunch)<span class="li-price">$3.50</span></li>
+<li>Broccolini – 150g (1 bunch)<span class="li-price">$3.50</span></li>
+<li>Frozen mixed berries – 1kg<span class="li-price">$8.29</span></li>
+<li>Apple – 1.1kg loose (7 × $0.47)<span class="li-price">$3.30</span></li>
+<li>Avocado – 1.2kg (7 × $2.50)<span class="li-price">$17.50</span></li>
+<li>Lemon – 3 loose (3 × $0.70)<span class="li-price">$2.10</span></li>
+</ul>
+<div class="stat-box">Subtotal (Aldi): ~$46.49</div>`
+      },
+      {
+        name:'Proteins & dairy',
+        icon:'🥚',
+        id:'proteins',
+        content:`<h3>Proteins & dairy</h3>
+<ul>
+<li>Eggs – 1 × 18-pack<span class="li-price">$5.99</span></li>
+<li>Greek yoghurt – 2 × 500g ($2.75 ea)<span class="li-price">$5.50</span></li>
+<li>Light milk – 2 × 2L ($3.19 ea)<span class="li-price">$6.38</span></li>
+<li>Grilled chicken – 1 × 1.38kg RSPCA<span class="li-price">$16.49</span></li>
+<li>Frozen salmon – 2 × 460g 4-packs ($15 ea)<span class="li-price">$30.00</span></li>
+</ul>
+<div class="stat-box">Subtotal (Aldi): $64.36</div>`
+      },
+      {
+        name:'Grains & seeds',
+        icon:'🌾',
+        id:'grains',
+        content:`<h3>Grains & seeds</h3>
+<ul>
+<li>Chia seeds – 1 × 350g (covers 3+ weeks)<span class="li-price">$5.49</span></li>
+<li>Rolled oats – 1 × 750g (covers 10+ weeks)<span class="li-price">$1.49</span></li>
+<li>Brown rice – 1 × 500g dry bulk bag<span class="li-price">$2.75</span></li>
+<li>Sweet potato chips – 1 × 1.1kg frozen<span class="li-price">$5.00</span></li>
+</ul>
+<div class="stat-box">Subtotal (Aldi): $14.73</div>`
+      },
+      {
+        name:'Pantry & spices',
+        icon:'🏺',
+        id:'pantry',
+        content:`<h3>Pantry & spices</h3>
+<ul>
+<li>Extra virgin olive oil – 1 × 250ml<span class="li-price">$5.00</span></li>
+<li>Turmeric powder – 1 × 50g (covers months)<span class="li-price">$4.00</span></li>
+<li>Ground coffee – 1 × 250g (covers 5+ weeks)<span class="li-price">$6.00</span></li>
+</ul>
+<div class="stat-box">Subtotal (Aldi): $15.00</div>
+<div class="stat-box orange" style="margin-top:20px;">
+<strong>Total weekly shop (Aldi): ~$140.58</strong>
+<p style="margin:8px 0 0;font-size:13px;">All quantities match your meal plan. Packaged items last 2–10 weeks. Buy produce fresh each week. Prices: ALDI Australia, Jan 2026.</p>
+</div>`
+      }
+    ]
+  },
+  gym:{
+    title:'Daily exercise routine',
+    icon:'🏋️',
+    items:[
+      {
+        name:'Warm-up',
+        icon:'🚴',
+        id:'warmup',
+        content:`<h3>Warm-up (5 min, daily)</h3>
+<ul>
+<li><strong>Easy elliptical:</strong> level 4–6, or</li>
+<li><strong>Gentle treadmill walk:</strong> flat, slow pace, or</li>
+<li><strong>Comfortable outdoor walk</strong></li>
+</ul>
+<p><strong>Pace:</strong> Slow enough to talk comfortably.</p>`
+      },
+      {
+        name:'Strength',
+        icon:'💪',
+        id:'strength',
+        content:`<h3>Strength circuit (2–3 days/week)</h3>
+<p><em>On other days: warm-up + stretches only.</em></p>
+<table>
+<tr><th>Exercise</th><th>Sets/Reps</th><th>Load</th><th>Notes</th></tr>
+<tr><td>Leg press</td><td>2 × 8–10</td><td>Light–moderate</td><td>No knee lockout</td></tr>
+<tr><td>Seated leg curl</td><td>2 × 8–10</td><td>Light–moderate</td><td>Controlled</td></tr>
+<tr><td>Leg extension</td><td>1–2 × 8–10</td><td>Light</td><td>Short of lockout</td></tr>
+<tr><td>Seated chest press</td><td>2 × 8–10</td><td>Light–moderate</td><td>Elbows not deep</td></tr>
+<tr><td>Seated row/lat pulldown</td><td>2 × 8–10</td><td>Light–moderate</td><td>Chest, slow return</td></tr>
+<tr><td>Abdominal crunch</td><td>2 × 10–12</td><td>Light</td><td>Pain-free only</td></tr>
+</table>
+<div class="warning"><strong>⚠️ RA Safety:</strong> Stop if sharp pain &gt;2/10. Adjust or skip any movement that hurts. Progress slowly. Consult your doctor before starting.</div>`
+      },
+      {
+        name:'Cool-down',
+        icon:'🧘',
+        id:'cooldown',
+        content:`<h3>Cool-down & flexibility (10 min, daily)</h3>
+<ul>
+<li><strong>Seated hamstring stretch:</strong> 2 × 20–30 s per side</li>
+<li><strong>Chest & shoulder opener:</strong> against wall, 2 × 20–30 s</li>
+<li><strong>Gentle neck & shoulder rolls:</strong> 10 circles each direction</li>
+<li><strong>Ankle circles:</strong> 10 each direction, both feet</li>
+<li><strong>Deep belly breathing:</strong> 10 slow breaths</li>
+</ul>`
+      }
+    ]
+  },
+  tracker:{
+    title:'Daily symptom tracker',
+    icon:'📊',
+    items:[
+      {
+        name:'Log symptoms',
+        icon:'📊',
+        id:'log',
+        content:`<h3>Track your symptoms</h3>
+<p>Use these sliders to monitor how meals and exercise affect your RA. Log daily to identify patterns.</p>
+<div class="slider-group pain">
+  <div class="slider-label">
+    <label>Overall pain now (0–10)</label>
+    <div class="slider-value" id="pain-value">5</div>
+  </div>
+  <input type="range" id="pain-slider" min="0" max="10" value="5" oninput="updateValue('pain')">
+  <div class="slider-hint">0 = No pain | 10 = Worst pain imaginable</div>
+</div>
+<div class="slider-group">
+  <div class="slider-label">
+    <label>Morning stiffness (0–10)</label>
+    <div class="slider-value" id="stiffness-value">5</div>
+  </div>
+  <input type="range" id="stiffness-slider" min="0" max="10" value="5" oninput="updateValue('stiffness')">
+  <div class="slider-hint">0 = None | 10 = Severe, can't move</div>
+</div>
+<div class="slider-group fatigue">
+  <div class="slider-label">
+    <label>Fatigue (0–10)</label>
+    <div class="slider-value" id="fatigue-value">5</div>
+  </div>
+  <input type="range" id="fatigue-slider" min="0" max="10" value="5" oninput="updateValue('fatigue')">
+  <div class="slider-hint">0 = Energetic | 10 = Exhausted, can't get up</div>
+</div>
+<div class="warning">
+  <strong>✓ Use this tracker:</strong> Same meals & exercises every day. Focus on consistency, not perfection. Track symptoms to see what helps most. Adjust portions if needed. Always consult your clinician before major changes.
+</div>`
+      }
+    ]
+  }
+};
+
+let currentNav='meals',currentItem=0;
+
+function switchNav(nav){
+  const buttons=document.querySelectorAll('.nav-btn');
+  buttons.forEach(btn=>btn.classList.remove('active'));
+  event.target.classList.add('active');
+  currentNav=nav;
+  currentItem=0;
+  renderSidebar();
+  renderContent();
+}
+
+function selectItem(idx){
+  currentItem=idx;
+  const items=document.querySelectorAll('.section-item');
+  items.forEach(item=>item.classList.remove('active'));
+  items[idx].classList.add('active');
+  renderContent();
+}
+
+function renderSidebar(){
+  const section=sections[currentNav];
+  const iconMap={meals:'🍽️',shop:'🛒',gym:'🏋️',tracker:'📊'};
+  const icon=iconMap[currentNav];
+  const header=document.getElementById('categoryHeader');
+  const list=document.getElementById('sectionList');
+  header.innerHTML=
+    `<div class="category-icon ${currentNav}">${icon}</div>
+     <div class="category-title">${section.title}</div>`;
+  let html='';
+  section.items.forEach((item,idx)=>{
+    const activeClass=idx===currentItem?'active':'';
+    const categoryClass=currentNav==='shop'
+      ? 'shop'
+      : currentNav==='gym'
+      ? 'gym'
+      : currentNav==='tracker'
+      ? 'tracker'
+      : '';
+    html+=
+      `<div class="section-item ${activeClass} ${categoryClass}" onclick="selectItem(${idx})">
+         <span class="section-item-icon">${item.icon||''}</span>
+         <div class="section-item-text"><h3>${item.name}</h3></div>
+       </div>`;
+  });
+  list.innerHTML=html;
+}
+
+function renderContent(){
+  const area=document.getElementById('contentArea');
+  const section=sections[currentNav];
+  const item=section.items[currentItem];
+  const categoryClass=currentNav==='shop'
+    ? 'shop'
+    : currentNav==='gym'
+    ? 'gym'
+    : currentNav==='tracker'
+    ? 'tracker'
+    : '';
+  area.innerHTML=`<div class="content-panel active ${categoryClass}">${item.content}</div>`;
+}
+
+function updateValue(type){
+  let slider,display;
+  if(type==='pain'){
+    slider=document.getElementById('pain-slider');
+    display=document.getElementById('pain-value');
+  }else if(type==='stiffness'){
+    slider=document.getElementById('stiffness-slider');
+    display=document.getElementById('stiffness-value');
+  }else if(type==='fatigue'){
+    slider=document.getElementById('fatigue-slider');
+    display=document.getElementById('fatigue-value');
+  }
+  if(slider && display) display.textContent=slider.value;
+}
+
+renderSidebar();
+renderContent();
 </script>
 </body>
 </html>
