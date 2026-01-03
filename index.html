@@ -6,759 +6,201 @@
 <title>Istvan's RA Diet and Gym Tracker</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --safe-top:max(16px,env(safe-area-inset-top));
-  --safe-bottom:max(16px,env(safe-area-inset-bottom));
-  --safe-left:max(16px,env(safe-area-inset-left));
-  --safe-right:max(16px,env(safe-area-inset-right));
-  --accent-green:#10b981;
-  --accent-blue:#3b82f6;
-  --accent-orange:#f59e0b;
-  --accent-purple:#a78bfa;
-  --text-primary:#1d1d1f;
-  --text-secondary:#6b7280;
-  --bg-light:#f8f9fa;
-  --bg-surface:#ffffff;
-  --border-light:#e5e7eb;
-}
+:root{--safe-top:max(16px,env(safe-area-inset-top));--safe-bottom:max(16px,env(safe-area-inset-bottom));--safe-left:max(16px,env(safe-area-inset-left));--safe-right:max(16px,env(safe-area-inset-right));--accent-green:#10b981;--accent-blue:#3b82f6;--accent-orange:#f59e0b;--accent-purple:#a78bfa;--text-primary:#1d1d1f;--text-secondary:#6b7280;--bg-light:#f8f9fa;--bg-surface:#ffffff;--border-light:#e5e7eb;}
 html,body{width:100%;height:100%;}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;
-  background:#f8f9fa;
-  color:var(--text-primary);
-  line-height:1.5;
-  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-}
-@media(prefers-color-scheme:dark){
-  body{
-    background:#1a1a1a;
-    --bg-light:#2a2a2a;
-    --bg-surface:#1f1f1f;
-    --text-primary:#f5f5f5;
-    --text-secondary:#a0a0a0;
-    --border-light:#333333;
-  }
-  body{color:#f5f5f5;}
-}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f9fa;color:var(--text-primary);line-height:1.5;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);}
+@media(prefers-color-scheme:dark){body{background:#1a1a1a;--bg-light:#2a2a2a;--bg-surface:#1f1f1f;--text-primary:#f5f5f5;--text-secondary:#a0a0a0;--border-light:#333333;}body{color:#f5f5f5;}}
 .app-container{display:flex;height:100vh;flex-direction:column;}
-.header{
-  background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);
-  color:white;
-  padding:24px var(--safe-left) 0;
-  text-align:center;
-  flex-shrink:0;
-  position:relative;
-  overflow:hidden;
-}
-.header::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;bottom:0;
-  background:
-    radial-gradient(circle at 30% 20%,rgba(59,130,246,0.15) 0%,transparent 50%),
-    radial-gradient(circle at 70% 80%,rgba(16,185,129,0.15) 0%,transparent 50%);
-  opacity:0.6;
-  z-index:0;
-}
-.header h1{
-  font-size:clamp(24px,6vw,36px);
-  font-weight:700;
-  margin:0 0 8px;
-  position:relative;
-  z-index:1;
-  letter-spacing:-0.02em;
-}
-.header p{
-  font-size:clamp(13px,3vw,15px);
-  opacity:0.9;
-  margin:0 0 24px;
-  position:relative;
-  z-index:1;
-}
+.header{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);color:white;padding:24px var(--safe-left) 0;text-align:center;flex-shrink:0;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%,rgba(59,130,246,0.15) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(16,185,129,0.15) 0%,transparent 50%);opacity:0.6;z-index:0;}
+.header h1{font-size:clamp(24px,6vw,36px);font-weight:700;margin:0 0 8px;position:relative;z-index:1;letter-spacing:-0.02em;}
+.header p{font-size:clamp(13px,3vw,15px);opacity:0.9;margin:0 0 24px;position:relative;z-index:1;}
 .main-content{display:flex;flex:1;overflow:hidden;gap:0;}
-.sidebar{
-  width:100%;
-  background:var(--bg-light);
-  border-right:1px solid var(--border-light);
-  overflow-y:auto;
-  display:flex;
-  flex-direction:column;
-  padding:0;
-  z-index:10;
-}
-.nav-buttons{
-  display:flex;
-  flex-direction:row;
-  gap:8px;
-  padding:16px;
-  overflow-x:auto;
-  background:var(--bg-surface);
-  border-bottom:1px solid var(--border-light);
-  flex-shrink:0;
-}
-.nav-btn{
-  padding:10px 16px;
-  border:none;
-  border-radius:12px;
-  background:var(--bg-light);
-  color:var(--text-primary);
-  font-size:15px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all 0.2s;
-  white-space:nowrap;
-  flex-shrink:0;
-  border:1px solid transparent;
-}
+.sidebar{width:100%;background:var(--bg-light);border-right:1px solid var(--border-light);overflow-y:auto;display:flex;flex-direction:column;padding:0;z-index:10;}
+.nav-buttons{display:flex;flex-direction:row;gap:8px;padding:16px;overflow-x:auto;background:var(--bg-surface);border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.nav-btn{padding:10px 16px;border:none;border-radius:12px;background:var(--bg-light);color:var(--text-primary);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;flex-shrink:0;border:1px solid transparent;}
 .nav-btn:hover{background:var(--border-light);}
-.nav-btn.active{
-  background:var(--accent-green);
-  color:white;
-  box-shadow:0 4px 12px rgba(16,185,129,0.3);
-}
-.nav-btn.active.shop{
-  background:var(--accent-orange);
-  box-shadow:0 4px 12px rgba(245,158,11,0.3);
-}
-.nav-btn.active.gym{
-  background:var(--accent-blue);
-  box-shadow:0 4px 12px rgba(59,130,246,0.3);
-}
-.nav-btn.active.tracker{
-  background:var(--accent-purple);
-  box-shadow:0 4px 12px rgba(167,139,250,0.3);
-}
-.category-header{
-  padding:28px 16px 20px;
-  text-align:center;
-  background:var(--bg-light);
-}
-.category-icon{
-  width:88px;
-  height:88px;
-  margin:0 auto 20px;
-  border-radius:28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:40px;
-  box-shadow:0 12px 32px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);
-}
-.category-icon.meals{
-  background:linear-gradient(135deg,#a7f3d0,#86efac);
-}
-.category-icon.shop{
-  background:linear-gradient(135deg,#fef3c7,#fde68a);
-}
-.category-icon.gym{
-  background:linear-gradient(135deg,#bfdbfe,#93c5fd);
-}
-.category-icon.tracker{
-  background:linear-gradient(135deg,#e9d5ff,#d8b4fe);
-}
-.category-title{
-  font-size:28px;
-  font-weight:600;
-  margin:0;
-  color:var(--text-primary);
-  letter-spacing:-0.01em;
-}
-.section-list{
-  padding:12px 20px;
-  background:var(--bg-light);
-  border-bottom:1px solid var(--border-light);
-}
-.section-item{
-  padding:14px 16px;
-  margin-bottom:10px;
-  background:var(--bg-surface);
-  border-radius:12px;
-  cursor:pointer;
-  transition:all 0.2s ease;
-  border:1px solid var(--border-light);
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.section-item:hover{
-  background:var(--bg-light);
-  border-color:var(--accent-green);
-}
-.section-item.active{
-  background:var(--accent-green);
-  color:white;
-  border-color:var(--accent-green);
-  box-shadow:0 2px 8px rgba(16,185,129,0.2);
-}
-.section-item.active.shop{
-  background:var(--accent-orange);
-  border-color:var(--accent-orange);
-  box-shadow:0 2px 8px rgba(245,158,11,0.2);
-}
-.section-item.active.gym{
-  background:var(--accent-blue);
-  border-color:var(--accent-blue);
-  box-shadow:0 2px 8px rgba(59,130,246,0.2);
-}
-.section-item.active.tracker{
-  background:var(--accent-purple);
-  border-color:var(--accent-purple);
-  box-shadow:0 2px 8px rgba(167,139,250,0.2);
-}
+.nav-btn.active{background:var(--accent-green);color:white;box-shadow:0 4px 12px rgba(16,185,129,0.3);}
+.nav-btn.active.shop{background:var(--accent-orange);box-shadow:0 4px 12px rgba(245,158,11,0.3);}
+.nav-btn.active.gym{background:var(--accent-blue);box-shadow:0 4px 12px rgba(59,130,246,0.3);}
+.nav-btn.active.tracker{background:var(--accent-purple);box-shadow:0 4px 12px rgba(167,139,250,0.3);}
+.category-header{padding:28px 16px 20px;text-align:center;background:var(--bg-light);}
+.category-icon{width:88px;height:88px;margin:0 auto 20px;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 12px 32px rgba(0,0,0,0.12),0 0 0 1px rgba(255,255,255,0.8);}
+.category-icon.meals{background:linear-gradient(135deg,#a7f3d0,#86efac);}
+.category-icon.shop{background:linear-gradient(135deg,#fef3c7,#fde68a);}
+.category-icon.gym{background:linear-gradient(135deg,#bfdbfe,#93c5fd);}
+.category-icon.tracker{background:linear-gradient(135deg,#e9d5ff,#d8b4fe);}
+.category-title{font-size:28px;font-weight:600;margin:0;color:var(--text-primary);letter-spacing:-0.01em;}
+.section-list{padding:12px 20px;background:var(--bg-light);border-bottom:1px solid var(--border-light);}
+.section-item{padding:14px 16px;margin-bottom:10px;background:var(--bg-surface);border-radius:12px;cursor:pointer;transition:all 0.2s ease;border:1px solid var(--border-light);display:flex;align-items:center;gap:12px;}
+.section-item:hover{background:var(--bg-light);border-color:var(--accent-green);}
+.section-item.active{background:var(--accent-green);color:white;border-color:var(--accent-green);box-shadow:0 2px 8px rgba(16,185,129,0.2);}
+.section-item.active.shop{background:var(--accent-orange);border-color:var(--accent-orange);box-shadow:0 2px 8px rgba(245,158,11,0.2);}
+.section-item.active.gym{background:var(--accent-blue);border-color:var(--accent-blue);box-shadow:0 2px 8px rgba(59,130,246,0.2);}
+.section-item.active.tracker{background:var(--accent-purple);border-color:var(--accent-purple);box-shadow:0 2px 8px rgba(167,139,250,0.2);}
 .section-item-icon{font-size:24px;flex-shrink:0;}
 .section-item-text{flex:1;}
-.section-item h3{
-  font-size:15px;
-  margin:0;
-  font-weight:600;
-  color:inherit;
-}
-.content-area{
-  flex:1;
-  overflow-y:auto;
-  background:var(--bg-light);
-  display:flex;
-  flex-direction:column;
-}
-.category-header{
-  padding:28px 20px 12px;
-  text-align:center;
-  background:var(--bg-surface);
-  border-bottom:1px solid var(--border-light);
-}
-.content-panel{
-  background:var(--bg-surface);
-  padding:24px 20px;
-  flex:1;
-  display:none;
-}
+.section-item h3{font-size:15px;margin:0;font-weight:600;color:inherit;}
+.content-area{flex:1;overflow-y:auto;background:var(--bg-light);display:flex;flex-direction:column;}
+.content-panel{background:var(--bg-surface);padding:24px 20px;flex:1;display:none;overflow-y:auto;}
 .content-panel.active{display:block;}
-.content-panel h2{
-  font-size:clamp(22px,5vw,28px);
-  font-weight:600;
-  margin:0 0 20px;
-  color:var(--text-primary);
-}
-.content-panel h3{
-  font-size:clamp(18px,4vw,22px);
-  font-weight:600;
-  margin:20px 0 16px;
-  color:var(--text-primary);
-}
-.content-panel p{
-  font-size:15px;
-  color:var(--text-primary);
-  margin:12px 0;
-  line-height:1.6;
-}
+.content-panel h2{font-size:clamp(22px,5vw,28px);font-weight:600;margin:0 0 20px;color:var(--text-primary);}
+.content-panel h3{font-size:clamp(18px,4vw,22px);font-weight:600;margin:20px 0 16px;color:var(--text-primary);}
+.content-panel h4{font-size:16px;font-weight:600;margin:16px 0 12px;color:var(--text-primary);}
+.content-panel p{font-size:15px;color:var(--text-primary);margin:12px 0;line-height:1.6;}
 ul{list-style:none;padding:0;margin:12px 0;}
-li{
-  padding:12px 0 12px 28px;
-  position:relative;
-  font-size:15px;
-  color:var(--text-primary);
-}
-li:before{
-  content:'✓';
-  position:absolute;
-  left:0;
-  color:var(--accent-green);
-  font-weight:600;
-  font-size:16px;
-}
+li{padding:12px 0 12px 28px;position:relative;font-size:15px;color:var(--text-primary);}
+li:before{content:'✓';position:absolute;left:0;color:var(--accent-green);font-weight:600;font-size:16px;}
 .shop li:before{color:var(--accent-orange);}
 .gym li:before{color:var(--accent-blue);}
 .tracker li:before{color:var(--accent-purple);}
-.li-price{
-  color:#059669;
-  font-weight:600;
-  font-size:13px;
-  margin-top:2px;
-}
+.li-price{color:#059669;font-weight:600;font-size:13px;margin-top:2px;}
 .shop .li-price{color:#b45309;}
 .gym .li-price{color:#1e40af;}
 .tracker .li-price{color:#6d28d9;}
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:14px;
-  margin:12px 0;
-}
-th,td{
-  padding:12px;
-  text-align:left;
-  border-bottom:1px solid var(--border-light);
-  color:var(--text-primary);
-}
-th{
-  background:var(--bg-light);
-  font-weight:600;
-}
-.stat-box{
-  background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);
-  border:1px solid #dcfce7;
-  padding:16px;
-  border-radius:12px;
-  margin:16px 0;
-  font-weight:600;
-  color:#166534;
-}
-.shop .stat-box{
-  background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);
-  border-color:#fde68a;
-  color:#92400e;
-}
-.gym .stat-box{
-  background:linear-gradient(135deg,#f0f4f8 0%,#dbeafe 100%);
-  border-color:#dbeafe;
-  color:#1e40af;
-}
-.tracker .stat-box{
-  background:linear-gradient(135deg,#f3e8ff 0%,#e9d5ff 100%);
-  border-color:#e9d5ff;
-  color:#6d28d9;
-}
-.stat-box.orange{
-  background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);
-  border-color:#fde68a;
-  color:#92400e;
-}
-.warning{
-  background:#fef3c7;
-  border-left:4px solid #f59e0b;
-  padding:16px;
-  border-radius:8px;
-  margin:16px 0;
-  font-size:14px;
-  color:#92400e;
-}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;}
+th,td{padding:12px;text-align:left;border-bottom:1px solid var(--border-light);color:var(--text-primary);}
+th{background:var(--bg-light);font-weight:600;}
+.stat-box{background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);border:1px solid #dcfce7;padding:16px;border-radius:12px;margin:16px 0;font-weight:600;color:#166534;}
+.shop .stat-box{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border-color:#fde68a;color:#92400e;}
+.gym .stat-box{background:linear-gradient(135deg,#f0f4f8 0%,#dbeafe 100%);border-color:#dbeafe;color:#1e40af;}
+.tracker .stat-box{background:linear-gradient(135deg,#f3e8ff 0%,#e9d5ff 100%);border-color:#e9d5ff;color:#6d28d9;}
+.stat-box.orange{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border-color:#fde68a;color:#92400e;}
+.warning{background:#fef3c7;border-left:4px solid #f59e0b;padding:16px;border-radius:8px;margin:16px 0;font-size:14px;color:#92400e;}
 .warning strong{color:#92400e;}
-.slider-group{
-  background:var(--bg-light);
-  padding:16px;
-  border-radius:12px;
-  margin:16px 0;
-}
-.slider-label{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px;
-  font-weight:600;
-  font-size:14px;
-}
-.slider-value{
-  background:var(--accent-green);
-  color:white;
-  padding:4px 12px;
-  border-radius:20px;
-  font-weight:700;
-  font-size:16px;
-  min-width:36px;
-  text-align:center;
-}
+.slider-group{background:var(--bg-light);padding:16px;border-radius:12px;margin:16px 0;}
+.slider-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:600;font-size:14px;}
+.slider-value{background:var(--accent-green);color:white;padding:4px 12px;border-radius:20px;font-weight:700;font-size:16px;min-width:36px;text-align:center;}
 .slider-group.pain .slider-value{background:var(--accent-blue);}
 .slider-group.fatigue .slider-value{background:var(--accent-orange);}
 .tracker .slider-group .slider-value{background:var(--accent-purple);}
 .tracker .slider-group.pain .slider-value{background:var(--accent-purple);}
 .tracker .slider-group.fatigue .slider-value{background:var(--accent-purple);}
-input[type="range"]{
-  width:100%;
-  height:6px;
-  border-radius:3px;
-  cursor:pointer;
-  accent-color:var(--accent-green);
-}
+input[type="range"]{width:100%;height:6px;border-radius:3px;cursor:pointer;accent-color:var(--accent-green);}
 .slider-group.pain input{accent-color:var(--accent-blue);}
 .slider-group.fatigue input{accent-color:var(--accent-orange);}
 .tracker .slider-group input{accent-color:var(--accent-purple);}
-@media(min-width:1024px){
-  .main-content{gap:24px;}
-  .sidebar{
-    width:280px;
-    flex-shrink:0;
-    padding:20px;
-    border-right:1px solid var(--border-light);
-  }
-  .nav-buttons{
-    flex-direction:column;
-    padding:0;
-    background:transparent;
-    border:none;
-    gap:12px;
-  }
-  .nav-btn{
-    width:100%;
-    padding:12px 16px;
-    text-align:left;
-  }
-  .section-list{padding:0;}
-  .content-area{padding:20px;}
-  .content-panel{
-    border-radius:16px;
-    padding:32px;
-  }
-}
-@media(max-width:600px){
-  .header{padding:20px 16px 0;}
-  .header h1{font-size:24px;}
-  .header p{font-size:13px;}
-  .main-content{flex-direction:column;}
-  .sidebar{
-    width:100%;
-    border-right:none;
-    border-bottom:1px solid var(--border-light);
-  }
-  .nav-buttons{
-    overflow-x:auto;
-    padding:12px;
-  }
-  .nav-btn{
-    padding:10px 14px;
-    font-size:12px;
-  }
-  .content-area{padding:12px;}
-  .content-panel{
-    padding:16px;
-    border-radius:12px;
-  }
-  .content-panel h2{
-    font-size:20px;
-    margin-bottom:16px;
-  }
-}
-@media(prefers-color-scheme:dark){
-  .nav-btn.active{
-    box-shadow:0 4px 12px rgba(16,185,129,0.4);
-  }
-  .nav-btn.active.gym{
-    box-shadow:0 4px 12px rgba(59,130,246,0.4);
-  }
-  .nav-btn.active.shop{
-    box-shadow:0 4px 12px rgba(245,158,11,0.4);
-  }
-  .nav-btn.active.tracker{
-    box-shadow:0 4px 12px rgba(167,139,250,0.4);
-  }
-}
+.history-table{width:100%;margin:16px 0;}
+.history-row{display:flex;padding:12px;background:var(--bg-light);border-radius:8px;margin-bottom:8px;gap:12px;align-items:center;}
+.history-date{font-weight:600;min-width:80px;color:var(--text-primary);}
+.history-score{display:flex;gap:8px;flex:1;}
+.score-badge{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:600;font-size:13px;color:white;}
+.score-low{background:#10b981;}
+.score-med{background:#f59e0b;}
+.score-high{background:#ef4444;}
+.btn-group{display:flex;gap:8px;margin:20px 0;flex-wrap:wrap;}
+.btn{padding:12px 20px;border:none;border-radius:12px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-primary{background:var(--accent-purple);color:white;}
+.btn-primary:hover{opacity:0.9;}
+.btn-danger{background:#ef4444;color:white;}
+.btn-danger:hover{opacity:0.9;}
+.btn-orange{background:var(--accent-orange);color:white;}
+.btn-orange:hover{opacity:0.9;}
+.empty-state{text-align:center;padding:40px 20px;color:var(--text-secondary);}
+.empty-state p{font-size:14px;margin:8px 0;}
+.shopping-item{display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--bg-light);border-radius:8px;margin-bottom:8px;}
+.shopping-item input[type="checkbox"]{margin-top:4px;cursor:pointer;width:18px;height:18px;accent-color:var(--accent-orange);}
+.shopping-item.checked{opacity:0.6;}
+.shopping-item.checked .item-label{text-decoration:line-through;}
+.item-label{flex:1;}
+.item-name{font-weight:600;color:var(--text-primary);}
+.item-price{color:#b45309;font-weight:600;font-size:13px;margin-top:2px;}
+.shopping-summary{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:1px solid #fde68a;padding:16px;border-radius:12px;margin:16px 0;font-weight:600;color:#92400e;}
+.week-schedule{display:grid;gap:12px;margin:16px 0;}
+.day-card{background:var(--bg-light);padding:0;border-radius:12px;border-left:4px solid var(--accent-blue);overflow:hidden;}
+.day-card.rest{border-left-color:var(--accent-orange);}
+.day-header{display:flex;justify-content:space-between;align-items:center;padding:16px;cursor:pointer;font-weight:600;font-size:16px;color:var(--text-primary);background:var(--bg-light);}
+.day-header:hover{background:var(--border-light);}
+.day-toggle{font-size:20px;transition:transform 0.2s;flex-shrink:0;}
+.day-toggle.open{transform:rotate(180deg);}
+.day-content{display:none;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-light);}
+.day-content.show{display:block;}
+.day-content p{font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0 0 12px;}
+.machines-list{background:var(--bg-light);padding:12px;border-radius:8px;border-left:3px solid var(--accent-blue);}
+.machines-list.rest{border-left-color:var(--accent-orange);}
+.machines-list strong{display:block;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+.machines-list p{margin:4px 0;color:var(--text-secondary);font-size:14px;}
+.exercise-card{background:var(--bg-light);padding:14px;border-radius:12px;margin:12px 0;border-left:4px solid var(--accent-blue);}
+.exercise-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;color:var(--text-primary);}
+.exercise-header:hover{color:var(--accent-blue);}
+.exercise-toggle{font-size:20px;transition:transform 0.2s;}
+.exercise-toggle.open{transform:rotate(180deg);}
+.exercise-details{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light);}
+.exercise-details.show{display:block;}
+.exercise-details h5{font-weight:600;color:var(--text-primary);margin:8px 0 4px;}
+.exercise-details p{font-size:13px;color:var(--text-secondary);margin:4px 0;line-height:1.5;}
+@media(min-width:1024px){.main-content{gap:24px;}.sidebar{width:280px;flex-shrink:0;padding:20px;border-right:1px solid var(--border-light);}.nav-buttons{flex-direction:column;padding:0;background:transparent;border:none;gap:12px;}.nav-btn{width:100%;padding:12px 16px;text-align:left;}.section-list{padding:0;}.content-area{padding:20px;}.content-panel{border-radius:16px;padding:32px;}}
+@media(max-width:600px){.header{padding:20px 16px 0;}.header h1{font-size:24px;}.header p{font-size:13px;}.main-content{flex-direction:column;}.sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border-light);}.nav-buttons{overflow-x:auto;padding:12px;}.nav-btn{padding:10px 14px;font-size:12px;}.content-area{padding:12px;}.content-panel{padding:16px;border-radius:12px;}.content-panel h2{font-size:20px;margin-bottom:16px;}}
+@media(prefers-color-scheme:dark){.nav-btn.active{box-shadow:0 4px 12px rgba(16,185,129,0.4);}.nav-btn.active.gym{box-shadow:0 4px 12px rgba(59,130,246,0.4);}.nav-btn.active.shop{box-shadow:0 4px 12px rgba(245,158,11,0.4);}.nav-btn.active.tracker{box-shadow:0 4px 12px rgba(167,139,250,0.4);}}
 </style>
 </head>
 <body>
 <div class="app-container">
-  <div class="header">
-    <h1>Istvan's wellness tracker</h1>
-    <p>Personalised RA nutrition & fitness companion</p>
-  </div>
-  <div class="main-content">
-    <div class="sidebar">
-      <div class="nav-buttons">
-        <button class="nav-btn active" onclick="switchNav('meals')">Meals</button>
-        <button class="nav-btn shop" onclick="switchNav('shop')">Shopping</button>
-        <button class="nav-btn gym" onclick="switchNav('gym')">Gym</button>
-        <button class="nav-btn tracker" onclick="switchNav('tracker')">Tracker</button>
-      </div>
-    </div>
-    <div class="content-area">
-      <div class="category-header" id="categoryHeader"></div>
-      <div class="section-list" id="sectionList"></div>
-      <div id="contentArea"></div>
-    </div>
-  </div>
+<div class="header">
+<h1>Istvan's wellness tracker</h1>
+<p>Personalised RA nutrition & fitness companion</p>
 </div>
+<div class="main-content">
+<div class="sidebar">
+<div class="nav-buttons">
+<button class="nav-btn active" onclick="switchNav('meals')">Meals</button>
+<button class="nav-btn shop" onclick="switchNav('shop')">Shopping</button>
+<button class="nav-btn gym" onclick="switchNav('gym')">Gym</button>
+<button class="nav-btn tracker" onclick="switchNav('tracker')">Tracker</button>
+</div>
+</div>
+<div class="content-area">
+<div class="category-header" id="categoryHeader"></div>
+<div class="section-list" id="sectionList"></div>
+<div id="contentArea"></div>
+</div>
+</div>
+</div>
+
 <script>
-const sections={
-  meals:{
-    title:'Daily meal plan',
-    icon:'🍽️',
-    items:[
-      {
-        name:'Breakfast',
-        icon:'🍳',
-        id:'breakfast',
-        content:`<h3>Breakfast (~650 kcal)</h3>
-<p><strong>Warm chia &amp; oat bowl:</strong> 10g chia seeds + 10g rolled oats heated in 100ml light milk. Mix with 100g Greek yoghurt, 100g warmed frozen mixed berries, ½ tsp turmeric powder.</p>
-<p><strong>Egg &amp; avocado:</strong> 2 large hard-boiled eggs mashed with 1 medium–large avocado. Season with ¼ tsp ground black pepper.</p>
-<p><strong>Coffee:</strong> 1 cup with 150ml light milk (no sugar).</p>
-<div class="stat-box"><strong>~650 kcal | ~42g protein | High omega-3, anti-inflammatory</strong></div>`
-      },
-      {
-        name:'Lunch',
-        icon:'☕',
-        id:'lunch',
-        content:`<h3>Lunch (~800 kcal)</h3>
-<p><strong>Grains &amp; protein:</strong> 60g dry brown rice + 5g chia seeds boiled in 150ml water (35–40 min). ~150g grilled chicken breast.</p>
-<p><strong>Salad:</strong> 50g kale, 75g cucumber, 50g tomato, 20g red onion. Drizzle with ½–1 tbsp olive oil + fresh lemon juice.</p>
-<p><strong>Coffee:</strong> 1 cup with 150ml light milk (no sugar).</p>
-<div class="stat-box"><strong>~800 kcal | ~40g protein | Whole grains, lean protein, cruciferous greens</strong></div>`
-      },
-      {
-        name:'Dinner',
-        icon:'🐟',
-        id:'dinner',
-        content:`<h3>Dinner (~655 kcal)</h3>
-<p><strong>Vegetables (alternate daily):</strong> ½ bunch asparagus OR ½ bunch broccolini (choose one each day).</p>
-<p><strong>Protein:</strong> 125g baked frozen salmon fillet.</p>
-<p><strong>Carbs:</strong> 150g frozen sweet potato chips, baked.</p>
-<p><strong>Dessert:</strong> 1 medium apple after dinner.</p>
-<div class="stat-box"><strong>~655 kcal | ~35g protein | Omega-3 rich, colourful veg, extra fibre</strong></div>`
-      },
-      {
-        name:'Daily summary',
-        icon:'✓',
-        id:'summary',
-        content:`<h3>Daily nutrition summary</h3>
-<div class="stat-box" style="background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);border-color:#a5d6a7;">
-<strong>✓ Total: ~2045 kcal | ~117g protein</strong>
-<p style="margin:8px 0 0;font-size:14px;">Rich in omega-3, fibre, vitamins, minerals, anti-inflammatory compounds. Optimised for 0.5 kg/week weight loss.</p>
-</div>
-<p><strong>Key principles:</strong></p>
-<ul>
-<li>Same meals every day for consistency</li>
-<li>Anti-inflammatory foods (turmeric, omega-3, colourful veg)</li>
-<li>Balanced macros for RA management</li>
-<li>High-quality protein to preserve muscle</li>
-<li>No processed foods or added sugar</li>
-</ul>`
-      }
-    ]
-  },
-  shop:{
-    title:'Weekly shopping list',
-    icon:'🛒',
-    items:[
-      {
-        name:'Fresh produce',
-        icon:'🥬',
-        id:'produce',
-        content:`<h3>Fresh produce</h3>
-<ul>
-<li>Kale – 400g (~$7.00/kg)<span class="li-price">$2.80</span></li>
-<li>Cucumber – 550g (4 medium × $0.70)<span class="li-price">$2.80</span></li>
-<li>Tomato – 400g (3 medium × $0.70)<span class="li-price">$2.10</span></li>
-<li>Red onion – 150g (1 small × $0.60)<span class="li-price">$0.60</span></li>
-<li>Asparagus – 150g (1 bunch)<span class="li-price">$3.50</span></li>
-<li>Broccolini – 150g (1 bunch)<span class="li-price">$3.50</span></li>
-<li>Frozen mixed berries – 1kg<span class="li-price">$8.29</span></li>
-<li>Apple – 1.1kg loose (7 × $0.47)<span class="li-price">$3.30</span></li>
-<li>Avocado – 1.2kg (7 × $2.50)<span class="li-price">$17.50</span></li>
-<li>Lemon – 3 loose (3 × $0.70)<span class="li-price">$2.10</span></li>
-</ul>
-<div class="stat-box">Subtotal (Aldi): ~$46.49</div>`
-      },
-      {
-        name:'Proteins & dairy',
-        icon:'🥚',
-        id:'proteins',
-        content:`<h3>Proteins & dairy</h3>
-<ul>
-<li>Eggs – 1 × 18-pack<span class="li-price">$5.99</span></li>
-<li>Greek yoghurt – 2 × 500g ($2.75 ea)<span class="li-price">$5.50</span></li>
-<li>Light milk – 2 × 2L ($3.19 ea)<span class="li-price">$6.38</span></li>
-<li>Grilled chicken – 1 × 1.38kg RSPCA<span class="li-price">$16.49</span></li>
-<li>Frozen salmon – 2 × 460g 4-packs ($15 ea)<span class="li-price">$30.00</span></li>
-</ul>
-<div class="stat-box">Subtotal (Aldi): $64.36</div>`
-      },
-      {
-        name:'Grains & seeds',
-        icon:'🌾',
-        id:'grains',
-        content:`<h3>Grains & seeds</h3>
-<ul>
-<li>Chia seeds – 1 × 350g (covers 3+ weeks)<span class="li-price">$5.49</span></li>
-<li>Rolled oats – 1 × 750g (covers 10+ weeks)<span class="li-price">$1.49</span></li>
-<li>Brown rice – 1 × 500g dry bulk bag<span class="li-price">$2.75</span></li>
-<li>Sweet potato chips – 1 × 1.1kg frozen<span class="li-price">$5.00</span></li>
-</ul>
-<div class="stat-box">Subtotal (Aldi): $14.73</div>`
-      },
-      {
-        name:'Pantry & spices',
-        icon:'🏺',
-        id:'pantry',
-        content:`<h3>Pantry & spices</h3>
-<ul>
-<li>Extra virgin olive oil – 1 × 250ml<span class="li-price">$5.00</span></li>
-<li>Turmeric powder – 1 × 50g (covers months)<span class="li-price">$4.00</span></li>
-<li>Ground coffee – 1 × 250g (covers 5+ weeks)<span class="li-price">$6.00</span></li>
-</ul>
-<div class="stat-box">Subtotal (Aldi): $15.00</div>
-<div class="stat-box orange" style="margin-top:20px;">
-<strong>Total weekly shop (Aldi): ~$140.58</strong>
-<p style="margin:8px 0 0;font-size:13px;">All quantities match your meal plan. Packaged items last 2–10 weeks. Buy produce fresh each week. Prices: ALDI Australia, Jan 2026.</p>
-</div>`
-      }
-    ]
-  },
-  gym:{
-    title:'Daily exercise routine',
-    icon:'🏋️',
-    items:[
-      {
-        name:'Warm-up',
-        icon:'🚴',
-        id:'warmup',
-        content:`<h3>Warm-up (5 min, daily)</h3>
-<ul>
-<li><strong>Easy elliptical:</strong> level 4–6, or</li>
-<li><strong>Gentle treadmill walk:</strong> flat, slow pace, or</li>
-<li><strong>Comfortable outdoor walk</strong></li>
-</ul>
-<p><strong>Pace:</strong> Slow enough to talk comfortably.</p>`
-      },
-      {
-        name:'Strength',
-        icon:'💪',
-        id:'strength',
-        content:`<h3>Strength circuit (2–3 days/week)</h3>
-<p><em>On other days: warm-up + stretches only.</em></p>
-<table>
-<tr><th>Exercise</th><th>Sets/Reps</th><th>Load</th><th>Notes</th></tr>
-<tr><td>Leg press</td><td>2 × 8–10</td><td>Light–moderate</td><td>No knee lockout</td></tr>
-<tr><td>Seated leg curl</td><td>2 × 8–10</td><td>Light–moderate</td><td>Controlled</td></tr>
-<tr><td>Leg extension</td><td>1–2 × 8–10</td><td>Light</td><td>Short of lockout</td></tr>
-<tr><td>Seated chest press</td><td>2 × 8–10</td><td>Light–moderate</td><td>Elbows not deep</td></tr>
-<tr><td>Seated row/lat pulldown</td><td>2 × 8–10</td><td>Light–moderate</td><td>Chest, slow return</td></tr>
-<tr><td>Abdominal crunch</td><td>2 × 10–12</td><td>Light</td><td>Pain-free only</td></tr>
-</table>
-<div class="warning"><strong>⚠️ RA Safety:</strong> Stop if sharp pain &gt;2/10. Adjust or skip any movement that hurts. Progress slowly. Consult your doctor before starting.</div>`
-      },
-      {
-        name:'Cool-down',
-        icon:'🧘',
-        id:'cooldown',
-        content:`<h3>Cool-down & flexibility (10 min, daily)</h3>
-<ul>
-<li><strong>Seated hamstring stretch:</strong> 2 × 20–30 s per side</li>
-<li><strong>Chest & shoulder opener:</strong> against wall, 2 × 20–30 s</li>
-<li><strong>Gentle neck & shoulder rolls:</strong> 10 circles each direction</li>
-<li><strong>Ankle circles:</strong> 10 each direction, both feet</li>
-<li><strong>Deep belly breathing:</strong> 10 slow breaths</li>
-</ul>`
-      }
-    ]
-  },
-  tracker:{
-    title:'Daily symptom tracker',
-    icon:'📊',
-    items:[
-      {
-        name:'Log symptoms',
-        icon:'📊',
-        id:'log',
-        content:`<h3>Track your symptoms</h3>
-<p>Use these sliders to monitor how meals and exercise affect your RA. Log daily to identify patterns.</p>
-<div class="slider-group pain">
-  <div class="slider-label">
-    <label>Overall pain now (0–10)</label>
-    <div class="slider-value" id="pain-value">5</div>
-  </div>
-  <input type="range" id="pain-slider" min="0" max="10" value="5" oninput="updateValue('pain')">
-  <div class="slider-hint">0 = No pain | 10 = Worst pain imaginable</div>
-</div>
-<div class="slider-group">
-  <div class="slider-label">
-    <label>Morning stiffness (0–10)</label>
-    <div class="slider-value" id="stiffness-value">5</div>
-  </div>
-  <input type="range" id="stiffness-slider" min="0" max="10" value="5" oninput="updateValue('stiffness')">
-  <div class="slider-hint">0 = None | 10 = Severe, can't move</div>
-</div>
-<div class="slider-group fatigue">
-  <div class="slider-label">
-    <label>Fatigue (0–10)</label>
-    <div class="slider-value" id="fatigue-value">5</div>
-  </div>
-  <input type="range" id="fatigue-slider" min="0" max="10" value="5" oninput="updateValue('fatigue')">
-  <div class="slider-hint">0 = Energetic | 10 = Exhausted, can't get up</div>
-</div>
-<div class="warning">
-  <strong>✓ Use this tracker:</strong> Same meals & exercises every day. Focus on consistency, not perfection. Track symptoms to see what helps most. Adjust portions if needed. Always consult your clinician before major changes.
-</div>`
-      }
-    ]
-  }
-};
+const allItems=[{id:'kale',name:'Kale – 400g (~$7.00/kg)',price:'$2.80',category:'produce'},{id:'cucumber',name:'Cucumber – 550g (4 medium × $0.70)',price:'$2.80',category:'produce'},{id:'tomato',name:'Tomato – 400g (3 medium × $0.70)',price:'$2.10',category:'produce'},{id:'onion',name:'Red onion – 150g (1 small × $0.60)',price:'$0.60',category:'produce'},{id:'asparagus',name:'Asparagus – 300g (2 bunches × $3.50)',price:'$7.00',category:'produce'},{id:'broccolini',name:'Broccolini – 300g (2 bunches × $3.50)',price:'$7.00',category:'produce'},{id:'berries',name:'Frozen mixed berries – 1kg',price:'$8.29',category:'produce'},{id:'apple',name:'Apple – 1.1kg loose (7 × $0.47)',price:'$3.30',category:'produce'},{id:'avocado',name:'Avocado – 1.2kg (7 × $2.50)',price:'$17.50',category:'produce'},{id:'lemon',name:'Lemon – 3 loose (3 × $0.70)',price:'$2.10',category:'produce'},{id:'eggs',name:'Eggs – 1 × 18-pack',price:'$5.99',category:'proteins'},{id:'yoghurt',name:'Greek yoghurt – 2 × 500g ($2.75 ea)',price:'$5.50',category:'proteins'},{id:'milk',name:'Light milk – 2 × 2L ($3.19 ea)',price:'$6.38',category:'proteins'},{id:'chicken',name:'Grilled chicken – 1 × 1.38kg RSPCA',price:'$16.49',category:'proteins'},{id:'salmon',name:'Frozen salmon – 2 × 460g 4-packs ($15 ea)',price:'$30.00',category:'proteins'},{id:'chia',name:'Chia seeds – 1 × 350g (covers 3+ weeks)',price:'$5.49',category:'grains'},{id:'oats',name:'Rolled oats – 1 × 750g (covers 10+ weeks)',price:'$1.49',category:'grains'},{id:'rice',name:'Brown rice – 1 × 500g dry bulk bag',price:'$2.75',category:'grains'},{id:'sweetpotato',name:'Sweet potato chips – 1 × 1.1kg frozen',price:'$5.00',category:'grains'},{id:'oil',name:'Extra virgin olive oil – 1 × 250ml',price:'$5.00',category:'pantry'},{id:'turmeric',name:'Turmeric powder – 1 × 50g (covers months)',price:'$4.00',category:'pantry'},{id:'coffee',name:'Ground coffee – 1 × 250g (covers 5+ weeks)',price:'$6.00',category:'pantry'}];
+
+const exercises={upperBody:[{name:'Chest press machine',sets:'2 × 8-10',description:'Targets chest, anterior delts, triceps.',form:'Sit with back firmly against pad. Grip handles at chest level. Push away until arms nearly straight (no lockout). Slow return. RA tip: Adjust seat so handles align with mid-chest to reduce shoulder strain.',machineLoc:'Anytime Fitness (Machine station)'},{name:'Seated row machine',sets:'2 × 8-10',description:'Targets back, lats, rear delts, biceps.',form:'Sit upright. Grip handle at chest height. Pull toward torso, elbows behind body. Slow return. RA tip: Use light to moderate weight; avoid explosive jerky motions.',machineLoc:'Anytime Fitness (Machine station)'},{name:'Shoulder press machine',sets:'2 × 8-10',description:'Targets shoulders, upper chest, triceps.',form:'Sit upright. Grip handles at shoulder height. Press overhead until arms nearly straight. Lower slowly. RA tip: Do not lockout elbows fully; maintain slight bend to protect joints.',machineLoc:'Anytime Fitness (Machine station)'}],lowerBody:[{name:'Leg press machine',sets:'2 × 8-10',description:'Targets quads, glutes, hamstrings, calves.',form:'Sit with back & head flat against pad. Feet shoulder-width apart on platform. Press platform away until knees nearly straight (no lockout). Bend knees to 90° and return. RA tip: Position feet mid-platform to balance quad/glute work.',machineLoc:'Anytime Fitness (Machine station)'},{name:'Leg curl machine',sets:'2 × 8-10',description:'Targets hamstrings, glutes, calves.',form:'Lie face-down or sit (depending on machine). Pad rests on calves. Curl heels toward glutes, bending knees. Control the return. RA tip: Avoid jerky movements; use controlled tempo.',machineLoc:'Anytime Fitness (Machine station)'},{name:'Leg extension machine',sets:'2 × 8-10',description:'Targets quadriceps.',form:'Sit with knees aligned with machine pivot. Pad on shins/ankles. Extend legs forward until nearly straight (no hard lockout). Control the return. RA tip: This is quad-isolation; avoid full lockout to protect knees.',machineLoc:'Anytime Fitness (Machine station)'}],core:[{name:'Ab crunch machine',sets:'2 × 10-12',description:'Targets rectus abdominis (six-pack muscle).',form:'Sit with chest pad against your sternum. Hands behind head or gripping handles. Crunch downward folding at the waist. Release slowly. RA tip: Pain-free only; stop if sharp discomfort.',machineLoc:'Anytime Fitness (Machine station)'},{name:'Seated row (wide grip)',sets:'2 × 10-12',description:'Also targets core and lower back as stabilisers.',form:'Sit upright. Use wide grip on the row machine. Pull to chest, engaging core to stabilise. Slow return. RA tip: Excellent for posture and core stability without direct spinal loading.',machineLoc:'Anytime Fitness (Machine station)'}],cardio:{elliptical:{name:'Elliptical machine',time:'20 min (daily)',description:'Low-impact cardio. Burns calories, builds aerobic fitness without joint impact.',form:'Step onto pedals. Keep upright posture. Use handles lightly for balance, not pushing/pulling hard. Maintain steady pace where you can talk. RA tip: This is ideal for RA as it is zero-impact on joints.',machineLoc:'Anytime Fitness (Cardio area)'}}};
+
+const weekSchedule={Monday:{title:'Monday – Upper body & core',duration:'~50 min',content:'Elliptical: 20 min warm-up + strength: 20 min + stretching: 10 min',machines:'Elliptical, Chest press, Seated row, Shoulder press, Ab crunch'},Tuesday:{title:'Tuesday – Lower body & core',duration:'~50 min',content:'Elliptical: 20 min warm-up + strength: 20 min + stretching: 10 min',machines:'Elliptical, Leg press, Leg curl, Leg extension, Seated row'},Wednesday:{title:'Wednesday – Upper body & core',duration:'~50 min',content:'Elliptical: 20 min warm-up + strength: 20 min + stretching: 10 min',machines:'Elliptical, Chest press, Seated row, Shoulder press, Ab crunch'},Thursday:{title:'Thursday – Lower body & core',duration:'~50 min',content:'Elliptical: 20 min warm-up + strength: 20 min + stretching: 10 min',machines:'Elliptical, Leg press, Leg curl, Leg extension, Seated row'},Friday:{title:'Friday – Upper body & core',duration:'~50 min',content:'Elliptical: 20 min warm-up + strength: 20 min + stretching: 10 min',machines:'Elliptical, Chest press, Seated row, Shoulder press, Ab crunch'},Saturday:{title:'Saturday – Lower body & core',duration:'~50 min',content:'Elliptical: 20 min warm-up + strength: 20 min + stretching: 10 min',machines:'Elliptical, Leg press, Leg curl, Leg extension, Seated row'},Sunday:{title:'Sunday – Cardio only',duration:'50 min',content:'Elliptical: 50 min steady cardio + recovery',machines:'Elliptical'}};
+
+const sections={meals:{title:'Daily meal plan',icon:'🍽️',items:[{name:'Breakfast',icon:'🍳',id:'breakfast',content:'<h3>Breakfast (~650 kcal)</h3><p><strong>Warm chia & oat bowl:</strong> 10g chia seeds + 10g rolled oats heated in 100ml light milk. Mix with 100g Greek yoghurt, 100g warmed frozen mixed berries, ½ tsp turmeric powder.</p><p><strong>Egg & avocado:</strong> 2 large hard-boiled eggs mashed with 1 medium–large avocado. Season with ¼ tsp ground black pepper.</p><p><strong>Coffee:</strong> 1 cup with 150ml light milk (no sugar).</p><div class="stat-box"><strong>~650 kcal | ~42g protein | High omega-3, anti-inflammatory</strong></div>'},{name:'Lunch',icon:'☕',id:'lunch',content:'<h3>Lunch (~800 kcal)</h3><p><strong>Grains & protein:</strong> 60g dry brown rice + 5g chia seeds boiled in 150ml water (35–40 min). ~150g grilled chicken breast.</p><p><strong>Salad:</strong> 50g kale, 75g cucumber, 50g tomato, 20g red onion. Drizzle with ½–1 tbsp olive oil + fresh lemon juice.</p><p><strong>Coffee:</strong> 1 cup with 150ml light milk (no sugar).</p><div class="stat-box"><strong>~800 kcal | ~40g protein | Whole grains, lean protein, cruciferous greens</strong></div>'},{name:'Dinner',icon:'🐟',id:'dinner',content:'<h3>Dinner (~655 kcal)</h3><p><strong>Vegetables (alternate daily):</strong> ½ bunch asparagus OR ½ bunch broccolini (choose one each day).</p><p><strong>Protein:</strong> 125g baked frozen salmon fillet.</p><p><strong>Carbs:</strong> 150g frozen sweet potato chips, baked.</p><p><strong>Dessert:</strong> 1 medium apple after dinner.</p><div class="stat-box"><strong>~655 kcal | ~35g protein | Omega-3 rich, colourful veg, extra fibre</strong></div>'},{name:'Daily summary',icon:'✓',id:'summary',content:'<h3>Daily nutrition summary</h3><div class="stat-box" style="background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);border-color:#a5d6a7;"><strong>✓ Total: ~2045 kcal | ~117g protein</strong><p style="margin:8px 0 0;font-size:14px;">Rich in omega-3, fibre, vitamins, minerals, anti-inflammatory compounds. Optimised for 0.5 kg/week weight loss.</p></div><p><strong>Key principles:</strong></p><ul><li>Same meals every day for consistency</li><li>Anti-inflammatory foods (turmeric, omega-3, colourful veg)</li><li>Balanced macros for RA management</li><li>High-quality protein to preserve muscle</li><li>No processed foods or added sugar</li></ul>'}]},shop:{title:'Weekly shopping list',icon:'🛒',items:[{name:'Interactive list',icon:'✓',id:'list',content:'<div id="shopping-list-view"></div>'},{name:'Info',icon:'ℹ',id:'info',content:'<h3>About this list</h3><p>All items are from ALDI Australia (Jan 2026). Tick off items as you buy them. Your progress saves automatically.</p><h3>Pricing breakdown</h3><div class="stat-box">Fresh produce: ~$52.49</div><div class="stat-box">Proteins & dairy: $64.36</div><div class="stat-box">Grains & seeds: $14.73</div><div class="stat-box">Pantry & spices: $15.00</div><div class="stat-box orange"><strong>Total weekly shop: ~$146.58</strong><p style="margin:8px 0 0;font-size:13px;">Packaged items last 2–10 weeks. Buy produce fresh each week.</p></div>'}]},gym:{title:'Daily exercise routine',icon:'🏋️',items:[{name:'Weekly schedule',icon:'📅',id:'schedule',content:'<div id="gym-schedule-view"></div>'},{name:'Exercise guides',icon:'💪',id:'guides',content:'<div id="gym-guides-view"></div>'},{name:'Cardio',icon:'🚴',id:'cardio',content:'<div id="gym-cardio-view"></div>'},{name:'Recovery',icon:'🧘',id:'recovery',content:'<h3>Daily stretching & recovery (10 min)</h3><p>Perform after each workout session.</p><ul><li><strong>Chest opener:</strong> Against wall, 2 × 20–30 s</li><li><strong>Shoulder rolls:</strong> 10 slow circles each direction</li><li><strong>Wrist circles:</strong> 10 each direction</li><li><strong>Gentle spinal twist:</strong> Seated, 2 × 20–30 s each side</li><li><strong>Deep belly breathing:</strong> 5 slow breaths</li></ul><div class="warning"><strong>⚠️ RA Recovery:</strong> Stretching should feel like a gentle lengthening, never painful. If joints feel sore, rest longer. Listen to your body.</div>'}]},tracker:{title:'Daily symptom tracker',icon:'📊',items:[{name:'Log today',icon:'📝',id:'today',content:'<div id="tracker-today"></div>'},{name:'7-day history',icon:'📈',id:'history',content:'<div id="tracker-history"></div>'}]}};
 
 let currentNav='meals',currentItem=0;
 
-function switchNav(nav){
-  const buttons=document.querySelectorAll('.nav-btn');
-  buttons.forEach(btn=>btn.classList.remove('active'));
-  event.target.classList.add('active');
-  currentNav=nav;
-  currentItem=0;
-  renderSidebar();
-  renderContent();
-}
+function getToday(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 
-function selectItem(idx){
-  currentItem=idx;
-  const items=document.querySelectorAll('.section-item');
-  items.forEach(item=>item.classList.remove('active'));
-  items[idx].classList.add('active');
-  renderContent();
-}
+function loadShoppingData(){const stored=localStorage.getItem('shoppingData');return stored?JSON.parse(stored):{};}
+function saveShoppingData(data){localStorage.setItem('shoppingData',JSON.stringify(data));}
+function toggleShoppingItem(itemId){const data=loadShoppingData();if(!data[itemId]){data[itemId]=true;}else{delete data[itemId];}
+saveShoppingData(data);renderShoppingList();}
+function clearShoppingList(){if(confirm('Clear all items and start a new shopping round?')){localStorage.removeItem('shoppingData');renderShoppingList();}}
+function renderShoppingList(){const data=loadShoppingData();const categories={produce:'Fresh produce',proteins:'Proteins & dairy',grains:'Grains & seeds',pantry:'Pantry & spices'};let html='<h3>Weekly shopping list</h3><p>Tick items as you buy them. Data saves automatically.</p>';let totalPrice=0;let checkedCount=0;Object.keys(categories).forEach(cat=>{const catItems=allItems.filter(i=>i.category===cat);html+='<h4 style="margin-top:20px;margin-bottom:12px;color:var(--text-primary);font-weight:600;">'+categories[cat]+'</h4>';catItems.forEach(item=>{const isChecked=!!data[item.id];if(isChecked)checkedCount++;const price=parseFloat(item.price.replace('$',''));totalPrice+=price;html+='<div class="shopping-item '+(isChecked?'checked':'')+'"><input type="checkbox" '+(isChecked?'checked':'')+' onchange="toggleShoppingItem(\''+item.id+'\')"><div class="item-label"><div class="item-name">'+item.name+'</div><div class="item-price">'+item.price+'</div></div></div>';});});html+='<div class="shopping-summary"><strong>'+checkedCount+'/'+allItems.length+' items bought</strong><p style="margin:8px 0 0;">Estimated total: $'+totalPrice.toFixed(2)+'</p></div><div class="btn-group"><button class="btn btn-orange" onclick="clearShoppingList()">Clear all for new round</button></div>';document.getElementById('shopping-list-view').innerHTML=html;}
 
-function renderSidebar(){
-  const section=sections[currentNav];
-  const iconMap={meals:'🍽️',shop:'🛒',gym:'🏋️',tracker:'📊'};
-  const icon=iconMap[currentNav];
-  const header=document.getElementById('categoryHeader');
-  const list=document.getElementById('sectionList');
-  header.innerHTML=
-    `<div class="category-icon ${currentNav}">${icon}</div>
-     <div class="category-title">${section.title}</div>`;
-  let html='';
-  section.items.forEach((item,idx)=>{
-    const activeClass=idx===currentItem?'active':'';
-    const categoryClass=currentNav==='shop'
-      ? 'shop'
-      : currentNav==='gym'
-      ? 'gym'
-      : currentNav==='tracker'
-      ? 'tracker'
-      : '';
-    html+=
-      `<div class="section-item ${activeClass} ${categoryClass}" onclick="selectItem(${idx})">
-         <span class="section-item-icon">${item.icon||''}</span>
-         <div class="section-item-text"><h3>${item.name}</h3></div>
-       </div>`;
-  });
-  list.innerHTML=html;
-}
+function toggleDayDetail(day){const el=document.getElementById('content-'+day);const toggle=document.getElementById('toggle-'+day);if(el.classList.contains('show')){el.classList.remove('show');toggle.classList.remove('open');}else{el.classList.add('show');toggle.classList.add('open');}}
+function renderGymSchedule(){let html='<h3>Your weekly routine</h3><p>Click on any day to expand and see the machines you\'ll use. All workouts: 20 min elliptical + 20 min strength (or 50 min elliptical on Sunday) + 10 min stretch.</p><div class="week-schedule">';Object.entries(weekSchedule).forEach(([day,details])=>{const isRest=day==='Sunday';html+='<div class="day-card '+(isRest?'rest':'')+'"><div class="day-header" onclick="toggleDayDetail(\''+day+'\')"><span>'+details.title+'</span><span class="day-toggle" id="toggle-'+day+'">▼</span></div><div class="day-content" id="content-'+day+'"><p><strong>Duration:</strong> '+details.duration+'</p><p><strong>Workout:</strong> '+details.content+'</p><div class="machines-list '+(isRest?'rest':'')+'"><strong>Machines today:</strong><p>'+details.machines+'</p></div></div></div>';});html+='</div><div class="warning"><strong>✓ Weekly structure:</strong> Monday, Wednesday, Friday = upper body. Tuesday, Thursday, Saturday = lower body. Sunday = cardio recovery. All exercises use machines only (Anytime Fitness Rhodes). No free weights.</div>';document.getElementById('gym-schedule-view').innerHTML=html;}
+function toggleExerciseDetail(exId){const el=document.getElementById('detail-'+exId);const toggle=document.getElementById('toggle-'+exId);if(el.classList.contains('show')){el.classList.remove('show');toggle.classList.remove('open');}else{el.classList.add('show');toggle.classList.add('open');}}
+function renderGymGuides(){let html='<h3>Exercise technique guides</h3><p>Click any exercise to expand and see full instructions and RA-safe modifications.</p>';const allEx=[...exercises.upperBody,...exercises.lowerBody,...exercises.core];allEx.forEach((ex,idx)=>{const exId='ex'+idx;html+='<div class="exercise-card"><div class="exercise-header" onclick="toggleExerciseDetail(\''+exId+'\')"><span>'+ex.name+'</span><span class="exercise-toggle" id="toggle-'+exId+'">▼</span></div><div class="exercise-details" id="detail-'+exId+'"><h5>Description:</h5><p>'+ex.description+'</p><h5>Form:</h5><p>'+ex.form+'</p><h5>Sets × Reps:</h5><p>'+ex.sets+'</p><h5>Location:</h5><p>'+ex.machineLoc+'</p></div></div>';});document.getElementById('gym-guides-view').innerHTML=html;}
+function renderGymCardio(){const c=exercises.cardio.elliptical;let html='<h3>Cardio protocol</h3><div class="exercise-card"><h4>'+c.name+'</h4><p><strong>Daily warm-up:</strong> 20 min (Mon-Sat)</p><p><strong>Sunday long cardio:</strong> 50 min</p><p><strong>Description:</strong> '+c.description+'</p><h5 style="margin-top:12px;">How to use:</h5><p>'+c.form+'</p><p style="margin-top:12px;"><strong>Intensity guideline:</strong> Aim for conversational pace where you can talk but not sing.</p></div><div class="stat-box"><strong>Why elliptical?</strong> Zero-impact on knees, hips, and ankles. Perfect for RA as it protects your joints while building cardio fitness.</div>';document.getElementById('gym-cardio-view').innerHTML=html;}
 
-function renderContent(){
-  const area=document.getElementById('contentArea');
-  const section=sections[currentNav];
-  const item=section.items[currentItem];
-  const categoryClass=currentNav==='shop'
-    ? 'shop'
-    : currentNav==='gym'
-    ? 'gym'
-    : currentNav==='tracker'
-    ? 'tracker'
-    : '';
-  area.innerHTML=`<div class="content-panel active ${categoryClass}">${item.content}</div>`;
-}
+function loadTrackerData(){const stored=localStorage.getItem('trackerData');return stored?JSON.parse(stored):{entries:[]};}
+function saveTrackerData(data){localStorage.setItem('trackerData',JSON.stringify(data));}
+function getEntryForDate(date){const data=loadTrackerData();return data.entries.find(e=>e.date===date)||{date:date,pain:5,stiffness:5,fatigue:5};}
+function saveEntry(date,pain,stiffness,fatigue){const data=loadTrackerData();const idx=data.entries.findIndex(e=>e.date===date);if(idx>=0){data.entries[idx]={date,pain,stiffness,fatigue};}else{data.entries.push({date,pain,stiffness,fatigue});}
+data.entries.sort((a,b)=>new Date(b.date)-new Date(a.date));saveTrackerData(data);}
+function renderTrackerToday(){const today=getToday();const entry=getEntryForDate(today);const html='<h3>Track your symptoms</h3><p>Log today\'s symptoms. Data auto-saves.</p><div class="slider-group pain"><div class="slider-label"><label>Overall pain now (0–10)</label><div class="slider-value" id="pain-value">'+entry.pain+'</div></div><input type="range" id="pain-slider" min="0" max="10" value="'+entry.pain+'" oninput="updateTrackerValue(\'pain\')"><div class="slider-hint">0 = No pain | 10 = Worst pain imaginable</div></div><div class="slider-group"><div class="slider-label"><label>Morning stiffness (0–10)</label><div class="slider-value" id="stiffness-value">'+entry.stiffness+'</div></div><input type="range" id="stiffness-slider" min="0" max="10" value="'+entry.stiffness+'" oninput="updateTrackerValue(\'stiffness\')"><div class="slider-hint">0 = None | 10 = Severe, can\'t move</div></div><div class="slider-group fatigue"><div class="slider-label"><label>Fatigue (0–10)</label><div class="slider-value" id="fatigue-value">'+entry.fatigue+'</div></div><input type="range" id="fatigue-slider" min="0" max="10" value="'+entry.fatigue+'" oninput="updateTrackerValue(\'fatigue\')"><div class="slider-hint">0 = Energetic | 10 = Exhausted, can\'t get up</div></div><div class="warning"><strong>✓ Track daily:</strong> Log symptoms each evening to correlate with diet & exercise. Data saves to your device.</div>';document.getElementById('tracker-today').innerHTML=html;}
+function renderTrackerHistory(){const data=loadTrackerData();if(data.entries.length===0){document.getElementById('tracker-history').innerHTML='<h3>7-day history</h3><div class="empty-state"><p>No data yet. Start logging today in the "Log today" section.</p></div>';return;}
+const last7=data.entries.slice(0,7);let html='<h3>7-day history</h3><p>Colour-coded severity: Green = mild (0-3), Orange = moderate (4-6), Red = high (7-10).</p><div class="history-table">';last7.forEach(entry=>{const d=new Date(entry.date);const dateStr=d.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'});const painClass=entry.pain<=3?'score-low':entry.pain<=6?'score-med':'score-high';const stiffnessClass=entry.stiffness<=3?'score-low':entry.stiffness<=6?'score-med':'score-high';const fatigueClass=entry.fatigue<=3?'score-low':entry.fatigue<=6?'score-med':'score-high';html+='<div class="history-row"><div class="history-date">'+dateStr+'</div><div class="history-score"><div class="score-badge '+painClass+'" title="Pain">'+entry.pain+'</div><div class="score-badge '+stiffnessClass+'" title="Stiffness">'+entry.stiffness+'</div><div class="score-badge '+fatigueClass+'" title="Fatigue">'+entry.fatigue+'</div></div></div>';});html+='</div><div class="btn-group"><button class="btn btn-danger" onclick="clearAllTrackerData()">Clear all data</button></div>';document.getElementById('tracker-history').innerHTML=html;}
+function updateTrackerValue(type){const today=getToday();let slider,display;if(type==='pain'){slider=document.getElementById('pain-slider');display=document.getElementById('pain-value');}else if(type==='stiffness'){slider=document.getElementById('stiffness-slider');display=document.getElementById('stiffness-value');}else if(type==='fatigue'){slider=document.getElementById('fatigue-slider');display=document.getElementById('fatigue-value');}
+if(slider&&display){display.textContent=slider.value;const pain=parseInt(document.getElementById('pain-slider').value);const stiffness=parseInt(document.getElementById('stiffness-slider').value);const fatigue=parseInt(document.getElementById('fatigue-slider').value);saveEntry(today,pain,stiffness,fatigue);}}
+function clearAllTrackerData(){if(confirm('Clear all tracked symptoms? This cannot be undone.')){localStorage.removeItem('trackerData');renderTrackerHistory();renderTrackerToday();}}
 
-function updateValue(type){
-  let slider,display;
-  if(type==='pain'){
-    slider=document.getElementById('pain-slider');
-    display=document.getElementById('pain-value');
-  }else if(type==='stiffness'){
-    slider=document.getElementById('stiffness-slider');
-    display=document.getElementById('stiffness-value');
-  }else if(type==='fatigue'){
-    slider=document.getElementById('fatigue-slider');
-    display=document.getElementById('fatigue-value');
-  }
-  if(slider && display) display.textContent=slider.value;
-}
+function switchNav(nav){const buttons=document.querySelectorAll('.nav-btn');buttons.forEach(btn=>{btn.classList.remove('active');});event.target.classList.add('active');currentNav=nav;currentItem=0;renderSidebar();renderContent();}
+function selectItem(idx){currentItem=idx;const items=document.querySelectorAll('.section-item');items.forEach(item=>item.classList.remove('active'));items[idx].classList.add('active');renderContent();if(currentNav==='shop'){setTimeout(()=>renderShoppingList(),0);}else if(currentNav==='gym'){setTimeout(()=>{if(idx===0)renderGymSchedule();else if(idx===1)renderGymGuides();else if(idx===2)renderGymCardio();},0);}else if(currentNav==='tracker'){setTimeout(()=>{if(idx===0)renderTrackerToday();else renderTrackerHistory();},0);}}
+function renderSidebar(){const section=sections[currentNav];const iconMap={meals:'🍽️',shop:'🛒',gym:'🏋️',tracker:'📊'};const icon=iconMap[currentNav];const header=document.getElementById('categoryHeader');const list=document.getElementById('sectionList');header.innerHTML='<div class="category-icon '+currentNav+'">'+icon+'</div><div class="category-title">'+section.title+'</div>';let html='';section.items.forEach((item,idx)=>{const activeClass=idx===currentItem?'active':'';const categoryClass=currentNav==='shop'?'shop':currentNav==='gym'?'gym':currentNav==='tracker'?'tracker':'';html+='<div class="section-item '+activeClass+' '+categoryClass+'" onclick="selectItem('+idx+')"><span class="section-item-icon">'+item.icon+'</span><div class="section-item-text"><h3>'+item.name+'</h3></div></div>';});list.innerHTML=html;}
+function renderContent(){const area=document.getElementById('contentArea');const section=sections[currentNav];const item=section.items[currentItem];const categoryClass=currentNav==='shop'?'shop':currentNav==='gym'?'gym':currentNav==='tracker'?'tracker':'';area.innerHTML='<div class="content-panel active '+categoryClass+'">'+item.content+'</div>';if(currentNav==='shop'&&currentItem===0){renderShoppingList();}else if(currentNav==='gym'){if(currentItem===0)renderGymSchedule();else if(currentItem===1)renderGymGuides();else if(currentItem===2)renderGymCardio();}else if(currentNav==='tracker'){if(currentItem===0)renderTrackerToday();else renderTrackerHistory();}}
 
-renderSidebar();
-renderContent();
+renderSidebar();renderContent();
 </script>
 </body>
 </html>
